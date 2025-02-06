@@ -12,7 +12,7 @@ interface ClothingItem {
   fabricMaterials: string;
 }
 
-function App() {
+function Items() {
   const [clothing, setClothing] = useState<ClothingItem[]>([]);
   const [error, setError] = useState<string | null>(null);
 
@@ -39,7 +39,7 @@ function App() {
   }, []);
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto mb-4">
       <h1 className="text-2xl text-[#4b6686] font-bold mb-4 underline p-4">Clothing Items</h1>
 
       {error && <p className="text-red-500 mb-4">Error: {error}</p>}
@@ -63,4 +63,4 @@ function App() {
   );
 }
 
-export default App;
+export default Items

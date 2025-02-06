@@ -1,4 +1,5 @@
 function NavigationBar() {
+    const profileCartStyling = "flex items-center gap-1 mr-2 hover:text-[#253241] hover:cursor-pointer transition-colors"
     return (
       <nav className="w-full pt-0 h-20 bg-[#455d7a] flex justify-evenly items-center text-[15px] sm:text-[20px] text-white">
   
@@ -17,12 +18,12 @@ function NavigationBar() {
           placeholder="Type here..."
         />
   
-        <div className="flex items-center gap-1 max-w-14 mr-4">
+        <div className={profileCartStyling}>
           <span className="material-symbols-outlined">shopping_cart</span>
           <span className="align-super font-bold whitespace-nowrap">Cart</span>
         </div>
   
-        <div className="flex items-center gap-1 mr-2">
+        <div className={profileCartStyling}>
           <span className="material-symbols-outlined">person</span>
           <span className="align-super font-bold">Profile</span>
         </div>

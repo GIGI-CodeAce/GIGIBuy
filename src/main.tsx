@@ -1,13 +1,15 @@
 import { createRoot } from 'react-dom/client'
-import App from './Homepage/items.tsx'
+import Items from './Homepage/items.tsx'
 import NavigationBar from './Fixed/navBar.tsx'
 import SpecialOffer from './Fixed/specialOffer.tsx'
+import Footer from './Fixed/footer.tsx'
 import './index.css'
 
 createRoot(document.getElementById('root')!).render(
    <>
    <NavigationBar/>
    <SpecialOffer/>
-    <App />
+    <Items />
+    <Footer/>
    </>
 )
