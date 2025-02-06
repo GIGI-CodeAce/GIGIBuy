@@ -40,7 +40,7 @@ function App() {
 
   return (
     <div className="container mx-auto">
-      <h1 className="text-2xl font-bold mb-4 underline p-4">Clothing Items</h1>
+      <h1 className="text-2xl text-[#4b6686] font-bold mb-4 underline p-4">Clothing Items</h1>
 
       {error && <p className="text-red-500 mb-4">Error: {error}</p>}
       {clothing.length === 0 && !error && (
