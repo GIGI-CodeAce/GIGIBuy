@@ -2,16 +2,11 @@ import { useEffect, useState } from 'react';
 import supabase from "../supabase-client";
 import ProductListing from "./product-listing";
 
-// Interface matches Supabase data directly
 interface ClothingItem {
-  id: string;
-  name: string;
-  image: string;
-  coverImage: string;
-  description: string;
-  price: number;
-  company: string;
-  FabricMaterials: string; // Match the exact Supabase field name
+  id: string; name: string;
+  image: string;  coverImage: string;
+  description: string;  price: number;
+  company: string;  FabricMaterials: string;
 }
 
 function Items() {
@@ -20,17 +15,10 @@ function Items() {
 
   useEffect(() => {
     const fetchClothing = async () => {
-      const { data, error: supabaseError } = await supabase
+      const { data, } = await supabase
         .from('Clothing')
-        .select('id, name, image, coverImage, description, price, company, "FabricMaterials"');
+        .select('*');
 
-      if (supabaseError) {
-        console.error('Error fetching Clothing data:', supabaseError);
-        setError(supabaseError.message);
-        return;
-      }
-
-      // Directly set the data without mapping
       setClothing(data || []);
     };
 
