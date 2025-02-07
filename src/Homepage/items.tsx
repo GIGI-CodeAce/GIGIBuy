@@ -2,14 +2,16 @@ import { useEffect, useState } from 'react';
 import supabase from "../supabase-client";
 import ProductListing from "./product-listing";
 
+// Interface matches Supabase data directly
 interface ClothingItem {
   id: string;
   name: string;
   image: string;
+  coverImage: string;
   description: string;
   price: number;
   company: string;
-  fabricMaterials: string;
+  FabricMaterials: string; // Match the exact Supabase field name
 }
 
 function Items() {
@@ -20,19 +22,16 @@ function Items() {
     const fetchClothing = async () => {
       const { data, error: supabaseError } = await supabase
         .from('Clothing')
-        .select('id, name, image, description, price, company, "FabricMaterials"');
+        .select('id, name, image, coverImage, description, price, company, "FabricMaterials"');
 
-      setClothing(
-        data?.map((item) => ({
-          id: item.id,
-          name: item.name,
-          image: item.image,
-          description: item.description,
-          price: item.price,
-          company: item.company,
-          fabricMaterials: item.FabricMaterials,
-        })) || []
-      );
+      if (supabaseError) {
+        console.error('Error fetching Clothing data:', supabaseError);
+        setError(supabaseError.message);
+        return;
+      }
+
+      // Directly set the data without mapping
+      setClothing(data || []);
     };
 
     fetchClothing();
@@ -53,9 +52,10 @@ function Items() {
             key={item.id}
             name={item.name}
             image={item.image}
+            coverImage={item.coverImage}
             price={item.price}
             description={item.description}
-            fabricMaterials={item.fabricMaterials}
+            fabricMaterials={item.FabricMaterials}
           />
         ))}
       </div>
@@ -63,4 +63,4 @@ function Items() {
   );
 }
 
-export default Items
+export default Items;
