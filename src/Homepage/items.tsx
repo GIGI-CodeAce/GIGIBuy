@@ -37,13 +37,14 @@ function Items() {
       <div className="p-2 w-full flex flex-wrap justify-between">
         {clothing.map((item) => (
           <ProductListing
-            key={item.id}
-            name={item.name}
-            image={item.image}
-            coverImage={item.coverImage}
-            price={item.price}
-            description={item.description}
-            fabricMaterials={item.FabricMaterials}
+          key={item.id}
+          id={item.id}  // ✅ Pass `id` here
+          name={item.name}
+          image={item.image}
+          coverImage={item.coverImage}
+          price={item.price}
+          description={item.description}
+          fabricMaterials={item.FabricMaterials}
           />
         ))}
       </div>
