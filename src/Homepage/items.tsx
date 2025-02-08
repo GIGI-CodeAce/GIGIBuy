@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import supabase from "../supabase-client";
 import ProductListing from "./product-listing";
 
-interface ClothingItem {
+export interface ClothingItem {
   id: string; name: string;
   image: string;  coverImage: string;
   description: string;  price: number;
@@ -38,7 +38,7 @@ function Items() {
         {clothing.map((item) => (
           <ProductListing
           key={item.id}
-          id={item.id}  // ✅ Pass `id` here
+          id={item.id}
           name={item.name}
           image={item.image}
           coverImage={item.coverImage}

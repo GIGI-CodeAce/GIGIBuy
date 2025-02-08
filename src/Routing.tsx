@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Homepage } from "./main";
-import ItemPage from "./itemPage";
+import ItemPage from "./ItemPage/itemPage";
 
 export default function App() {
   return (
