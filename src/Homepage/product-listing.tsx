@@ -27,7 +27,11 @@ function ProductListing(props: any) {
         }}
       ></div>
 
-      <h1 className="font-bold text-lg">{props.name}</h1>
+<h1
+  className={`font-bold text-lg ${showCoverImg ? 'text-[#FFB6A6]' : 'text-gray-800'} hover:text-[${showCoverImg ? '#FFB6A6' : 'white'}]`}
+>
+  {props.name}
+</h1>
       <h2 className="text-gray-600">{props.description}</h2>
       <span className="text-sm">{props.FabricMaterials}</span>
       <p className="opacity-60">{props.price}$</p>

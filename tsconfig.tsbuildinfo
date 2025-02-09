@@ -1,0 +1,1 @@
+{"root":["./src/routing.tsx","./src/main.tsx","./src/supabase-client.ts","./src/vite-env.d.ts","./src/fixed/footer.tsx","./src/fixed/navbar.tsx","./src/fixed/specialoffer.tsx","./src/homepage/items.tsx","./src/homepage/product-listing.tsx","./src/itempage/itempage.tsx","./src/itempage/itempagedata.tsx"],"version":"5.6.3"}
