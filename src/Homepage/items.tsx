@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import supabase from "../supabase-client";
 import ProductListing from "./product-listing";
 import NavigationBar from '../Fixed/navBar';
-import SpecialOffer from '../Fixed/specialOffer';
 import Footer from '../Fixed/footer';
+import SpecialOffer from '../Fixed/specialOffer';
 
 export interface ClothingItem {
   id: string; name: string;
@@ -53,30 +53,30 @@ function Items() {
     <>
     <NavigationBar onSearch={handleSearch}/>
     <SpecialOffer/>
-        <div className="container mx-auto mb-4">
-      <h1 className="text-2xl text-[#4b6686] font-bold mb-4 underline p-4">Clothing Items</h1>
+    <div className="container mx-auto">
+      <h1 className="text-2xl text-[#4b6686] font-bold underline">Clothing Items</h1>
 
-      {error && <p className="text-red-500 mb-4">Error: {error}</p>}
-      {filteredClothing.length === 0 && !error && (
-        <p className="text-gray-500">No clothing items found</p>
-      )}
+        {error && <p className="text-red-500">Error: {error}</p>}
+        {filteredClothing.length === 0 && !error && (
+          <p className="text-gray-500">No clothing items found</p>
+        )}
 
-      <div className="p-2 w-full flex flex-wrap justify-between">
-        {filteredClothing.map((item) => (
-          <ProductListing
+      <div className="w-full flex flex-wrap justify-around">
+          {filteredClothing.map((item) => (
+              <ProductListing
             key={item.id}
-            id={item.id}
-            name={item.name}
-            image={item.image}
-            coverImage={item.coverImage}
-            price={item.price}
-            description={item.description}
-            fabricMaterials={item.FabricMaterials}
-          />
-        ))}
+                id={item.id}
+                name={item.name}
+                image={item.image}
+                coverImage={item.coverImage}
+                price={item.price}
+                description={item.description}
+                fabricMaterials={item.FabricMaterials}
+              />
+          ))}
+        </div>
       </div>
-    </div>
-    <Footer/>
+      <Footer/>
     </>
   );
 }

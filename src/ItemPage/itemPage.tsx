@@ -8,14 +8,29 @@ import NavigationBar from "../Fixed/navBar";
 import fetchClothing from "./itemPageData";
 
 function ItemPage() {
-  const [clothing, setClothing] = useState<ClothingItem | null>(null);
+  const [clothing, setClothing] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const { id } = useParams();
   const [image, setImage] = useState(false)
+  const [filteredClothing, setFilteredClothing] = useState<ClothingItem[]>([]); // State for filtered items
+  const [searchQuery, setSearchQuery] = useState<string>(""); // State for search query
     const style = " sm:w-[500px] w-[433px] h-[500px] mt-8"
 
   fetchClothing(supabase, id, setClothing, setError,setLoading)
+
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+    if (query.trim() === "") {
+      setFilteredClothing(clothing);
+    } else {
+      setFilteredClothing(
+        clothing.filter((item: { description: string; }) =>
+          item.description.toLowerCase().includes(query.toLowerCase())
+        )
+      );
+    }
+  };
 
 
   if (loading) return <p>Loading...</p>;
@@ -24,7 +39,7 @@ function ItemPage() {
   return (
 
     <>
-    <NavigationBar/>
+    <NavigationBar onSearch={handleSearch}/>
     <SpecialOffer/>
       <div className="overflow-hidden sm:flex justify-center items-center min-h-[70vh] max-h-[130vh]">
       {clothing && (

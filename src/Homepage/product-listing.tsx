@@ -12,8 +12,8 @@ function ProductListing(props: any) {
 
   return (
     <div
-      className="pt-5 w-56 text-center ml-0 h-[305px]  border-2 rounded-xl border-[#4b6686] m-[5px]
-                 hover:scale-97 cursor-pointer transition-all hover:bg-[#eff2f5]"
+      className="pt-5 sm:w-[250px] w-[230px] text-center h-[305px] border-2 rounded-xl border-[#4b6686] m-[5px] mb-[11px]
+                 hover:scale-103 cursor-pointer transition-all hover:bg-[#eff2f5] "
       onMouseEnter={() => setShowCoverImg(true)}
       onMouseLeave={() => setShowCoverImg(false)}
       onClick={handleClick}
