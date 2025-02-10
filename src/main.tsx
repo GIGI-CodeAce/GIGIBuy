@@ -1,21 +1,19 @@
 import { createRoot } from 'react-dom/client'
-import Items from './Homepage/items.tsx'
-import NavigationBar from './Fixed/navBar.tsx'
-import SpecialOffer from './Fixed/specialOffer.tsx'
-import Footer from './Fixed/footer.tsx'
-import { Routes, Route, Navigate, BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import ItemPage from "./ItemPage/itemPage";
+import Items from "./Homepage/items";
 import './index.css'
-import Routing from './Routing.tsx'
 
 createRoot(document.getElementById('root')!).render(Routing())
 
-export function Homepage(){
-   return(
-      <>
-      <NavigationBar/>
-      <SpecialOffer/>
-       <Items />
-       <Footer/>
-      </>
-   )
+export default function Routing() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Items/>} />
+        <Route path="/:id" element={<ItemPage />} />
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
