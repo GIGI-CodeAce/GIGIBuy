@@ -12,7 +12,7 @@ function ProductListing(props: any) {
 
   return (
     <div
-      className="pt-5 sm:w-[250px] w-[230px] text-center h-[305px] border-2 rounded-xl border-[#4b6686] m-[5px] mb-[11px]
+      className="pt-5 sm:w-[250px] w-[230px] text-center h-[303px] border-2 rounded-xl border-[#4b6686] m-[5px]
                  hover:scale-103 cursor-pointer transition-all hover:bg-[#eff2f5] "
       onMouseEnter={() => setShowCoverImg(true)}
       onMouseLeave={() => setShowCoverImg(false)}
@@ -32,7 +32,7 @@ function ProductListing(props: any) {
 >
   {props.name}
 </h1>
-      <h2 className="text-gray-600">{props.description}</h2>
+      <h2 className="text-gray-600 truncate ...">{props.description}</h2>
       <span className="text-sm">{props.FabricMaterials}</span>
       <p className="opacity-60">{props.price}$</p>
     </div>

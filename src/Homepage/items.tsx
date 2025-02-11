@@ -61,7 +61,8 @@ function Items() {
           <p className="text-gray-500">No clothing items found</p>
         )}
 
-      <div className="w-full flex flex-wrap justify-around">
+      <div className="w-full grid grid-cols-2 xl:grid-cols-5 lg:grid-cols-4 p-2
+                       md:grid-cols-3 sm:grid-cols-2 xs:grid-cols-1 gap-4">
           {filteredClothing.map((item) => (
               <ProductListing
             key={item.id}
