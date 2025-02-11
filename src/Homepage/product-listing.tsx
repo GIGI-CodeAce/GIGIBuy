@@ -7,7 +7,7 @@ function ProductListing(props: any) {
 
   const handleClick = () => {
     const formattedName = props.name.replace(/\s+/g, "-").toLowerCase();
-    navigate(`/${formattedName}`);
+    navigate(`/${props.id}/${formattedName}`);
   };
 
   return (

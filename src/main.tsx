@@ -11,7 +11,7 @@ export default function Routing() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Items/>} />
-        <Route path="/:id" element={<ItemPage />} />
+        <Route path="/:id/:name" element={<ItemPage />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>

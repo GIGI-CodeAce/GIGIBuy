@@ -11,13 +11,13 @@ function ItemPage() {
   const [clothing, setClothing] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const { id } = useParams();
+  const { id, name } = useParams();
   const [image, setImage] = useState(false)
-  const [filteredClothing, setFilteredClothing] = useState<ClothingItem[]>([]); // State for filtered items
-  const [searchQuery, setSearchQuery] = useState<string>(""); // State for search query
+  const [filteredClothing, setFilteredClothing] = useState<ClothingItem[]>([]);
+  const [searchQuery, setSearchQuery] = useState<string>("");
     const style = " sm:w-[500px] w-[433px] h-[500px] mt-8"
 
-  fetchClothing(supabase, id, setClothing, setError,setLoading)
+  fetchClothing(supabase, id,name, setClothing, setError,setLoading)
 
   const handleSearch = (query: string) => {
     setSearchQuery(query);
@@ -61,8 +61,14 @@ function ItemPage() {
           <p className="text-[#FFB6A6] mx-auto rounded-xl w-16 shadow-xl">${clothing.price}</p><br/><br/>
           <button onClick={() => console.log("clicked")} 
           className="bg-[#a0c4d7] text-[#ffd5cc] w-40 cursor-pointer hover:bg-[#90bad0] active:bg-[#7eaec9] p-2 rounded-2xl">
-            Add to cart</button>
+            Add to cart </button>
+            <section className="text-[17px]/[18px] font-light mt-14">
+              <h1 className="font-medium underline text-[#7eaec9] decoration-[#FFB6A6]">About the product</h1>
+              <p>Materials: {clothing.FabricMaterials}</p>
+              <p>Brand: {clothing.company}</p>
+            </section>
           </main>
+          
         </>
       )}
     </div>

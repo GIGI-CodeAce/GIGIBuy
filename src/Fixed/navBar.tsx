@@ -17,7 +17,7 @@ function NavigationBar({ onSearch }: { onSearch: (query: string) => void }) {
       <input
         className="pl-2 w-full sm:w-[30vw] rounded-xl text-[#e9c6be] border-2 bg-[#4b6686] border-white ml-2 mr-2 placeholder-[#e5c9c3]"
         placeholder="Type here..."
-        onChange={handleSearchChange} // Trigger search on input change
+        onChange={handleSearchChange}
       />
 
       <div className={profileCartStyling}>0
