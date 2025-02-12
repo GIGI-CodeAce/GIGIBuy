@@ -13,11 +13,9 @@ function fetchClothing(
       try {
         if (!name) throw new Error("Invalid item name");
 
-        // Format name by replacing hyphens with spaces
         const formattedName = name.replace(/-/g, " ");
         console.log("Fetching product with name:", formattedName);
 
-        // Query using the formatted name
         const { data, error } = await supabase
           .from("Clothing")
           .select("*")
@@ -37,7 +35,7 @@ function fetchClothing(
     };
 
     fetchClothing();
-  }, [name]); // Now triggers on name changes
+  }, [name]); 
 }
 
 export default fetchClothing;
