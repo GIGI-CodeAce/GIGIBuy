@@ -7,8 +7,19 @@ body{
     border: 1px solid red;
 } */
 
+@font-face {
+    font-family: 'iconic';
+    src: url('./assets/RobotoSlab-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  body {
+    font-family: 'Roboto Slab', sans-serif;
+  }
+
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 9px;
 }
 
 ::-webkit-scrollbar-thumb {

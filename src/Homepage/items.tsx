@@ -6,10 +6,11 @@ import Footer from '../Fixed/footer';
 import SpecialOffer from '../Fixed/specialOffer';
 
 export interface ClothingItem {
-  id: string; name: string;
+  id: number; name: string;
   image: string;  coverImage: string;
   description: string;  price: number;
   company: string;  FabricMaterials: string;
+  quantity: number;
 }
 
 function Items() {
@@ -28,22 +29,21 @@ function Items() {
         setError("Error fetching clothing data");
       } else {
         setClothing(data || []);
-        setFilteredClothing(data || []); // Set initial filtered items to all clothing items
+        setFilteredClothing(data || []);
       }
     };
 
     fetchClothing();
   }, []);
 
-  // Update the filtered clothing based on the search query
   const handleSearch = (query: string) => {
     setSearchQuery(query);
     if (query.trim() === "") {
-      setFilteredClothing(clothing); // If the search query is empty, show all items
+      setFilteredClothing(clothing);
     } else {
       setFilteredClothing(
         clothing.filter(item =>
-          item.description.toLowerCase().includes(query.toLowerCase()) // Filter based on description
+          item.description.toLowerCase().includes(query.toLowerCase())
         )
       );
     }

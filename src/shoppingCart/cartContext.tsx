@@ -1,19 +1,11 @@
-// cartContext.tsx
 import React, { createContext, useState, useContext, ReactNode, useEffect } from "react";
-
-interface CartItem {
-  productId: number; // Ensure this is always a number
-  image: string,
-  name: string;
-  price: number;
-  quantity: number;
-}
+import { ClothingItem } from "../Homepage/items";
 
 interface CartContextType {
-  cart: CartItem[];
-  addToCart: (item: CartItem) => void;
-  removeFromCart: (productId: number) => void; // Ensure it's a number
-  updateQuantity: (productId: number, quantity: number) => void; // Ensure productId is a number
+  cart: ClothingItem[];
+  addToCart: (item: ClothingItem) => void;
+  removeFromCart: (id: number) => void;
+  updateQuantity: (id: number, quantity: number) => void; 
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -29,7 +21,7 @@ interface CartProviderProps {
 }
 
 export const CartProvider = ({ children }: CartProviderProps) => {
-  const [cart, setCart] = useState<CartItem[]>([]);
+  const [cart, setCart] = useState<ClothingItem[]>([]);
 
   useEffect(() => {
     const savedCart = localStorage.getItem("cart");
@@ -44,28 +36,28 @@ export const CartProvider = ({ children }: CartProviderProps) => {
     }
   }, [cart]);
 
-  const addToCart = (item: CartItem) => {
+  const addToCart = (item: ClothingItem) => {
     setCart((prev) => {
-      const existingItem = prev.find((cartItem) => cartItem.productId === item.productId);
+      const existingItem = prev.find((ClothingItem) => ClothingItem.id === item.id);
       if (existingItem) {
-        return prev.map((cartItem) =>
-          cartItem.productId === item.productId
-            ? { ...cartItem, quantity: cartItem.quantity + 1 }
-            : cartItem
+        return prev.map((ClothingItem) =>
+          ClothingItem.id === item.id
+            ? { ...ClothingItem, quantity: (ClothingItem.quantity || 0) + 1 }
+            : ClothingItem
         );
       }
-      return [...prev, item];
+      return [...prev, { ...item, quantity: item.quantity || 1 }]; // Ensure quantity is set
     });
   };
 
-  const removeFromCart = (productId: number) => {
-    setCart((prev) => prev.filter((item) => item.productId !== productId));
+  const removeFromCart = (id: number) => {
+    setCart((prev) => prev.filter((item) => item.id !== id));
   };
 
-  const updateQuantity = (productId: number, quantity: number) => {
+  const updateQuantity = (id: number, quantity: number) => {
     setCart((prev) =>
       prev.map((item) =>
-        item.productId === productId ? { ...item, quantity } : item
+        item.id === id ? { ...item, quantity: Math.max(1, quantity) } : item
       )
     );
   };

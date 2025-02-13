@@ -15,7 +15,7 @@ const useFetchClothing = (
         if (!name) throw new Error("Invalid item name");
 
         const formattedName = name.replace(/-/g, " ");
-        console.log("Fetching product with name:", formattedName);
+        // console.log("Fetching product with name:", formattedName);
 
         const { data, error } = await supabase
           .from("Clothing")

@@ -21,11 +21,10 @@ function ProductListing(props: any) {
       <img src={props.coverImage} alt="" className="hidden" aria-hidden="true" />
 
       <div
-        className="bg-cover rounded-t-xl h-[200px] transition-all duration-300"
+        className="bg-cover rounded-t-xl h-[200px] duration-300"
         style={{
           backgroundImage: `url(${showCoverImg ? props.coverImage : props.image})`,
-        }}
-      ></div>
+        }}></div>
 
 <h1
   className={`font-bold text-lg ${showCoverImg ? 'text-[#FFB6A6]' : 'text-gray-800'} hover:text-[${showCoverImg ? '#FFB6A6' : 'white'}]`}

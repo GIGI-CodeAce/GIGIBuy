@@ -13,15 +13,14 @@ function NavigationBar({ onSearch }: { onSearch: (query: string) => void }) {
 
   const totalItemsInCart = cart.reduce((total, item) => total + item.quantity, 0);
 
-  // Navigate to cart page when clicked
   const handleCartClick = () => {
-    navigate("/cart"); // Use the relative path for the cart page
+    navigate("/cart");
   };
 
   return (
     <nav className="w-full pt-0 h-20 bg-[#455d7a] flex justify-evenly items-center text-[15px] sm:text-[20px] text-white">
       <a href="https://gigibuy.com/">
-        <h1 className="text-2xl active:text-[#e5c9c3] font-bold ml-2 sm:text-[25px] flex items-center gap-1 mr-2">
+        <h1 className="text-2xl active:text-[#e5c9c3] font-[iconic] ml-2 sm:text-[25px] flex items-center gap-1 mr-2">
           <div className="w-10 h-10 bg-cover bg-center bg-[url('https://raw.githubusercontent.com/GIGIsOtherStuff/GIGIbuy/main/diamond.png')]"></div>
           GIGIbuy
         </h1>
@@ -29,7 +28,7 @@ function NavigationBar({ onSearch }: { onSearch: (query: string) => void }) {
 
       <input
         className="pl-2 w-full sm:w-[30vw] rounded-xl text-[#e9c6be] border-2 bg-[#4b6686] border-white ml-2 mr-2 placeholder-[#e5c9c3]"
-        placeholder="Type here..."
+        placeholder="Search.."
         onChange={handleSearchChange}
       />
 

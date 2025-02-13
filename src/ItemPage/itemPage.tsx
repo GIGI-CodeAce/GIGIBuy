@@ -16,22 +16,20 @@ function ItemPage() {
   const [image, setImage] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const { id, name } = useParams();
+  
 
-  // Use the custom hook here
   useFetchClothing(supabase, id, name, setClothing, setError, setLoading);
 
   const handleAddToCart = () => {
     if (clothing) {
-      const cartItem = {
-        productId: clothing.id,
-        image: clothing.id,
-        name: clothing.name,
-        price: clothing.price,
-        quantity: 1,
+      const cartItem: ClothingItem = {
+        ...clothing, 
       };
+  
       addToCart(cartItem);
     }
   };
+  
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p className="text-red-500">Error: {error}</p>;
