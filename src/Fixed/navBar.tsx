@@ -1,13 +1,26 @@
+import { useState } from "react";
+import { useCart } from "../shoppingCart/cartContext";
+import { useNavigate } from "react-router-dom";
+
 function NavigationBar({ onSearch }: { onSearch: (query: string) => void }) {
+  const { cart } = useCart();
+  const navigate = useNavigate();
   const profileCartStyling = "flex items-center gap-1 mr-2 hover:text-[#FFB6A6] hover:cursor-pointer transition-colors";
-  
+
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    onSearch(event.target.value); // Pass the search query to the parent
+    onSearch(event.target.value); 
+  };
+
+  const totalItemsInCart = cart.reduce((total, item) => total + item.quantity, 0);
+
+  // Navigate to cart page when clicked
+  const handleCartClick = () => {
+    navigate("/cart"); // Use the relative path for the cart page
   };
 
   return (
     <nav className="w-full pt-0 h-20 bg-[#455d7a] flex justify-evenly items-center text-[15px] sm:text-[20px] text-white">
-      <a href="../">
+      <a href="https://gigibuy.com/">
         <h1 className="text-2xl active:text-[#e5c9c3] font-bold ml-2 sm:text-[25px] flex items-center gap-1 mr-2">
           <div className="w-10 h-10 bg-cover bg-center bg-[url('https://raw.githubusercontent.com/GIGIsOtherStuff/GIGIbuy/main/diamond.png')]"></div>
           GIGIbuy
@@ -20,7 +33,11 @@ function NavigationBar({ onSearch }: { onSearch: (query: string) => void }) {
         onChange={handleSearchChange}
       />
 
-      <div className={profileCartStyling}>0
+      <div
+        className={`${profileCartStyling} ${totalItemsInCart > 0 ? "text-[#e9c6be]" : "text-white"}`}
+        onClick={handleCartClick}
+      >
+        {totalItemsInCart}
         <span className="material-symbols-outlined">shopping_cart</span>
         <span className="align-super font-bold whitespace-nowrap">Cart</span>
       </div>

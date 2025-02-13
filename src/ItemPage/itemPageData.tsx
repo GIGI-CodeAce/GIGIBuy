@@ -1,14 +1,15 @@
+// useFetchClothing.tsx (Custom Hook)
 import { useEffect } from "react";
 
-function fetchClothing(
+const useFetchClothing = (
   supabase: any,
   id: string | undefined,
   name: string | undefined,
   setClothing: Function,
   setError: Function,
   setLoading: Function
-) {
-  return useEffect(() => {
+) => {
+  useEffect(() => {
     const fetchClothing = async () => {
       try {
         if (!name) throw new Error("Invalid item name");
@@ -35,7 +36,7 @@ function fetchClothing(
     };
 
     fetchClothing();
-  }, [name]); 
-}
+  }, [name, id, supabase, setClothing, setError, setLoading]);
+};
 
-export default fetchClothing;
+export default useFetchClothing;
