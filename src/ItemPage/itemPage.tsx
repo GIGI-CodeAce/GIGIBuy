@@ -59,7 +59,7 @@ function ItemPage() {
               <img
                 className="w-96 max-h-[450px] object-contain opacity-0"aria-hidden="true"src={clothing.image}alt={clothing.name}/>
             </div>
-            <main className="max-w-[500px] sm:text-xl text-md text-center pt-[0] mx-auto sm:mx-0 sm:pt-[20vh] mt-0 sm:mt-8 sm:p-10 sm:mr-2">
+            <main className="max-w-[500px] sm:text-xl text-md text-center pt-[0] mx-auto sm:mx-0 sm:pt-[20vh] mt-2 sm:mt-8 sm:p-10 sm:mr-2">
               <h1 className=" font-[iconic] font-bold sm:text-md text-xl w-[180px] mx-auto">{clothing.name}</h1>
               <p>{clothing.description}</p>
               <p className="text-[#FFB6A6] mx-auto rounded-xl w-16 shadow-xl">${clothing.price}</p><br /><br />

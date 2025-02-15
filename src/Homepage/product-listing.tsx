@@ -33,7 +33,7 @@ function ProductListing(props: any) {
 >
   {props.name}
 </h1>
-      <h2 className="text-gray-600 truncate ...">{props.description}</h2>
+      <h2 className="text-gray-600 truncate ...  pl-1 pr-1">{props.description}</h2>
       <span className="text-sm">{props.FabricMaterials}</span>
       <p className="opacity-60">{props.price}$</p>
     </div>

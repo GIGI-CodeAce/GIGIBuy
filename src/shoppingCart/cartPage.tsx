@@ -35,7 +35,7 @@ function CartPage() {
     <>
     <NavigationBar onSearch={() => {}}/>
       <SpecialOffer/>
-        <div className="container mx-auto p-4 min-h-80">
+        <div className="container mx-auto p-4 min-h-[352px]">
       <h1 className="text-2xl text-[#4b6686] pb-2 font-bold underline">Your Cart</h1>
 
       {cart.length === 0 ? (
@@ -75,7 +75,7 @@ function CartPage() {
 
               <button
                 onClick={() => handleRemove(item.id)}
-                className="px-4 p-2 bg-[#a0c4d7] mr-2 rounded-lg rounded-r-2xl text-white hover:text-[#FFB6A6] active:"
+                className="px-4 bg-[#a0c4d7] scale-90 sm:scale-100 p-2 mr-2 rounded-lg rounded-r-2xl text-white hover:text-[#FFB6A6]"
               >
                 Remove
               </button>

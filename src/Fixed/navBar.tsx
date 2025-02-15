@@ -13,8 +13,11 @@ function NavigationBar({ onSearch }: { onSearch: (query: string) => void }) {
 
   const totalItemsInCart = cart.reduce((total, item) => total + item.quantity, 0);
 
-  const handleCartClick = () => {
+  const handleCart = () => {
     navigate("/cart");
+  };
+  const handleProfile = () => {
+    navigate("/profile");
   };
 
   return (
@@ -29,19 +32,27 @@ function NavigationBar({ onSearch }: { onSearch: (query: string) => void }) {
       <input
         className="pl-2 w-full sm:w-[30vw] rounded-xl text-[#e9c6be] border-2 bg-[#4b6686] border-white ml-2 mr-2 placeholder-[#e5c9c3]"
         placeholder="Search.."
+        list="recommendations"
         onChange={handleSearchChange}
       />
 
+<datalist id="recommendations">
+  <option value="Shirt" />
+  <option value="Jacket" />
+  <option value="Pants" />
+</datalist>
+
       <div
         className={`${profileCartStyling} ${totalItemsInCart > 0 ? "text-[#e9c6be]" : "text-white"}`}
-        onClick={handleCartClick}
+        onClick={handleCart}
       >
         {totalItemsInCart}
         <span className="material-symbols-outlined">shopping_cart</span>
         <span className="align-super font-bold whitespace-nowrap">Cart</span>
       </div>
 
-      <div className={profileCartStyling}>
+      <div className={profileCartStyling} 
+           onClick={handleProfile}>
         <span className="material-symbols-outlined">person</span>
         <span className="align-super font-bold">Profile</span>
       </div>
