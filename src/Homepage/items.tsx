@@ -53,7 +53,7 @@ function Items() {
     <>
     <NavigationBar onSearch={handleSearch}/>
     <SpecialOffer/>
-    <div className="container mx-auto">
+    <div className="container mx-auto mb-10">
       <h1 className="text-2xl text-[#4b6686] p-4 font-bold underline">Clothing Items</h1>
 
         {error && <p className="text-red-500">Error: {error}</p>}
@@ -61,8 +61,8 @@ function Items() {
           <p className="text-gray-500">No clothing items found</p>
         )}
 
-      <div className="w-full grid grid-cols-2 xl:grid-cols-5 lg:grid-cols-4 p-2
-                       md:grid-cols-3 sm:grid-cols-2 xs:grid-cols-1 gap-4">
+      <div className="w-full grid grid-cols-2 xl:grid-cols-5 lg:grid-cols-4 pl-2
+                       md:grid-cols-3 sm:grid-cols-2 xs:grid-cols-1 gap-y-4 gap-x-3">
           {filteredClothing.map((item) => (
               <ProductListing
             key={item.id}

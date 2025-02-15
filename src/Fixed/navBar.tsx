@@ -21,7 +21,7 @@ function NavigationBar({ onSearch }: { onSearch: (query: string) => void }) {
     <nav className="w-full pt-0 h-20 bg-[#455d7a] flex justify-evenly items-center text-[15px] sm:text-[20px] text-white">
       <a href="https://gigibuy.com/">
         <h1 className="text-2xl active:text-[#e5c9c3] text-[20px] font-[iconic] ml-2 sm:text-[25px] flex items-center gap-1 mr-2">
-          <div className="w-10 h-10 bg-cover xs:hidden bg-center bg-[url('https://raw.githubusercontent.com/GIGIsOtherStuff/GIGIbuy/main/diamond.png')]"></div>
+          <div className="w-10 h-10 bg-cover bg-center bg-[url('https://raw.githubusercontent.com/GIGIsOtherStuff/GIGIbuy/main/diamond.png')]"></div>
           GIGIbuy
         </h1>
       </a>

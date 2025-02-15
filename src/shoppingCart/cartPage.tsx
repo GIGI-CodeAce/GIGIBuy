@@ -2,11 +2,13 @@ import React from "react";
 import { useCart } from "../shoppingCart/cartContext"; 
 import { Link } from "react-router-dom"; 
 import Footer from "../Fixed/footer";
+import { useNavigate } from "react-router-dom";
 import SpecialOffer from "../Fixed/specialOffer";
 import NavigationBar from "../Fixed/navBar";
 
 function CartPage() {
   const { cart, removeFromCart, updateQuantity } = useCart();
+  const navigate = useNavigate();
 
   const getTotalPrice = () => {
     return cart.reduce((total, item) => {
@@ -14,6 +16,10 @@ function CartPage() {
       const quantity = Number(item.quantity) || 1;
       return total + price * quantity;
     }, 0);
+  };
+
+  const handleCheckout = () => {
+    navigate("/checkout");
   };
 
   const handleRemove = (id: string | number) => {
@@ -29,7 +35,7 @@ function CartPage() {
     <>
     <NavigationBar onSearch={() => {}}/>
       <SpecialOffer/>
-        <div className="container mx-auto p-4">
+        <div className="container mx-auto p-4 min-h-80">
       <h1 className="text-2xl text-[#4b6686] pb-2 font-bold underline">Your Cart</h1>
 
       {cart.length === 0 ? (
@@ -69,7 +75,7 @@ function CartPage() {
 
               <button
                 onClick={() => handleRemove(item.id)}
-                className="px-4 py-2 bg-[#a0c4d7] mr-2 rounded-lg rounded-r-2xl text-white hover:text-[#FFB6A6] active:"
+                className="px-4 p-2 bg-[#a0c4d7] mr-2 rounded-lg rounded-r-2xl text-white hover:text-[#FFB6A6] active:"
               >
                 Remove
               </button>
@@ -83,7 +89,7 @@ function CartPage() {
 
           <div className="mt-4 text-center">
             <Link to="/checkout">
-              <button className="px-6 py-2 rounded-lg rounded-b-3xl text-white bg-[#a0c4d7] hover:bg-[#90bad0] active:bg-[#7eaec9]">
+              <button className="px-6 py-2 rounded-lg rounded-b-3xl text-white bg-[#a0c4d7] hover:bg-[#90bad0] active:bg-[#7eaec9]" onClick={handleCheckout}>
                 Proceed to Checkout
               </button>
             </Link>
