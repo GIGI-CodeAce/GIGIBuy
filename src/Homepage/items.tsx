@@ -54,7 +54,7 @@ function Items() {
     <NavigationBar onSearch={handleSearch}/>
     <SpecialOffer/>
     <div className="container mx-auto">
-      <h1 className="text-2xl text-[#4b6686] font-bold underline">Clothing Items</h1>
+      <h1 className="text-2xl text-[#4b6686] p-4 font-bold underline">Clothing Items</h1>
 
         {error && <p className="text-red-500">Error: {error}</p>}
         {filteredClothing.length === 0 && !error && (
