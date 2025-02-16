@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useCart } from "../shoppingCart/cartContext"; 
 import { Link } from "react-router-dom"; 
 import Footer from "../Fixed/footer";
@@ -8,6 +8,7 @@ import NavigationBar from "../Fixed/navBar";
 
 function CartPage() {
   const { cart, removeFromCart, updateQuantity } = useCart();
+  const [searchText, setSearchText] = useState(localStorage.getItem("searchQuery") || "");
   const navigate = useNavigate();
 
   const getTotalPrice = () => {
@@ -17,6 +18,10 @@ function CartPage() {
       return total + price * quantity;
     }, 0);
   };
+
+  // useEffect(() => {
+  //   localStorage.setItem("searchQuery", searchText);
+  // }, [searchText]);
 
   const handleCheckout = () => {
     navigate("/checkout");
@@ -33,7 +38,13 @@ function CartPage() {
 
   return (
     <>
-    <NavigationBar onSearch={() => {}}/>
+<NavigationBar 
+  value={searchText} 
+  onSearch={(query) => {
+    setSearchText(query);
+    localStorage.setItem("searchQuery", query);
+  }} 
+/>
       <SpecialOffer/>
         <div className="container mx-auto p-4 min-h-[352px]">
       <h1 className="text-2xl text-[#4b6686] pb-2 font-bold underline">Your Cart</h1>
@@ -51,7 +62,7 @@ function CartPage() {
                   className="w-16 h-16 object-cover mr-4"
                 />
                 <div>
-                  <h2 className="text-lg font-medium">{item.name}</h2>
+                <h2 className="text-md sm:text-lg font-bold">{item.name}</h2>
                   <p className="text-sm text-[#ffac99] shadow w-20">${item.price}</p>
                 </div>
               </div>
@@ -75,7 +86,7 @@ function CartPage() {
 
               <button
                 onClick={() => handleRemove(item.id)}
-                className="px-4 bg-[#a0c4d7] scale-90 sm:scale-100 p-2 mr-2 rounded-lg rounded-r-2xl text-white hover:text-[#FFB6A6]"
+                className="px-4 bg-[#a0c4d7] scale-88 sm:scale-100 p-2 mr-2 rounded-lg rounded-r-2xl text-white hover:text-[#FFB6A6]"
               >
                 Remove
               </button>

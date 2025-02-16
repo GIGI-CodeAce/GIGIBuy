@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useCart } from "../shoppingCart/cartContext";
 import useFetchClothing from "./itemPageData";
@@ -15,6 +15,7 @@ function ItemPage() {
   const [image, setImage] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [cardAdd, setCardAdd] = useState('Add to cart')
+  const [searchText, setSearchText] = useState<string>(localStorage.getItem("searchQuery") || "");
   const { id, name } = useParams();
 
   function CartAdded(){
@@ -44,7 +45,13 @@ function ItemPage() {
 
   return (
     <>
-      <NavigationBar onSearch={() => {}} />
+      <NavigationBar 
+  value={searchText} 
+  onSearch={(query) => {
+    setSearchText(query);
+    localStorage.setItem("searchQuery", query);
+  }} 
+/>
       <SpecialOffer />
       <div className="overflow-hidden sm:flex justify-center items-center min-h-[70vh] max-h-[130vh] mb-10">
         {clothing && (

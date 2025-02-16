@@ -1,24 +1,33 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useCart } from "../shoppingCart/cartContext";
 import { useNavigate } from "react-router-dom";
 
-function NavigationBar({ onSearch }: { onSearch: (query: string) => void }) {
+function NavigationBar({ onSearch, value }: { onSearch: (query: string) => void; value: string }) {
   const { cart } = useCart();
   const navigate = useNavigate();
   const profileCartStyling = "flex items-center gap-1 mr-2 hover:text-[#FFB6A6] hover:cursor-pointer transition-colors";
+  const [searchText, setSearchText] = useState(value);
+
+  useEffect(() => {
+    const storedQuery = localStorage.getItem("searchQuery") || "";
+    setSearchText(storedQuery);
+    onSearch(storedQuery);
+  }, []);
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    onSearch(event.target.value); 
+    const query = event.target.value;
+    setSearchText(query);
+    onSearch(query);
+    localStorage.setItem("searchQuery", query);
+  };
+
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter" && searchText.trim()) {
+      navigate("/items");
+    }
   };
 
   const totalItemsInCart = cart.reduce((total, item) => total + item.quantity, 0);
-
-  const handleCart = () => {
-    navigate("/cart");
-  };
-  const handleProfile = () => {
-    navigate("/profile");
-  };
 
   return (
     <nav className="w-full pt-0 h-20 bg-[#455d7a] flex justify-evenly items-center text-[15px] sm:text-[20px] text-white">
@@ -33,26 +42,27 @@ function NavigationBar({ onSearch }: { onSearch: (query: string) => void }) {
         className="pl-2 w-full sm:w-[30vw] rounded-xl text-[#e9c6be] border-2 bg-[#4b6686] border-white ml-2 mr-2 placeholder-[#e5c9c3]"
         placeholder="Search.."
         list="recommendations"
+        value={searchText}
         onChange={handleSearchChange}
+        onKeyDown={handleKeyPress}
       />
 
-<datalist id="recommendations">
-  <option value="Shirt" />
-  <option value="Jacket" />
-  <option value="Pants" />
-</datalist>
+      <datalist id="recommendations">
+        <option value="Shirt" />
+        <option value="Jacket" />
+        <option value="Pants" />
+      </datalist>
 
       <div
         className={`${profileCartStyling} ${totalItemsInCart > 0 ? "text-[#e9c6be]" : "text-white"}`}
-        onClick={handleCart}
+        onClick={() => navigate("/cart")}
       >
         {totalItemsInCart}
         <span className="material-symbols-outlined">shopping_cart</span>
         <span className="align-super font-bold whitespace-nowrap">Cart</span>
       </div>
 
-      <div className={profileCartStyling} 
-           onClick={handleProfile}>
+      <div className={profileCartStyling} onClick={() => navigate("/profile")}>
         <span className="material-symbols-outlined">person</span>
         <span className="align-super font-bold">Profile</span>
       </div>
