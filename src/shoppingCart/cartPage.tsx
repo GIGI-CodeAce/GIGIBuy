@@ -19,10 +19,6 @@ function CartPage() {
     }, 0);
   };
 
-  // useEffect(() => {
-  //   localStorage.setItem("searchQuery", searchText);
-  // }, [searchText]);
-
   const handleCheckout = () => {
     navigate("/checkout");
   };
@@ -38,15 +34,12 @@ function CartPage() {
 
   return (
     <>
-<NavigationBar 
-  value={searchText} 
-  onSearch={(query) => {
-    setSearchText(query);
-    localStorage.setItem("searchQuery", query);
-  }} 
-/>
+<NavigationBar value={searchText} 
+                onSearch={(query) => {setSearchText(query);
+                localStorage.setItem("searchQuery", query);
+              }}/>
       <SpecialOffer/>
-        <div className="container mx-auto p-4 min-h-[352px]">
+        <div className="container mx-auto mb-4 p-4 min-h-[352px]">
       <h1 className="text-2xl text-[#4b6686] pb-2 font-bold underline">Your Cart</h1>
 
       {cart.length === 0 ? (

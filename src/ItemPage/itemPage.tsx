@@ -46,18 +46,16 @@ function ItemPage() {
   return (
     <>
       <NavigationBar 
-  value={searchText} 
-  onSearch={(query) => {
-    setSearchText(query);
-    localStorage.setItem("searchQuery", query);
-  }} 
-/>
+      value={searchText} 
+      onSearch={(query) => {setSearchText(query);
+      localStorage.setItem("searchQuery", query);
+      }}/>
       <SpecialOffer />
       <div className="overflow-hidden sm:flex justify-center items-center min-h-[70vh] max-h-[130vh] mb-10">
         {clothing && (
           <>
             <div
-              className="max-w-[470px] max-h-[500px] min-h-[400px] mt-8 border-2 bg-center bg-contain bg-no-repeat transition-all border-[#4b6686] 
+              className="max-w-[470px] max-h-[500px] min-h-[420px] mt-8 border-2 bg-center bg-contain bg-no-repeat transition-all border-[#4b6686] 
                 flex items-center rounded-2xl p-20 justify-center mx-auto sm:mx-0 sm:ml-2"
               onMouseEnter={() => setImage(true)}
               onMouseLeave={() => setImage(false)}
