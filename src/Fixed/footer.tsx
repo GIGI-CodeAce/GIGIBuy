@@ -27,12 +27,13 @@ function Footer(){
         <a href='https://github.com/GIGI-CodeAce' target='_blank'>
         <li className="hover:underline text-black">Github </li>
         </a>
-        <a href="mailto:gigicodeace@gmail.com?subject=Subject&body=Body%20of%20the%20email" target="_blank" rel="noopener noreferrer">
-  <li className="hover:underline">Gmail</li>
-</a>
-
-                </ul>
-                </div>
+        <a 
+  href="https://mail.google.com/mail/?view=cm&fs=1&to=gigicodeace@gmail.com&su=Inquiry&body=Hello," 
+  target="_blank" rel="noopener noreferrer"
+  className="hover:underline cursor-pointer"
+    >Gmail</a>
+</ul>
+</div>
         </footer>
         </>
     )
