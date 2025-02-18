@@ -31,9 +31,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   }, []);
 
   useEffect(() => {
-    if (cart.length > 0) {
       localStorage.setItem("cart", JSON.stringify(cart));
-    }
   }, [cart]);
 
   const addToCart = (item: ClothingItem) => {
@@ -46,7 +44,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
             : ClothingItem
         );
       }
-      return [...prev, { ...item, quantity: item.quantity || 1 }]; // Ensure quantity is set
+      return [...prev, { ...item, quantity: item.quantity || 1 }];
     });
   };
 

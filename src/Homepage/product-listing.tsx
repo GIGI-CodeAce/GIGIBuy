@@ -34,7 +34,6 @@ function ProductListing(props: any) {
   {props.name}
 </h1>
       <abbr className="no-underline" title={props.description}><h2 className="text-gray-600 truncate ...  pl-1 pr-1">{props.description}</h2></abbr>
-      <span className="text-sm">{props.FabricMaterials}</span>
       <p className="opacity-60">{props.price}$</p>
     </div>
   );

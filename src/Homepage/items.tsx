@@ -79,7 +79,7 @@ function Items() {
       <SpecialOffer />
       <Categories selectedCategory={selectedCategory} onCategoryChange={handleCategoryChange} />
       <div className="container mx-auto mb-10">
-        <h1 className="text-2xl text-[#4b6686] p-4 font-bold underline">
+        <h1 className="text-2xl text-[#4b6686] xl:pl-8 p-4 font-bold underline">
           Clothing Items
         </h1>
 
@@ -94,14 +94,8 @@ function Items() {
         >
           {filteredClothing.map((item) => (
             <ProductListing
-              key={item.id}
-              id={item.id}
-              name={item.name}
-              image={item.image}
-              coverImage={item.coverImage}
-              price={item.price}
-              description={item.description}
-              fabricMaterials={item.FabricMaterials}
+            key={item.id}
+            {...item}
             />
           ))}
         </div>
