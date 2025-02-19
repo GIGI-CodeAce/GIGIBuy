@@ -1,4 +1,3 @@
-// useFetchClothing.tsx (Custom Hook)
 import { useEffect } from "react";
 
 const useFetchClothing = (

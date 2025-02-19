@@ -5,7 +5,7 @@ interface CategoriesProps {
   
   function Categories({ selectedCategory, onCategoryChange }: CategoriesProps) {
     const buttonStyle =
-      "hover:cursor-pointer select-none hover:rounded-lg hover:border-3 transition-all w-2/3 max-w-[300px] border-2 border-[#455d7a] m-2 h-7 rounded-xl";
+"hover:cursor-pointer select-none hover:rounded-lg hover:border-3 transition-all w-2/3 max-w-[300px] border-2 border-[#455d7a] m-2 h-7 rounded-xl";
   
     return (
       <main className="h-10 flex text-center justify-center">
