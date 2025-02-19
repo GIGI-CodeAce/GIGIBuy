@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useCart } from "../shoppingCart/cartContext";
 import useFetchClothing from "./itemPageData";
-import { ClothingItem } from "../Homepage/items";
+import { ClothingItem } from "../Homepage/itemsHome";
 import supabase from "../supabase-client";
 import NavigationBar from "../Fixed/navBar";
 import Footer from "../Fixed/footer";

@@ -1,5 +1,5 @@
 import React, { createContext, useState, useContext, ReactNode, useEffect } from "react";
-import { ClothingItem } from "../Homepage/items";
+import { ClothingItem } from "../Homepage/itemsHome";
 
 interface CartContextType {
   cart: ClothingItem[];

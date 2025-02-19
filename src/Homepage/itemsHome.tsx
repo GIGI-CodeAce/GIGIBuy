@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import supabase from "../supabase-client";
-import ProductListing from "./product-listing";
+import ProductListing from "./productsListing";
 import NavigationBar from "../Fixed/navBar";
 import Footer from "../Fixed/footer";
 import SpecialOffer from "../Fixed/specialOffer";

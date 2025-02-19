@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+// Fetching clothing item
 
 const useFetchClothing = (
   supabase: any,
@@ -14,14 +15,13 @@ const useFetchClothing = (
         if (!name) throw new Error("Invalid item name");
 
         const formattedName = name.replace(/-/g, " ");
-        // console.log("Fetching product with name:", formattedName);
 
         const { data, error } = await supabase
           .from("Clothing")
           .select("*")
           .ilike("name", formattedName)
           .limit(1)
-          .maybeSingle();
+          .single();
 
         if (error) throw error;
         if (!data) throw new Error("Item not found");
