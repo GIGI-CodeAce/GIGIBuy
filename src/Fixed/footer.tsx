@@ -4,7 +4,7 @@ function Footer(){
         <>
         {/* blend */}
         <div className="bg-[#516d90] h-[20px]"></div>
-        <footer className=" text-center bg-linear-to-b from-[#455d7a] via-[#455d7a] to-[#374a62] text-white h-96 pt-8 flex justify-around">
+        <footer className=" text-center bg-linear-to-b from-[#455d7a] via-[#455d7a] to-[#374a62] text-white h-[377px] pt-8 flex justify-around">
         <div
             className="w-80 h-80 bg-cover hidden lg:block rounded-xl"
             style={{
@@ -35,6 +35,7 @@ function Footer(){
 </ul>
 </div>
         </footer>
+    <h1 className="bg-[#374a62] text-white text-sm">v1.2.0</h1>
         </>
     )
 }

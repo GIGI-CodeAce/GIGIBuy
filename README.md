@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <strong>GIGIbuy</strong>, a modern, fashion-forward online clothing shop showcasing stylish items like jackets, vests, skirts, bags, and pants. Built with <strong>React</strong>, <strong>Typescript</strong>, and <strong>Tailwind CSS</strong>, it uses <strong>Supabase API</strong> to fetch clothing data. While purchases and deliveries are unavailable, the website is a sleek, responsive showcase of trendy fashion. "Fashion forward, always you" reflects its commitment to individuality and style.
+  <strong>GIGIbuy</strong>, a modern, fashion-forward online clothing shop showcasing stylish items like jackets, vests, skirts, bags, and pants. it uses <strong>Supabase API</strong> to fetch clothing data. While purchases and deliveries are unavailable, the website is a sleek, responsive showcase of trendy fashion. "Fashion forward, always you" reflects its commitment to individuality and style.
 </p>
 
 <h2 align="center">Visit here</h2>
@@ -27,10 +27,16 @@
 - **Responsive Design**: Built with Tailwind CSS for a consistent experience across devices.
   
   <h2 align="center">Snippets of code</h2><br/>
-  <h2>1. Shopping cart</h2>
-    <img src="https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous//shoppingCart.png" alt="project-screenshot" align="center" width="70%" height="100%">
+  <p align="center">This includes highlights of code from the project and its most important mecanics</p>
+
+  <div align="center">
+  <div align="center">
+     <h2>1. Shopping cart</h2>
+  <img src="https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous//shoppingCart.png" alt="project-screenshot" align="center" width="90%" height="90%">
+  </div>
 
 ```javascript
+// Filename: `cartContext.tsx`
 // ...
   const [cart, setCart] = useState<ClothingItem[]>([]);
 
@@ -77,12 +83,16 @@
   };
 // ...
 ```
+  <div align="center">
 <h2>2. Clothing item page</h2>
-    <img src="https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous//itemPage.png" alt="project-screenshot" align="center" width="70%" height="100%">
+    <img src="https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous//itemPage.png" alt="project-screenshot" align="center" width="90%" height="96%">
+    </div>
 
 **Filename:** `ItemPageData.tsx`
 ```javascript
 import { useEffect } from "react";
+// Filename: `ItemPageData.tsx`
+
 // Fetching clothing item
 
 const useFetchClothing = (
@@ -125,8 +135,9 @@ const useFetchClothing = (
 export default useFetchClothing;
 ```
 
-**Filename:** `ItemPage.tsx`
 ```javascript
+// Filename: `ItemPage.tsx`
+
 function ItemPage() {
   const { cart, addToCart } = useCart();
   const [clothing, setClothing] = useState<any>(null);
@@ -183,12 +194,14 @@ function ItemPage() {
 
 export default ItemPage;
 ```
-
+  <div align="center">
 <h2>3. Home page</h2>
-    <img src="https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous//itemsPage.png" alt="project-screenshot" align="center" width="70%" height="100%">
+    <img src="https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous//itemsPage.png" alt="project-screenshot" align="center" width="90%" height="100%">
+    </div>
 
-**Filename:** `ItemsHome.tsx`
 ```javascript
+// Filename: `ItemsHome.tsx`
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -231,6 +244,8 @@ function ProductListing(props: any) {
 
 export default ProductListing;
 ```
+  </div>
+
 <br></br>
 
 [![Portfolio](https://img.shields.io/badge/Portfolio-62b1ff?style=for-the-badge&logo=web&logoColor=white)](https://www.gigicodeace.com)
@@ -238,6 +253,6 @@ export default ProductListing;
 [![GitHub](https://img.shields.io/badge/GitHub-2f2f2f?style=for-the-badge&logo=github&logoColor=white)](https://github.com/GIGI-CodeAce)
 [![CSS Battles](https://img.shields.io/badge/CSS%20Battles-ff6e96?style=for-the-badge&logo=css3&logoColor=white)](https://cssbattle.dev/player/gigi)
 
-  <b></b>
+  <br/>
    <h4>~GIGI <code>Dore Robert</code></h4>
 </footer>
