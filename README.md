@@ -32,7 +32,7 @@
   <div align="center">
   <div align="center">
      <h2>1. Shopping cart</h2>
-  <img src="https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous//shoppingCart.png" alt="project-screenshot" align="center" width="90%" height="90%">
+  <img src="https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous//shoppingCart.png" alt="project-screenshot" align="center" width="90%" height="85%">
   </div>
 
 ```javascript
@@ -85,10 +85,9 @@
 ```
   <div align="center">
 <h2>2. Clothing item page</h2>
-    <img src="https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous//itemPage.png" alt="project-screenshot" align="center" width="90%" height="96%">
+    <img src="https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous//itemPage.png" alt="project-screenshot" align="center" width="90%" height="90%">
     </div>
 
-**Filename:** `ItemPageData.tsx`
 ```javascript
 import { useEffect } from "react";
 // Filename: `ItemPageData.tsx`
@@ -196,7 +195,7 @@ export default ItemPage;
 ```
   <div align="center">
 <h2>3. Home page</h2>
-    <img src="https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous//itemsPage.png" alt="project-screenshot" align="center" width="90%" height="100%">
+    <img src="https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous//itemsPage.png" alt="project-screenshot" align="center" width="90%" height="95%">
     </div>
 
 ```javascript
