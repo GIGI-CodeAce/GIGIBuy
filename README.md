@@ -1,11 +1,11 @@
 
-<h1 align="center">GIGIbuy v1.1.7</h1>
+<h1 align="center">GIGIbuy v1.2.2</h1>
 <p align="center">
   <img src="https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous//diamond.png" width="40%" height="60%" alt="project-image">
 </p>
 
 <p align="center">
-  <strong>GIGIbuy</strong>, a modern, fashion-forward online clothing shop showcasing stylish items like jackets, vests, skirts, bags, and pants. it uses <strong>Supabase API</strong> to fetch clothing data. While purchases and deliveries are unavailable, the website is a sleek, responsive showcase of trendy fashion. "Fashion forward, always you" reflects its commitment to individuality and style.
+  <strong>GIGIbuy</strong>, a modern, fashion-forward online clothing shop showcasing stylish items like jackets, skirts, bags, and more.Uses <strong>Supabase API</strong> to fetch clothing data. While purchases and deliveries are unavailable, the website is a sleek, responsive showcase of trendy fashion. "Fashion forward, always you" reflects its commitment to individuality and style.
 </p>
 
 <h2 align="center">Visit here</h2>
@@ -32,7 +32,7 @@
   <div align="center">
   <div align="center">
      <h2>1. Shopping cart</h2>
-  <img src="https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous//shoppingCart.png" alt="project-screenshot" align="center" width="90%" height="85%">
+  <img src="https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous//shoppingCart.png" alt="project-screenshot" align="center" width="90%" height="83%">
   </div>
 
 ```javascript
@@ -85,7 +85,7 @@
 ```
   <div align="center">
 <h2>2. Clothing item page</h2>
-    <img src="https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous//itemPage.png" alt="project-screenshot" align="center" width="90%" height="90%">
+    <img src="https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous//itemPage.png" alt="project-screenshot" align="center" width="90%" height="88%">
     </div>
 
 ```javascript
@@ -195,7 +195,7 @@ export default ItemPage;
 ```
   <div align="center">
 <h2>3. Home page</h2>
-    <img src="https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous//itemsPage.png" alt="project-screenshot" align="center" width="90%" height="95%">
+    <img src="https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous//itemsPage.png" alt="project-screenshot" align="center" width="90%" height="93%">
     </div>
 
 ```javascript

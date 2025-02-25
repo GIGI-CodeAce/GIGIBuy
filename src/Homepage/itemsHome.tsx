@@ -85,7 +85,7 @@ function Items() {
 
         {error && <p className="text-red-500">Error: {error}</p>}
         {filteredClothing.length === 0 && !error && (
-          <p className="text-gray-500">No clothing items found</p>
+          <p className="text-gray-500">No clothing items yet found</p>
         )}
 
         <div

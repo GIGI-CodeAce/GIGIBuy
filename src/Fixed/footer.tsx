@@ -35,7 +35,7 @@ function Footer(){
 </ul>
 </div>
         </footer>
-    <h1 className="bg-[#374a62] text-white text-sm">v1.2.0</h1>
+    <h1 className="bg-[#374a62] text-white text-sm">{import.meta.env.VITE_SITE_VERSION}</h1>
         </>
     )
 }
