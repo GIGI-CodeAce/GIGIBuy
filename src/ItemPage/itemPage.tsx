@@ -17,6 +17,7 @@ function ItemPage() {
   const [cardAdd, setCardAdd] = useState('Add to cart')
   const [searchText, setSearchText] = useState<string>(localStorage.getItem("searchQuery") || "");
   const { id, name } = useParams();
+  const imageSelectionStyle = "cursor-pointer sm:mb-2 mr-2 sm:ml-3 bg-contain bg-no-repeat rounded-l-2xl w-20 h-20 border-2 border-[#4b6686]"
 
   function CartAdded(){
     setCardAdd('Item added!')
@@ -54,8 +55,24 @@ function ItemPage() {
       <div className="overflow-hidden sm:flex justify-center items-center min-h-[70vh] max-h-[130vh] mb-10">
         {clothing && (
           <>
-            <div
-              className="max-w-[470px] max-h-[500px] min-h-[420px] mt-8 border-2 bg-center bg-contain bg-no-repeat transition-all border-[#4b6686] 
+          <div className="sm:w-20 sm:h-[500px] sm:mt-8 sm:pr-2 max-w-[500px] h-20 mx-auto sm:flex-col flex items-center justify-center sm:text-xl sm:mx-0 mt-2 sm:p-10 sm:mr-4">
+          <div className={imageSelectionStyle}
+          onClick={()=>setImage(false)}
+          style={{backgroundImage: `url(${clothing.image})`,
+                  backgroundPosition: "center",backgroundSize: "cover",
+      }}></div>
+
+          <div
+              className={imageSelectionStyle}
+              onClick={()=>setImage(true)}
+    style={{
+            backgroundImage: `url(${clothing.coverImage})`,
+            backgroundPosition: "center",backgroundSize: "cover",
+      }}></div>
+          </div>
+          {/* image */}
+          <div
+              className="max-w-[470px] max-h-[500px] min-h-[420px]  sm:mt-8 mt-2 border-2 bg-center bg-contain bg-no-repeat transition-all border-[#4b6686] 
                 flex items-center rounded-2xl p-20 justify-center mx-auto sm:mx-0 sm:ml-2"
               onMouseEnter={() => setImage(true)}
               onMouseLeave={() => setImage(false)}
