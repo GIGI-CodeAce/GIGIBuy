@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Footer from "./Fixed/footer";
-import NavigationBar from "./Fixed/navBar";
-import SpecialOffer from "./Fixed/specialOffer";
+import Footer from "./FixedOnPage/footer";
+import NavigationBar from "./FixedOnPage/navBar";
+import SpecialOffer from "./FixedOnPage/specialOffer";
 
 function UserProfile() {
   const [searchText, setSearchText] = useState('');

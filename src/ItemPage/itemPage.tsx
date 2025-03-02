@@ -4,92 +4,128 @@ import { useCart } from "../shoppingCart/cartContext";
 import useFetchClothing from "./itemPageData";
 import { ClothingItem } from "../Homepage/itemsHome";
 import supabase from "../supabase-client";
-import NavigationBar from "../Fixed/navBar";
-import Footer from "../Fixed/footer";
-import SpecialOffer from "../Fixed/specialOffer";
+import NavigationBar from "../FixedOnPage/navBar";
+import Footer from "../FixedOnPage/footer";
+import Recommendations from "./recommendations";
+import ImagesSelect from "./imagesSelect";
+import SpecialOffer from "../FixedOnPage/specialOffer";
 
 function ItemPage() {
   const { cart, addToCart } = useCart();
   const [clothing, setClothing] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [image, setImage] = useState(false);
-  const [canHover, setCanHover] = useState(true)
+  const [canHover, setCanHover] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [cardAdd, setCardAdd] = useState('Add to cart')
+  const [cardAdd, setCardAdd] = useState('Add to cart');
   const [searchText, setSearchText] = useState<string>(localStorage.getItem("searchQuery") || "");
+  const [allItems, setAllItems] = useState<ClothingItem[]>([]);
+  const [similarItems, setSimilarItems] = useState<ClothingItem[]>([]);
   const { id, name } = useParams();
-  const imageSelectionStyle = "cursor-pointer hover:scale-[103%] sm:mb-2 mr-2 sm:ml-3 bg-contain bg-no-repeat rounded-l-2xl w-20 h-20 border-2 border-[#4b6686]"
 
-  function CartAdded(){
-    setCardAdd('Item added!')
+  function CartAdded() {
+    setCardAdd('Item added!');
     setTimeout(() => {
-      setCardAdd('Add to cart')
+      setCardAdd('Add to cart');
     }, 1000);
   }
-  
 
   useFetchClothing(supabase, id, name, setClothing, setError, setLoading);
 
+  useEffect(() => {
+    const fetchAllItems = async () => {
+      const { data, error } = await supabase.from("Clothing").select("*");
+      if (!error) setAllItems(data || []);
+    };
+    if (clothing) fetchAllItems();
+  }, [clothing]);
+
+useEffect(() => {
+  if (clothing && allItems.length > 0) {
+      const lastWord = clothing.description.trim().split(" ").pop()?.toLowerCase();
+      const materials = clothing.FabricMaterials?.split(',').map((m: string) => m.trim().toLowerCase()) || [];
+
+
+      const filteredByDescription = allItems.filter(item => {
+        if (item.id === clothing.id) return false;
+
+        const itemLastWord = item.description.trim().split(" ").pop()?.toLowerCase();
+        return itemLastWord === lastWord;
+    });
+
+      if (filteredByDescription.length < 5) {
+        const filteredByMaterials = allItems.filter(item => {
+          if (item.id === clothing.id) return false;
+
+          const itemMaterials = item.FabricMaterials?.split(',').map(m => m.trim().toLowerCase()) || [];
+          return itemMaterials.some(m => materials.includes(m));
+      });
+
+        const combined = [...new Set([...filteredByDescription, ...filteredByMaterials])];
+        setSimilarItems(combined.slice(0, 5));
+    } else {
+        setSimilarItems(filteredByDescription.slice(0, 5));
+    }
+  }
+}, [clothing, allItems]);
+
   const handleAddToCart = () => {
-    CartAdded()
+    CartAdded();
     if (clothing) {
       const cartItem: ClothingItem = {
-        ...clothing, 
+        ...clothing,
       };
-  
       addToCart(cartItem);
     }
   };
-  
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p className="text-red-500">Error: {error}</p>;
 
   return (
     <>
-      <NavigationBar 
-      value={searchText} 
-      onSearch={(query) => {setSearchText(query);
-      localStorage.setItem("searchQuery", query);
-      }}/>
+      <NavigationBar
+        value={searchText}
+        onSearch={(query) => {
+          setSearchText(query);
+          localStorage.setItem("searchQuery", query);
+        }}
+      />
       <SpecialOffer />
       <div className="overflow-hidden sm:flex justify-center items-center min-h-[70vh] max-h-[130vh] mb-10">
         {clothing && (
           <>
-          <div className="sm:w-20 sm:h-[500px] mt-8 sm:pr-2 max-w-[500px] h-20 mx-auto sm:flex-col flex items-center justify-center sm:text-xl sm:p-10 sm:mx-0 sm:mr-4">
-          <div className={imageSelectionStyle}
-          onClick={()=>{setImage(false), setCanHover(false)}}
-          style={{backgroundImage: `url(${clothing.image})`,
-                  backgroundPosition: "center",backgroundSize: "cover",
-      }}></div>
-          <div
-              className={imageSelectionStyle}
-              onClick={()=>{setImage(true), setCanHover(false)}}
-          style={{
-            backgroundImage: `url(${clothing.coverImage})`,
-            backgroundPosition: "center",backgroundSize: "cover",
-      }}></div>
-          </div>
-          {/* image */}
-          <div
-              className="max-w-[470px] max-h-[500px] min-h-[420px]  sm:mt-8 mt-2 border-2 bg-center bg-contain bg-no-repeat transition-all border-[#4b6686] 
-                flex items-center rounded-2xl p-20 justify-center mx-auto sm:mx-0 sm:ml-2"
+            <ImagesSelect
+              image={clothing.image}
+              coverImage={clothing.coverImage}
+              setCanHover={setCanHover}
+              setImage={setImage}
+            />
+
+            {/* Image */}
+            <div
+              className="max-w-[470px] max-h-[500px] min-h-[420px] sm:mt-8 mt-2 border-2 bg-center bg-contain bg-no-repeat transition-all border-[#4b6686] flex items-center rounded-2xl p-20 justify-center mx-auto sm:mx-0 sm:ml-2"
               onMouseEnter={() => canHover && setImage(true)}
-              onMouseLeave={() => canHover &&  setImage(false)}
-              style={{ backgroundImage: `url(${image? clothing.coverImage : clothing.image})` }}
+              onMouseLeave={() => canHover && setImage(false)}
+              style={{ backgroundImage: `url(${image ? clothing.coverImage : clothing.image})` }}
             >
               <img
-                className="w-96 max-h-[450px] object-contain opacity-0"aria-hidden="true"src={clothing.image}alt={clothing.name}/>
+                className="w-96 max-h-[450px] object-contain opacity-0"
+                aria-hidden="true"
+                src={clothing.image}
+                alt={clothing.name}
+              />
             </div>
             <main className="max-w-[500px] min-w-[250px] sm:text-xl text-md text-center pt-[0] mx-auto sm:mx-0 sm:pt-[20vh] mt-2 sm:mt-8 sm:p-10 sm:mr-2">
-              <h1 className=" font-[iconic] font-bold sm:text-md text-xl lg:w-[222px] mx-auto">{clothing.name}</h1>
+              <h1 className="font-[iconic] font-bold sm:text-md text-xl lg:w-[222px] mx-auto">{clothing.name}</h1>
               <p className="lg:min-w-[222px]">{clothing.description}</p>
-              <p className="text-[#FFB6A6] mx-auto rounded-xl w-16 shadow-xl">${clothing.price}</p><br /><br />
+              <p className="text-[#FFB6A6] mx-auto rounded-xl w-16 shadow-xl">${clothing.price}</p>
+              <br /><br />
               <button
                 onClick={handleAddToCart}
                 className="text-[#ffd5cc] w-40 cursor-pointer bg-[#a0c4d7] hover:bg-[#90bad0] active:bg-[#7eaec9] p-2 rounded-2xl"
               >
-              {cardAdd}
+                {cardAdd}
               </button>
               <section className="text-[17px]/[20px] font-light mt-14">
                 <h1 className="font-medium underline text-[#7eaec9] decoration-[#FFB6A6]">About the product</h1>
@@ -100,6 +136,7 @@ function ItemPage() {
           </>
         )}
       </div>
+      <Recommendations similarItems={similarItems} />
       <Footer />
     </>
   );

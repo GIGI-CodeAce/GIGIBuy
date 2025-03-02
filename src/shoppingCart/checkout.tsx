@@ -1,5 +1,5 @@
-import NavigationBar from "../Fixed/navBar";
-import Footer from "../Fixed/footer";
+import NavigationBar from "../FixedOnPage/navBar";
+import Footer from "../FixedOnPage/footer";
 import { useState } from "react";
 
 function Checkout() {

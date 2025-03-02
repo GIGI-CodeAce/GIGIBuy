@@ -1,5 +1,5 @@
 
-<h1 align="center">GIGIbuy v1.2.2</h1>
+<h1 align="center">GIGIbuy v1.3.0</h1>
 <p align="center">
   <img src="https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous//diamond.png" width="40%" height="60%" alt="project-image">
 </p>
@@ -85,7 +85,7 @@
 ```
   <div align="center">
 <h2>2. Clothing item page</h2>
-    <img src="https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous//itemPage.png" alt="project-screenshot" align="center" width="90%" height="88%">
+    <img src="https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous//itemPage2.png" alt="project-screenshot" align="center" width="90%" height="88%">
     </div>
 
 ```javascript

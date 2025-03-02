@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useCart } from "../shoppingCart/cartContext"; 
 import { Link } from "react-router-dom"; 
-import Footer from "../Fixed/footer";
+import Footer from "../FixedOnPage/footer";
 import { useNavigate } from "react-router-dom";
-import SpecialOffer from "../Fixed/specialOffer";
-import NavigationBar from "../Fixed/navBar";
+import SpecialOffer from "../FixedOnPage/specialOffer";
+import NavigationBar from "../FixedOnPage/navBar";
 
 function CartPage() {
   const { cart, removeFromCart, updateQuantity } = useCart();
@@ -55,7 +55,7 @@ function CartPage() {
                   className="w-16 h-16 object-cover mr-4"
                 />
                 <div>
-                <h2 className="text-md sm:text-lg font-bold">{item.name}</h2>
+                <h2 className="text-[14px] sm:text-lg font-bold">{item.name}</h2>
                   <p className="text-sm text-[#ffac99] shadow w-20">${item.price}</p>
                 </div>
               </div>
@@ -79,7 +79,7 @@ function CartPage() {
 
               <button
                 onClick={() => handleRemove(item.id)}
-                className="px-4 bg-[#a0c4d7] scale-88 sm:scale-100 p-2 mr-2 rounded-lg rounded-r-2xl text-white hover:text-[#FFB6A6]"
+                className="px-4 bg-[#a0c4d7] scale-88 sm:scale-100 p-2 rounded-lg rounded-r-2xl text-white hover:text-[#FFB6A6]"
               >
                 Remove
               </button>
