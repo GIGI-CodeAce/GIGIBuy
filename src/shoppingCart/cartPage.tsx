@@ -34,74 +34,80 @@ function CartPage() {
 
   return (
     <>
-<NavigationBar value={searchText} 
-                onSearch={(query) => {setSearchText(query);
-                localStorage.setItem("searchQuery", query);
-              }}/>
+      <NavigationBar value={searchText} 
+        onSearch={(query) => {
+          setSearchText(query);
+          localStorage.setItem("searchQuery", query);
+        }}
+      />
       <SpecialOffer/>
-        <div className="container mx-auto mb-4 p-4 min-h-[352px]">
-      <h1 className="text-2xl text-[#4b6686] pb-2 font-bold underline">Your Cart</h1>
+      <div className="container mx-auto mb-4 p-4 min-h-[352px]">
+        <h1 className="text-2xl text-[#4b6686] pb-2 font-bold underline">Your Cart</h1>
 
-      {cart.length === 0 ? (
-        <p>Your cart is empty.</p>
-      ) : (
-         <div>
-          {cart.map((item) => (
-            <div key={item.id} className="flex justify-between items-center border-b py-4">
-              <div className="flex items-center">
-                <img
-                  src={item.image} 
-                  alt={item.name}
-                  className="w-16 h-16 object-cover mr-4"
-                />
-                <div>
-                <h2 className="text-[14px] sm:text-lg font-bold">{item.name}</h2>
-                  <p className="text-sm text-[#ffac99] shadow w-20">${item.price}</p>
+        {cart.length === 0 ? (
+          <p>Your cart is empty.</p>
+        ) : (
+          <div>
+            {cart.map((item) => (
+              <div key={item.id} className="flex justify-between items-center border-b py-4">
+                <div className="flex items-center">
+                  <Link to={`/${item.id}/${item.name}`} className="flex items-center">
+                    <img
+                      src={item.image} 
+                      alt={item.name}
+                      className="w-16 h-16 object-cover mr-4 hover:opacity-80"
+                    />
+                  </Link>
+                  <div>
+                    <Link to={`/${item.id}/${item.name}`}>
+                      <h2 className="text-[14px] sm:text-lg font-bold hover:underline">{item.name}</h2>
+                    </Link>
+                    <p className="text-sm text-[#ffac99] shadow w-20">${item.price}</p>
+                  </div>
                 </div>
-              </div>
 
-              <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => handleQuantityChange(item.id, Number(item.quantity) - 1)}
+                    disabled={Number(item.quantity) <= 1}
+                    className="px-2 py-1 bg-[#e2e6e9] hover:bg-[#ebedef] rounded"
+                  >
+                    -
+                  </button>
+                  <span>{Number(item.quantity) || 1}</span>
+                  <button
+                    onClick={() => handleQuantityChange(item.id, Number(item.quantity) + 1)}
+                    className="px-2 py-1 bg-[#e2e6e9] hover:bg-[#ebedef] rounded"
+                  >
+                    +
+                  </button>
+                </div>
+
                 <button
-                  onClick={() => handleQuantityChange(item.id, Number(item.quantity) - 1)}
-                  disabled={Number(item.quantity) <= 1}
-                  className="px-2 py-1 bg-[#e2e6e9] hover:bg-[#ebedef] rounded"
+                  onClick={() => handleRemove(item.id)}
+                  className="px-4 bg-[#a0c4d7] scale-88 sm:scale-100 p-2 rounded-lg rounded-r-2xl text-white cursor-pointer hover:text-[#ffc5b8]"
                 >
-                  -
-                </button>
-                <span>{Number(item.quantity) || 1}</span>
-                <button
-                  onClick={() => handleQuantityChange(item.id, Number(item.quantity) + 1)}
-                  className="px-2 py-1 bg-[#e2e6e9] hover:bg-[#ebedef] rounded"
-                >
-                  +
+                  Remove
                 </button>
               </div>
+            ))}
 
-              <button
-                onClick={() => handleRemove(item.id)}
-                className="px-4 bg-[#a0c4d7] scale-88 sm:scale-100 p-2 rounded-lg rounded-r-2xl text-white hover:text-[#FFB6A6]"
-              >
-                Remove
-              </button>
+            <div className="mt-6 flex justify-between items-center">
+              <h2 className="text-xl font-medium">Total:</h2>
+              <p className="text-xl font-bold">${getTotalPrice().toFixed(2)}</p>
             </div>
-          ))}
 
-          <div className="mt-6 flex justify-between items-center">
-            <h2 className="text-xl font-medium">Total:</h2>
-            <p className="text-xl font-bold">${getTotalPrice().toFixed(2)}</p>
+            <div className="mt-4 text-center">
+              <Link to="/checkout">
+                <button className="px-6 py-2 rounded-lg rounded-b-3xl text-white bg-[#a0c4d7] hover:bg-[#90bad0] active:bg-[#7eaec9]" onClick={handleCheckout}>
+                  Proceed to Checkout
+                </button>
+              </Link>
+            </div>
           </div>
-
-          <div className="mt-4 text-center">
-            <Link to="/checkout">
-              <button className="px-6 py-2 rounded-lg rounded-b-3xl text-white bg-[#a0c4d7] hover:bg-[#90bad0] active:bg-[#7eaec9]" onClick={handleCheckout}>
-                Proceed to Checkout
-              </button>
-            </Link>
-          </div>
-        </div>
-      )}
-    </div>
-    <Footer/>
+        )}
+      </div>
+      <Footer/>
     </>
   );
 }

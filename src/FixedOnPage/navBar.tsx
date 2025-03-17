@@ -39,14 +39,23 @@ function NavigationBar({ onSearch, value }: { onSearch: (query: string) => void;
         </h1>
       </a>
 
-      <input
-        className="pl-2 w-full sm:w-[30vw] rounded-xl text-[#e9c6be] border-2 bg-[#4b6686] border-white ml-2 mr-2 placeholder-[#e5c9c3]"
-        placeholder="Search.."
-        list="recommendations"
-        value={searchText}
-        onChange={handleSearchChange}
-        onKeyDown={handleKeyPress}
-      />
+      <div className="relative w-full sm:w-[30vw] ml-2 mr-2">
+  <span
+    className="material-symbols-outlined select-none absolute left-[8px] top-1/2 transform -translate-y-1/2 text-[#e9c6be]"
+    aria-hidden="true"
+  >
+    search
+  </span>
+  <input
+    className="pl-[33px] w-full rounded-xl text-[#e9c6be] border-2 bg-[#4b6686] border-white placeholder-[#e5c9c3]"
+    placeholder="Search.."
+    list="recommendations"
+    value={searchText}
+    onChange={handleSearchChange}
+    onKeyDown={handleKeyPress}
+  />
+</div>
+
 
       <datalist id="recommendations">
         <option value="Shirt" />
