@@ -45,7 +45,10 @@ function CartPage() {
         <h1 className="text-2xl text-[#4b6686] pb-2 font-bold underline">Your Cart</h1>
 
         {cart.length === 0 ? (
-          <p>Your cart is empty.</p>
+          <div className="text-gray-500 flex-col text-center justify-center mt-20">
+          <h1 className="text-4xl">˙◠˙</h1>
+          <p className="text-xl">Your cart is empty</p>
+        </div>
         ) : (
           <div>
             {cart.map((item) => (
@@ -99,7 +102,7 @@ function CartPage() {
 
             <div className="mt-4 text-center">
               <Link to="/checkout">
-                <button className="px-6 py-2 rounded-lg rounded-b-3xl text-white bg-[#a0c4d7] hover:bg-[#90bad0] active:bg-[#7eaec9]" onClick={handleCheckout}>
+                <button className="px-6 py-2 rounded-lg rounded-b-3xl text-white bg-[#a0c4d7] hover:bg-[#90bad0] active:bg-[#7eaec9] cursor-pointer" onClick={handleCheckout}>
                   Proceed to Checkout
                 </button>
               </Link>

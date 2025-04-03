@@ -7,6 +7,11 @@ body{
     border: 1px solid red;
 } */
 
+::selection{
+    background-color: hsl(11, 100%, 90%);
+    color: black;
+}
+
 @font-face {
     font-family: 'iconic';
     src: url('./assets/RobotoSlab-Light.ttf') format('truetype');

@@ -23,7 +23,6 @@ interface CartProviderProps {
 export const CartProvider = ({ children }: CartProviderProps) => {
   const [cart, setCart] = useState<ClothingItem[]>([]);
 
-  // Saving into local storage cart elements
   useEffect(() => {
     const savedCart = localStorage.getItem("cart");
     if (savedCart) {

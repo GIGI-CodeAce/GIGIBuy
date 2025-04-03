@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-// Fetching clothing item
 
 const useFetchClothing = (
   supabase: any,

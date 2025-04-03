@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { useCart } from "../shoppingCart/cartContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useLocation } from "react-router-dom";
 
 function NavigationBar({ onSearch, value }: { onSearch: (query: string) => void; value: string }) {
   const { cart } = useCart();
   const navigate = useNavigate();
+  const location = useLocation();
   const profileCartStyling = "flex items-center gap-1 mr-2 hover:text-[#FFB6A6] hover:cursor-pointer transition-colors";
   const [searchText, setSearchText] = useState(value);
 
@@ -22,7 +23,7 @@ function NavigationBar({ onSearch, value }: { onSearch: (query: string) => void;
   };
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter" && searchText.trim()) {
+    if (event.key === "Enter" && searchText.trim() && location.pathname !== "/") {
       navigate("/items");
     }
   };
@@ -30,9 +31,9 @@ function NavigationBar({ onSearch, value }: { onSearch: (query: string) => void;
   const totalItemsInCart = cart.reduce((total, item) => total + item.quantity, 0);
 
   return (
-    <nav className="w-full pt-0 h-20 bg-[#455d7a] flex justify-evenly items-center text-[15px] sm:text-[20px] text-white">
+    <nav className="w-full z-100 pt-0 h-20 bg-[#455d7aee] flex fixed justify-evenly items-center text-[15px] sm:text-[20px] text-white">
       <a href="https://gigibuy.com/">
-        <h1 className="text-2xl active:text-[#e5c9c3] text-[20px] font-[iconic] ml-2 sm:text-[25px] flex items-center gap-1 mr-2">
+        <h1 className="text-2xl active:text-[#e5c9c3] text-[20px] font-[iconic] ml-1 sm:text-[25px] flex items-center gap-1">
        <div className={`w-10 h-10 bg-cover bg-center sm:block ${totalItemsInCart >= 100 ? 'hidden' : ''}
         bg-[url('https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous/diamond.png')]`}></div>
           GIGIbuy
@@ -55,7 +56,6 @@ function NavigationBar({ onSearch, value }: { onSearch: (query: string) => void;
     onKeyDown={handleKeyPress}
   />
 </div>
-
 
       <datalist id="recommendations">
         <option value="Shirt" />

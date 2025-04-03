@@ -79,8 +79,8 @@ useEffect(() => {
     }
   };
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p className="text-red-500">Error: {error}</p>;
+  if (loading) return <div className="text-gray-500 flex-col text-center justify-center mt-50"><span className="material-symbols-outlined">autorenew</span><p className="text-xl opacity-60">Loading...</p></div>;
+  if (error) return <div className="text-gray-500 flex-col text-center justify-center mt-40"><p className="text-red-500">Error: {error}</p></div>;
 
   return (
     <>

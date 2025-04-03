@@ -1,5 +1,5 @@
 
-<h1 align="center">GIGIbuy v1.3.1</h1>
+<h1 align="center">GIGIbuy v1.3.2</h1>
 <p align="center">
   <img src="https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous//diamond.png" width="40%" height="60%" alt="project-image">
 </p>
@@ -168,7 +168,10 @@ function ItemPage() {
   };
   
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <div className="text-gray-500 flex-col text-cente justify-center mt-50">
+          <span class="material-symbols-outlined">autorenew</span>
+          <p className="text-xl opacity-60">Loading...</p>
+        </div>
   if (error) return <p className="text-red-500">Error: {error}</p>;
 
   return (

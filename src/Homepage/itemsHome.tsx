@@ -71,13 +71,11 @@ function Items() {
     setFilteredClothing(filtered);
   }, [searchQuery, selectedCategory, clothing]);
 
-  // Handle category selection
   const handleCategoryChange = (category: string) => {
     setSelectedCategory(category);
     localStorage.setItem("selectedCategory", category);
   };
 
-  // Remove search query from localStorage only when unmounting (avoids infinite execution)
   useEffect(() => {
     return () => {
       localStorage.removeItem("searchQuery");
@@ -92,14 +90,17 @@ function Items() {
         selectedCategory={selectedCategory}
         onCategoryChange={handleCategoryChange}
       />
-      <div className="container mx-auto mb-10">
+            <div className="container mx-auto mb-10 min-h-[300px]">
         <h1 className="text-2xl text-[#4b6686] xl:pl-8 p-4 font-bold underline">
           Clothing Items
         </h1>
 
         {error && <p className="text-red-500">Error: {error}</p>}
         {filteredClothing.length === 0 && !error && (
-          <p className="text-gray-500">No clothing items found</p>
+          <div className="text-gray-500 flex-col text-center justify-center mt-20">
+            <h1 className="text-4xl">˙◠˙</h1>
+            <p className="text-xl">No clothing items found</p>
+          </div>
         )}
 
         <div
