@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 function SpecialOffer() {
     const limitedOffers = [
         "Massive discounts - Don't miss out!", 
@@ -6,12 +8,20 @@ function SpecialOffer() {
         "Crazy Discounts – Act Fast!"
     ];
 
-    function getRandomItemFromArray(array: string[]) {
+    const getRandomItemFromArray = (array: string[]) => {
         const randomIndex = Math.floor(Math.random() * array.length);
         return array[randomIndex];
-    }
+    };
 
-    const randomItem = getRandomItemFromArray(limitedOffers);
+    const [randomItem, setRandomItem] = useState(getRandomItemFromArray(limitedOffers));
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setRandomItem(getRandomItemFromArray(limitedOffers));
+        }, 15000)
+
+        return () => clearInterval(interval);
+    }, []);
 
     return (
         <main className="bg-[#516d90] text-[17px] text-center font-bold text-[#FFB6A6] h-[28px] 

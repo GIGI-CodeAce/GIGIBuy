@@ -202,7 +202,7 @@ export default ItemPage;
     </div>
 
 ```javascript
-// Filename: `ItemsHome.tsx`
+// Filename: `productsListing.tsx'
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
