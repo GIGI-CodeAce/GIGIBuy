@@ -1,10 +1,6 @@
 import { useState } from "react";
-import Footer from "./FixedOnPage/footer";
-import NavigationBar from "./FixedOnPage/navBar";
-import SpecialOffer from "./FixedOnPage/specialOffer";
 
 function UserProfile() {
-  const [searchText, setSearchText] = useState('');
   const [username, setUsername] = useState("Type Name");
   const [email, setEmail] = useState("yourname@gmail.com");
   const [phone, setPhone] = useState("+1 (555) 123-4567");
@@ -23,14 +19,6 @@ function UserProfile() {
 
   return (
     <>
-      <NavigationBar
-        value={searchText}
-        onSearch={(query) => {
-          setSearchText(query);
-          localStorage.setItem("searchQuery", query);
-        }}
-      />
-      <SpecialOffer />
       <main className="flex flex-col items-center mt-10 mb-20">
         {/* Profile Picture */}
         <div className="relative">
@@ -82,7 +70,6 @@ function UserProfile() {
           </ul>
         </div>
       </main>
-      <Footer />
     </>
   );
 }

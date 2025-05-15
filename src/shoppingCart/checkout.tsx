@@ -1,15 +1,7 @@
-import NavigationBar from "../FixedOnPage/navBar";
-import Footer from "../FixedOnPage/footer";
-import { useState } from "react";
 
 function Checkout() {
-    const [searchText, setSearchText] = useState<string>(localStorage.getItem("searchQuery") || "");
   return (
     <>
-            <NavigationBar value={searchText} 
-                            onSearch={(query) => {setSearchText(query);
-                            localStorage.setItem("searchQuery", query);
-                            }}/>
       <div className="relative h-[60vh] pb-10 flex items-center justify-center">
         <div className="text-center bg-[#e9c6be] w-[90%] max-w-xl p-8 rounded-lg shadow-md">
           <h1 className="text-[25px] font-bold">Oops!</h1>
@@ -19,7 +11,6 @@ function Checkout() {
           </p>
         </div>
       </div>
-      <Footer />
     </>
   );
 }

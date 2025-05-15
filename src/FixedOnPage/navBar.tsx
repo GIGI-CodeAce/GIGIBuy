@@ -33,29 +33,28 @@ function NavigationBar({ onSearch, value }: { onSearch: (query: string) => void;
   return (
     <nav className="w-full z-100 pt-0 h-20 bg-[#455d7aee] flex fixed justify-evenly items-center text-[15px] sm:text-[20px] text-white">
       <a href="https://gigibuy.com/">
-        <h1 className="text-2xl active:text-[#e5c9c3] text-[20px] font-[iconic] ml-1 sm:text-[25px] flex items-center gap-1">
+        <h1 title="Refresh homepage" className="text-2xl active:text-[#e5c9c3] text-[20px] font-[iconic] ml-1 sm:text-[25px] flex items-center gap-1">
        <div className={`w-10 h-10 bg-cover bg-center sm:block ${totalItemsInCart >= 100 ? 'hidden' : ''}
         bg-[url('https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous/diamond.png')]`}></div>
           GIGIbuy
         </h1>
       </a>
 
-      <div className="relative w-full sm:w-[30vw] ml-2 mr-2">
-  <span
-    className="material-symbols-outlined select-none absolute left-[8px] top-1/2 transform -translate-y-1/2 text-[#e9c6be]"
-    aria-hidden="true"
-  >
-    search
-  </span>
-  <input
-    className="pl-[33px] w-full rounded-xl text-[#e9c6be] border-2 bg-[#4b6686] border-white placeholder-[#e5c9c3]"
-    placeholder="Search.."
-    list="recommendations"
-    value={searchText}
-    onChange={handleSearchChange}
-    onKeyDown={handleKeyPress}
-  />
-</div>
+      {/* Search bar */}
+      <div title="Search fashion items" className="relative w-full sm:w-[30vw] ml-2 mr-2">
+        <span
+          className="material-symbols-outlined select-none absolute left-[8px] top-1/2 transform -translate-y-1/2 text-[#e9c6be]"
+          aria-hidden="true">
+          search</span>
+        <input
+          className="pl-[33px] w-full rounded-xl text-[#e9c6be] border-2 bg-[#4b6686] border-white placeholder-[#e5c9c3]"
+          placeholder="Search.."
+          list="recommendations"
+          value={searchText}
+          onChange={handleSearchChange}
+          onKeyDown={handleKeyPress}
+        />
+      </div>
 
       <datalist id="recommendations">
         <option value="Shirt" />
@@ -63,7 +62,7 @@ function NavigationBar({ onSearch, value }: { onSearch: (query: string) => void;
         <option value="Pants" />
       </datalist>
 
-      <div
+      <div title="Shopping cart"
         className={`${profileCartStyling} ${totalItemsInCart > 0 ? "text-[#e9c6be]" : "text-white"}`}
         onClick={() => navigate("/cart")}
       >
@@ -72,7 +71,7 @@ function NavigationBar({ onSearch, value }: { onSearch: (query: string) => void;
         <span className="align-super font-bold whitespace-nowrap">Cart</span>
       </div>
 
-      <div className={profileCartStyling} onClick={() => navigate("/profile")}>
+      <div title="User profile" className={profileCartStyling} onClick={() => navigate("/profile")}>
         <span className="material-symbols-outlined">person</span>
         <span className="align-super font-bold">Profile</span>
       </div>

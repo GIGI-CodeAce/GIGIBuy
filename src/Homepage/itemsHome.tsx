@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
 import supabase from "../supabase-client";
 import ProductListing from "./productsListing";
-import NavigationBar from "../FixedOnPage/navBar";
-import Footer from "../FixedOnPage/footer";
-import SpecialOffer from "../FixedOnPage/specialOffer";
 import Categories from "./categories";
 
 export interface ClothingItem {
@@ -50,7 +47,6 @@ function Items() {
     fetchClothing();
   }, []);
 
-  // Filter clothing items based on search and category
   useEffect(() => {
     let filtered = clothing;
 
@@ -84,8 +80,6 @@ function Items() {
 
   return (
     <>
-      <NavigationBar value={searchQuery} onSearch={setSearchQuery} />
-      <SpecialOffer />
       <Categories
         selectedCategory={selectedCategory}
         onCategoryChange={handleCategoryChange}
@@ -112,7 +106,6 @@ function Items() {
           ))}
         </div>
       </div>
-      <Footer />
     </>
   );
 }

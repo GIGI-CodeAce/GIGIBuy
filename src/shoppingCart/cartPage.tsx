@@ -1,14 +1,10 @@
-import React, { useEffect, useState } from "react";
 import { useCart } from "../shoppingCart/cartContext"; 
 import { Link } from "react-router-dom"; 
-import Footer from "../FixedOnPage/footer";
 import { useNavigate } from "react-router-dom";
-import SpecialOffer from "../FixedOnPage/specialOffer";
-import NavigationBar from "../FixedOnPage/navBar";
 
 function CartPage() {
   const { cart, removeFromCart, updateQuantity } = useCart();
-  const [searchText, setSearchText] = useState(localStorage.getItem("searchQuery") || "");
+  const addSubstractStyle = "px-2 py-1 bg-[#e2e6e9] hover:bg-[#ebedef] active:bg-[#e2e6e9] cursor-pointer rounded"
   const navigate = useNavigate();
 
   const getTotalPrice = () => {
@@ -34,13 +30,6 @@ function CartPage() {
 
   return (
     <>
-      <NavigationBar value={searchText} 
-        onSearch={(query) => {
-          setSearchText(query);
-          localStorage.setItem("searchQuery", query);
-        }}
-      />
-      <SpecialOffer/>
       <div className="container mx-auto mb-4 p-4 min-h-[352px]">
         <h1 className="text-2xl text-[#4b6686] pb-2 font-bold underline">Your Cart</h1>
 
@@ -73,15 +62,13 @@ function CartPage() {
                   <button
                     onClick={() => handleQuantityChange(item.id, Number(item.quantity) - 1)}
                     disabled={Number(item.quantity) <= 1}
-                    className="px-2 py-1 bg-[#e2e6e9] hover:bg-[#ebedef] rounded"
-                  >
+                    className={addSubstractStyle}>
                     -
                   </button>
                   <span>{Number(item.quantity) || 1}</span>
                   <button
                     onClick={() => handleQuantityChange(item.id, Number(item.quantity) + 1)}
-                    className="px-2 py-1 bg-[#e2e6e9] hover:bg-[#ebedef] rounded"
-                  >
+                    className={addSubstractStyle}>
                     +
                   </button>
                 </div>
@@ -102,7 +89,7 @@ function CartPage() {
 
             <div className="mt-4 text-center">
               <Link to="/checkout">
-                <button className="px-6 py-2 rounded-lg rounded-b-3xl text-white bg-[#a0c4d7] hover:bg-[#90bad0] active:bg-[#7eaec9] cursor-pointer" onClick={handleCheckout}>
+                <button className="px-6 py-2 rounded-lg rounded-b-3xl text-white bg-[#a0c4d7] hover:bg-[#90bad0] active:bg-[#7eaec9] hover:text-[#ffc5b8] cursor-pointer" onClick={handleCheckout}>
                   Proceed to Checkout
                 </button>
               </Link>
@@ -110,7 +97,6 @@ function CartPage() {
           </div>
         )}
       </div>
-      <Footer/>
     </>
   );
 }

@@ -4,11 +4,8 @@ import { useCart } from "../shoppingCart/cartContext";
 import useFetchClothing from "./itemPageData";
 import { ClothingItem } from "../Homepage/itemsHome";
 import supabase from "../supabase-client";
-import NavigationBar from "../FixedOnPage/navBar";
-import Footer from "../FixedOnPage/footer";
 import Recommendations from "./recommendations";
 import ImagesSelect from "./imagesSelect";
-import SpecialOffer from "../FixedOnPage/specialOffer";
 
 function ItemPage() {
   const { cart, addToCart } = useCart();
@@ -18,7 +15,6 @@ function ItemPage() {
   const [canHover, setCanHover] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [cardAdd, setCardAdd] = useState('Add to cart');
-  const [searchText, setSearchText] = useState<string>(localStorage.getItem("searchQuery") || "");
   const [allItems, setAllItems] = useState<ClothingItem[]>([]);
   const [similarItems, setSimilarItems] = useState<ClothingItem[]>([]);
   const { id, name } = useParams();
@@ -84,14 +80,6 @@ useEffect(() => {
 
   return (
     <>
-      <NavigationBar
-        value={searchText}
-        onSearch={(query) => {
-          setSearchText(query);
-          localStorage.setItem("searchQuery", query);
-        }}
-      />
-      <SpecialOffer />
       <div className="overflow-hidden sm:flex justify-center items-center min-h-[70vh] max-h-[130vh] mb-10">
         {clothing && (
           <>
@@ -118,10 +106,10 @@ useEffect(() => {
             </div>
             <main className="max-w-[500px] min-w-[250px] sm:text-xl text-md text-center pt-[0] mx-auto sm:mx-0 sm:pt-[20vh] mt-2 sm:mt-8 sm:p-10 sm:mr-2">
               <h1 className="font-[iconic] font-bold sm:text-md text-xl lg:w-[222px] mx-auto">{clothing.name}</h1>
-              <p className="lg:min-w-[222px]">{clothing.description}</p>
+              <p title={clothing.description} className="lg:min-w-[222px] text-gray-500">{clothing.description}</p>
               <p className="text-[#FFB6A6] mx-auto rounded-xl w-16 shadow-xl">${clothing.price}</p>
               <br /><br />
-              <button
+              <button title="Click to add"
                 onClick={handleAddToCart}
                 className="text-[#ffd5cc] w-40 cursor-pointer bg-[#a0c4d7] hover:bg-[#90bad0] active:bg-[#7eaec9] p-2 rounded-2xl"
               >
@@ -137,7 +125,6 @@ useEffect(() => {
         )}
       </div>
       <Recommendations similarItems={similarItems} />
-      <Footer />
     </>
   );
 }

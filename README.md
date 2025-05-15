@@ -1,5 +1,5 @@
 
-<h1 align="center">GIGIbuy v1.3.2</h1>
+<h1 align="center">GIGIbuy v1.3.3</h1>
 <p align="center">
   <img src="https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous//diamond.png" width="40%" height="60%" alt="project-image">
 </p>
@@ -176,12 +176,6 @@ function ItemPage() {
 
   return (
     <>
-      <NavigationBar 
-      value={searchText} 
-      onSearch={(query) => {setSearchText(query);
-      localStorage.setItem("searchQuery", query);
-      }}/>
-      <SpecialOffer />
       <div className="...">
         {clothing && (
           <>

@@ -28,12 +28,12 @@ function Footer(){
         <li className="hover:underline text-black">Github </li>
         </a>
         <a 
-  href="https://mail.google.com/mail/?view=cm&fs=1&to=gigicodeace@gmail.com&su=Inquiry&body=Hello," 
-  target="_blank" rel="noopener noreferrer"
-  className="hover:underline cursor-pointer"
-    >Gmail</a>
-</ul>
-</div>
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=gigicodeace@gmail.com&su=Inquiry&body=Hello," 
+            target="_blank" rel="noopener noreferrer"
+            className="hover:underline cursor-pointer"
+                >Gmail</a>
+            </ul>
+            </div>
         </footer>
     <h1 className="bg-[#374a62] text-white text-sm">{import.meta.env.VITE_SITE_VERSION}</h1>
         </>

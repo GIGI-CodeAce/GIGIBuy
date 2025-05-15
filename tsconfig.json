@@ -1,17 +1,17 @@
 {
   "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
     "jsx": "react-jsx",
-    "lib": ["dom", "esnext"],
-    "module": "esnext",
-    "moduleResolution": "bundler", 
-    "allowImportingTsExtensions": true,
-    "noEmit": true,  
-    "target": "es6",
-    "strict": true,
+    "moduleResolution": "node",
     "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "strict": true,
+    "baseUrl": "./src",
+    "paths": {
+      "*": ["*"]
+    },
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
   },
   "include": ["src"]
 }
-
