@@ -8,7 +8,18 @@
   <strong>GIGIbuy</strong>, a modern, fashion-forward online clothing shop showcasing stylish items like jackets, skirts, bags, and more.Uses <strong>Supabase API</strong> to fetch clothing data. While purchases and deliveries are unavailable, the website is a sleek, responsive showcase of trendy fashion. "Fashion forward, always you" reflects its commitment to individuality and style.
 </p>
 
-<h2 align="center">Visit here</h2>
+## 📑 Table of Contents
+
+- [Live Demo](#visit-here)
+- [Features](#-features)
+- [Tech Stack](#-tech-stack)
+- [Code Snippets](#snippets-of-code)
+  [Code Snippets](#snippets-of-code)
+- [Author](#-author)
+
+---
+
+<h2 id="visit-here" align="center">Visit here</h2>
 
 <div align="center">
   <a href="https://gigibuy.com">gigibuy.com</a>
@@ -16,7 +27,7 @@
 
 <h2 align="center">🧐 Features</h2>
 
-<h4>Here're some of the project's best features</h4>
+<h4 id="features">Here're some of the project's best features</h4>
 
 - **Dynamic Search Bar**: Real-time filtering of clothing items based on user input.
 - **Placeholder User Profile**: Interactive profile section with placeholder data.
@@ -31,7 +42,7 @@
 
   <div align="center">
   <div align="center">
-     <h2>1. Shopping cart</h2>
+     <h2 id="snippets-of-code">1. Shopping cart</h2>
   <img src="https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous//shoppingCart.png" alt="project-screenshot" align="center" width="90%" height="83%">
   </div>
 
@@ -240,6 +251,9 @@ function ProductListing(props: any) {
 
 export default ProductListing;
 ```
+
+  ## 🪪 License
+This project is licensed under the [MIT License](LICENSE).
   </div>
 
 <br></br>
@@ -250,5 +264,5 @@ export default ProductListing;
 [![CSS Battles](https://img.shields.io/badge/CSS%20Battles-ff6e96?style=for-the-badge&logo=css3&logoColor=white)](https://cssbattle.dev/player/gigi)
 
   <br/>
-   <h4>~GIGI <code>Dore Robert</code></h4>
+   <h4 id="author">~GIGI <code>Dore Robert</code></h4>
 </footer>
