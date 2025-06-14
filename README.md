@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <strong>GIGIbuy</strong>, a modern, fashion-forward online clothing shop showcasing stylish items like jackets, skirts, bags, and more.Uses <strong>Supabase API</strong> to fetch clothing data. While purchases and deliveries are unavailable, the website is a sleek, responsive showcase of trendy fashion. "Fashion forward, always you" reflects its commitment to individuality and style.
+An online clothing shop showcasing items like jackets, vests, etc. While purchases and deliveries are unavailable, the website is a sleek, responsive showcase of trendy fashion. Reflects its commitment to individuality and style.
 </p>
 
 ## 📑 Table of Contents
