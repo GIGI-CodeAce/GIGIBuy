@@ -20,21 +20,21 @@ const useFetchClothing = (
           .select("*")
           .ilike("name", formattedName)
           .limit(1)
-          .single();
+          .single()
 
-        if (error) throw error;
+        if (error) throw error
         if (!data) throw new Error("Item not found");
 
-        setClothing(data);
+        setClothing(data)
       } catch (err: any) {
         setError(err.message || "Failed to fetch item");
       } finally {
-        setLoading(false);
+        setLoading(false)
       }
     };
 
-    fetchClothing();
-  }, [name, id, supabase, setClothing, setError, setLoading]);
+    fetchClothing()
+  }, [name, id, supabase, setClothing, setError, setLoading])
 };
 
-export default useFetchClothing;
+export default useFetchClothing

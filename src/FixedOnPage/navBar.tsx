@@ -3,32 +3,32 @@ import { useCart } from "../shoppingCart/cartContext";
 import { useNavigate,useLocation } from "react-router-dom";
 
 function NavigationBar({ onSearch, value }: { onSearch: (query: string) => void; value: string }) {
-  const { cart } = useCart();
-  const navigate = useNavigate();
-  const location = useLocation();
-  const profileCartStyling = "flex items-center gap-1 mr-2 hover:text-[#FFB6A6] hover:cursor-pointer transition-colors";
-  const [searchText, setSearchText] = useState(value);
+  const { cart } = useCart()
+  const navigate = useNavigate()
+  const location = useLocation()
+  const profileCartStyling = "flex items-center gap-1 mr-2 hover:text-[#FFB6A6] hover:cursor-pointer transition-colors"
+  const [searchText, setSearchText] = useState(value)
 
   useEffect(() => {
     const storedQuery = localStorage.getItem("searchQuery") || "";
-    setSearchText(storedQuery);
-    onSearch(storedQuery);
+    setSearchText(storedQuery)
+    onSearch(storedQuery)
   }, []);
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const query = event.target.value;
-    setSearchText(query);
-    onSearch(query);
-    localStorage.setItem("searchQuery", query);
+    setSearchText(query)
+    onSearch(query)
+    localStorage.setItem("searchQuery", query)
   };
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter" && searchText.trim() && location.pathname !== "/") {
-      navigate("/items");
+      navigate("/items")
     }
   };
 
-  const totalItemsInCart = cart.reduce((total, item) => total + item.quantity, 0);
+  const totalItemsInCart = cart.reduce((total, item) => total + item.quantity, 0)
 
   return (
     <nav className="w-full z-100 pt-0 h-20 bg-[#455d7aee] flex fixed justify-evenly items-center text-[15px] sm:text-[20px] text-white">
@@ -79,4 +79,4 @@ function NavigationBar({ onSearch, value }: { onSearch: (query: string) => void;
   );
 }
 
-export default NavigationBar;
+export default NavigationBar

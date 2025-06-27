@@ -101,4 +101,4 @@ function CartPage() {
   );
 }
 
-export default CartPage;
+export default CartPage

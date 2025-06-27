@@ -8,33 +8,33 @@ import Recommendations from "./recommendations";
 import ImagesSelect from "./imagesSelect";
 
 function ItemPage() {
-  const { cart, addToCart } = useCart();
-  const [clothing, setClothing] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
-  const [image, setImage] = useState(false);
-  const [canHover, setCanHover] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [cardAdd, setCardAdd] = useState('Add to cart');
-  const [allItems, setAllItems] = useState<ClothingItem[]>([]);
-  const [similarItems, setSimilarItems] = useState<ClothingItem[]>([]);
-  const { id, name } = useParams();
+  const { cart, addToCart } = useCart()
+  const [clothing, setClothing] = useState<any>(null)
+  const [loading, setLoading] = useState(true)
+  const [image, setImage] = useState(false)
+  const [canHover, setCanHover] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+  const [cardAdd, setCardAdd] = useState('Add to cart')
+  const [allItems, setAllItems] = useState<ClothingItem[]>([])
+  const [similarItems, setSimilarItems] = useState<ClothingItem[]>([])
+  const { id, name } = useParams()
 
   function CartAdded() {
-    setCardAdd('Item added!');
+    setCardAdd('Item added!')
     setTimeout(() => {
-      setCardAdd('Add to cart');
+      setCardAdd('Add to cart')
     }, 1000);
   }
 
-  useFetchClothing(supabase, id, name, setClothing, setError, setLoading);
+  useFetchClothing(supabase, id, name, setClothing, setError, setLoading)
 
   useEffect(() => {
     const fetchAllItems = async () => {
-      const { data, error } = await supabase.from("Clothing").select("*");
-      if (!error) setAllItems(data || []);
+      const { data, error } = await supabase.from("Clothing").select("*")
+      if (!error) setAllItems(data || [])
     };
-    if (clothing) fetchAllItems();
-  }, [clothing]);
+    if (clothing) fetchAllItems()
+  }, [clothing])
 
 useEffect(() => {
   if (clothing && allItems.length > 0) {
@@ -129,4 +129,4 @@ useEffect(() => {
   );
 }
 
-export default ItemPage;
+export default ItemPage

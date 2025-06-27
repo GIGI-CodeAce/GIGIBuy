@@ -2,7 +2,7 @@ import ProductListing from "../Homepage/productsListing";
 import { ClothingItem } from "../Homepage/itemsHome";
 
 interface RecommendationsProps {
-  similarItems: ClothingItem[];
+  similarItems: ClothingItem[]
 }
 
 function Recommendations({ similarItems }: RecommendationsProps) {
@@ -28,4 +28,4 @@ function Recommendations({ similarItems }: RecommendationsProps) {
   );
 }
 
-export default Recommendations;
+export default Recommendations

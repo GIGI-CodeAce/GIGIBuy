@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import supabase from "../supabase-client";
 import ProductListing from "./productsListing";
 import Categories from "./categories";
+import { useOutletContext } from "react-router-dom";
+
+type ContextType = { searchQuery: string }
 
 export interface ClothingItem {
   id: number;
@@ -18,16 +21,10 @@ export interface ClothingItem {
 }
 
 function Items() {
-  const [clothing, setClothing] = useState<ClothingItem[]>([]);
-  const [filteredClothing, setFilteredClothing] = useState<ClothingItem[]>([]);
-  const [error, setError] = useState<string | null>(null);
-
-  const [searchQuery, setSearchQuery] = useState<string>(
-    localStorage.getItem("searchQuery") || ""
-  );
-  setTimeout(() => {
-    localStorage.removeItem("searchQuery")
-  }, 100);
+  const [clothing, setClothing] = useState<ClothingItem[]>([])
+  const [filteredClothing, setFilteredClothing] = useState<ClothingItem[]>([])
+  const [error, setError] = useState<string | null>(null)
+  const { searchQuery } = useOutletContext<ContextType>()
 
   const [selectedCategory, setSelectedCategory] = useState<string>(
     localStorage.getItem("selectedCategory") || "All"
@@ -40,11 +37,11 @@ function Items() {
       if (error) {
         setError("Error fetching clothing data");
       } else {
-        setClothing(data || []);
+        setClothing(data || [])
       }
     };
 
-    fetchClothing();
+    fetchClothing()
   }, []);
 
   useEffect(() => {
@@ -110,4 +107,4 @@ function Items() {
   );
 }
 
-export default Items;
+export default Items
