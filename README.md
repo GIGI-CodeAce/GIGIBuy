@@ -34,6 +34,35 @@ An online clothing shop showcasing items like jackets, vests, etc. While purchas
 - **40+ Clothing Items**: Fetched dynamically using a custom Supabase API.
 - **React Router**: Seamless navigation between pages with URL routing.
 - **Responsive Design**: Built with Tailwind CSS for a consistent experience across devices.
+
+<h2 align="center">Languages and tools used</h2>
+<p align="center">
+  </a>
+  <a href="https://www.w3.org/html/" target="_blank" rel="noreferrer">
+    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg"
+            alt="html5" width="40" height="40" />
+  </a>
+    <a href="https://tailwindcss.com/" target="_blank" rel="noreferrer">
+      <img src="https://raw.githubusercontent.com/GIGIsOtherStuff/mainWebMedia/main/AppImages/Languages/Colored/tailwind.png" 
+            alt="tailwind" width="40" height="40" />
+  </a>
+    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer">
+      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" 
+            alt="javascript" width="40" height="40" />
+  </a>
+    <a href="https://www.typescriptlang.org/" target="_blank" rel="noreferrer">
+      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" 
+            alt="typescript" width="40" height="40"/>
+  </a>
+    <a href="https://reactjs.org/" target="_blank" rel="noreferrer">
+      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" 
+            alt="react" width="40" height="40" />
+  </a>
+    <a href="https://www.theguardian.com/europe" target="_blank" rel="noreferrer"> 
+      <img src="https://raw.githubusercontent.com/GIGIsOtherStuff/mainWebMedia/main/AppImages/Tools/supabase.png" 
+            alt="Guardian" width="40" height="40"/> 
+  </a></a>
+</p>
   
   <h2 align="center">Snippets of code</h2><br/>
   <p align="center">This includes highlights of code from the project and its most important mecanics</p>
