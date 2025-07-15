@@ -25,10 +25,12 @@ body{
 
   ::-webkit-scrollbar {
     width: 8px;
+    border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
     background-color: #455d7a;
+        border-radius: 0px 0px 5px 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -42,3 +44,12 @@ body{
 ::-webkit-scrollbar-corner {
     background-color: #000;
 } 
+
+/* Hide datalist arrow in Chrome/Safari */
+input::-webkit-calendar-picker-indicator,
+input::-webkit-list-button,
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+  display: none !important;
+  -webkit-appearance: none;
+}

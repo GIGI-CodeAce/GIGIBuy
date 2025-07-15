@@ -1,7 +1,7 @@
 
-<h1 align="center">GIGIbuy v1.3.3</h1>
+<h1 align="center">GIGIbuy v1.3.5</h1>
 <p align="center">
-  <img src="https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous//diamond.png" width="40%" height="320" alt="project-image">
+  <img src="https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous//diamondFixed.png" width="40%" height="320" alt="project-image">
 </p>
 
 <p align="center">
@@ -70,7 +70,7 @@ An online clothing shop showcasing items like jackets, vests, etc. While purchas
   <div>
   <div align="center">
      <h2 id="snippets-of-code">1. Shopping cart</h2>
-  <img src="https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous//shoppingCart.png" alt="project-screenshot" align="center" width="90%" height="620">
+  <img src="https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous//shoppingCart.png" alt="project-screenshot" align="center" width="90%" height="630">
   </div>
 
 ```javascript
@@ -123,7 +123,7 @@ An online clothing shop showcasing items like jackets, vests, etc. While purchas
 ```
   <div align="center">
 <h2>2. Clothing item page</h2>
-    <img src="https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous//itemPage2.png" alt="project-screenshot" align="center" width="90%" height="610">
+    <img src="https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous//itemPage2.png" alt="project-screenshot" align="center" width="90%" height="620">
     </div>
 
 ```javascript
@@ -230,7 +230,7 @@ export default ItemPage;
 ```
   <div align="center">
 <h2>3. Home page</h2>
-    <img src="https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous//itemsPage.png" alt="project-screenshot" align="center" width="90%" height="610">
+    <img src="https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous//itemsPage.png" alt="project-screenshot" align="center" width="90%" height="620">
     </div>
 
 ```javascript

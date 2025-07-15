@@ -6,7 +6,7 @@ function NavigationBar({ onSearch, value }: { onSearch: (query: string) => void;
   const { cart } = useCart()
   const navigate = useNavigate()
   const location = useLocation()
-  const profileCartStyling = "flex items-center gap-1 mr-2 hover:text-[#FFB6A6] hover:cursor-pointer transition-colors"
+  const profileCartStyling = "flex items-center gap-1 mr-1 hover:text-[#FFB6A6] hover:cursor-pointer transition-colors"
   const [searchText, setSearchText] = useState(value)
 
   useEffect(() => {
@@ -33,7 +33,7 @@ function NavigationBar({ onSearch, value }: { onSearch: (query: string) => void;
   return (
     <nav className="w-full z-100 pt-0 h-20 bg-[#455d7aee] flex fixed justify-evenly items-center text-[15px] sm:text-[20px] text-white">
       <a onClick={()=> navigate('/')}>
-        <h1 title="Refresh homepage" className="text-2xl active:text-[#e5c9c3] text-[20px] font-[iconic] ml-1 sm:text-[25px] flex items-center gap-1">
+        <h1 title="Refresh homepage" className="text-2xl cursor-pointer active:text-[#e5c9c3] text-[20px] font-[iconic] ml-1 sm:text-[25px] flex items-center gap-1">
        <div className={`w-10 h-9 mt-1 bg-cover bg-center sm:block ${totalItemsInCart >= 100 ? 'hidden' : ''}
         bg-[url('https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous/diamondFixed.png')]`}></div>
           GIGIbuy
@@ -46,8 +46,20 @@ function NavigationBar({ onSearch, value }: { onSearch: (query: string) => void;
           className="material-symbols-outlined select-none absolute left-[8px] top-1/2 transform -translate-y-1/2 text-[#e9c6be]"
           aria-hidden="true">
           search</span>
+
+          <span
+          className="material-symbols-outlined cursor-pointer select-none absolute right-[3px]
+                     top-1/2 transform -translate-y-1/2 text-[#e9c6be] active:text-red-400"
+          aria-hidden="true"
+            onClick={() => {
+              setSearchText('')
+              onSearch('')
+              localStorage.setItem("searchQuery", '')
+            }}>
+          {searchText.length > 0 ? 'close' : ''}</span>
+
         <input
-          className="pl-[33px] w-full rounded-xl text-[#e9c6be] border-2 bg-[#4b6686] border-white placeholder-[#e5c9c3]"
+          className="pl-[33px] pr-[25px] w-full rounded-xl text-[#e9c6be] border-2 bg-[#4b6686] border-white placeholder-[#e5c9c3]"
           placeholder="Search.."
           list="recommendations"
           value={searchText}

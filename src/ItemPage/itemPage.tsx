@@ -102,7 +102,7 @@ useEffect(() => {
                 alt={clothing.name}
               />
             </div>
-            
+
             <main className="max-w-[500px] min-w-[250px] sm:text-xl text-md text-center pt-[0] mx-auto sm:mx-0 sm:pt-[20vh] mt-2 sm:mt-8 sm:p-10 sm:mr-2">
               <h1 className="font-[iconic] font-bold sm:text-md text-xl lg:w-[222px] mx-auto">{clothing.name}</h1>
               <p title={clothing.description} className="lg:min-w-[222px] text-gray-500">{clothing.description}</p>
@@ -110,7 +110,7 @@ useEffect(() => {
               <br /><br />
               <button title="Click to add"
                 onClick={handleAddToCart}
-                className="text-[#ffd5cc] w-40 cursor-pointer bg-[#a0c4d7] hover:bg-[#90bad0] active:bg-[#7eaec9] p-2 rounded-2xl"
+                className="text-[#ffd5cc] w-40 cursor-pointer border-black border bg-[#a0c4d7] hover:bg-[#90bad0] active:bg-[#7eaec9] p-2 rounded-2xl"
               >
                 {cartAdd}
               </button>

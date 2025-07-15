@@ -25,6 +25,7 @@ function Items() {
   const [filteredClothing, setFilteredClothing] = useState<ClothingItem[]>([])
   const [error, setError] = useState<string | null>(null)
   const { searchQuery } = useOutletContext<ContextType>()
+  const [loading, setLoading]=useState(true)
 
   const [selectedCategory, setSelectedCategory] = useState<string>(
     localStorage.getItem("selectedCategory") || "All"
@@ -40,6 +41,10 @@ function Items() {
         setClothing(data || [])
       }
     };
+
+      setTimeout(() => {
+            setLoading(false)
+      }, 1000)
 
     fetchClothing()
   }, []);
@@ -61,7 +66,7 @@ function Items() {
       );
     }
 
-    setFilteredClothing(filtered);
+    setFilteredClothing(filtered)
   }, [searchQuery, selectedCategory, clothing]);
 
   const handleCategoryChange = (category: string) => {
@@ -88,11 +93,19 @@ function Items() {
 
         {error && <p className="text-red-500">Error: {error}</p>}
         {filteredClothing.length === 0 && !error && (
-          <div className="text-gray-500 flex-col text-center justify-center mt-20">
-            <h1 className="text-4xl">˙◠˙</h1>
-            <p className="text-xl">No clothing items found</p>
-          </div>
+          !loading ? (
+            <div className="text-gray-500 flex-col text-center justify-center m-30">
+              <h1 className="text-4xl">˙◠˙</h1>
+              <p className="text-xl">No clothing items found</p>
+            </div>
+          ) : (
+            <div className="text-gray-500 flex-col text-center justify-center m-30">
+              <span className="material-symbols-outlined animate-spin !text-3xl">autorenew</span>
+              <p className="text-xl opacity-60 animate-pulse">Loading...</p>
+            </div>
+          )
         )}
+
 
         <div
           className="w-full grid grid-cols-2 xl:grid-cols-5 lg:grid-cols-4 xl:pl-6 pr-[6px]
