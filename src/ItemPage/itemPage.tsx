@@ -6,6 +6,7 @@ import { ClothingItem } from "../Homepage/itemsHome";
 import supabase from "../supabase-client";
 import Recommendations from "./recommendations";
 import ImagesSelect from "./imagesSelect";
+import ItemPageFallBack from "./itemPageFallBack";
 
 function ItemPage() {
   const { cart, addToCart } = useCart()
@@ -14,7 +15,7 @@ function ItemPage() {
   const [image, setImage] = useState(false)
   const [canHover, setCanHover] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const [cardAdd, setCardAdd] = useState('Add to cart')
+  const [cartAdd, setCardAdd] = useState('Add to cart')
   const [allItems, setAllItems] = useState<ClothingItem[]>([])
   const [similarItems, setSimilarItems] = useState<ClothingItem[]>([])
   const { id, name } = useParams()
@@ -75,13 +76,10 @@ useEffect(() => {
     }
   };
 
-  if (loading) return <div className="text-gray-500 flex-col text-center justify-center mt-50"><span className="material-symbols-outlined">autorenew</span><p className="text-xl opacity-60">Loading...</p></div>;
-  if (error) return <div className="text-gray-500 flex-col text-center justify-center mt-40"><p className="text-red-500">Error: {error}</p></div>;
-
   return (
     <>
       <div className="overflow-hidden sm:flex justify-center items-center min-h-[70vh] max-h-[130vh] mb-10">
-        {clothing && (
+        {clothing ? (
           <>
             <ImagesSelect
               image={clothing.image}
@@ -104,6 +102,7 @@ useEffect(() => {
                 alt={clothing.name}
               />
             </div>
+            
             <main className="max-w-[500px] min-w-[250px] sm:text-xl text-md text-center pt-[0] mx-auto sm:mx-0 sm:pt-[20vh] mt-2 sm:mt-8 sm:p-10 sm:mr-2">
               <h1 className="font-[iconic] font-bold sm:text-md text-xl lg:w-[222px] mx-auto">{clothing.name}</h1>
               <p title={clothing.description} className="lg:min-w-[222px] text-gray-500">{clothing.description}</p>
@@ -113,7 +112,7 @@ useEffect(() => {
                 onClick={handleAddToCart}
                 className="text-[#ffd5cc] w-40 cursor-pointer bg-[#a0c4d7] hover:bg-[#90bad0] active:bg-[#7eaec9] p-2 rounded-2xl"
               >
-                {cardAdd}
+                {cartAdd}
               </button>
               <section className="text-[17px]/[20px] font-light mt-14">
                 <h1 className="font-medium underline text-[#7eaec9] decoration-[#FFB6A6]">About the product</h1>
@@ -122,7 +121,8 @@ useEffect(() => {
               </section>
             </main>
           </>
-        )}
+        ) : ( <ItemPageFallBack/>)
+        }
       </div>
       <Recommendations similarItems={similarItems} />
     </>

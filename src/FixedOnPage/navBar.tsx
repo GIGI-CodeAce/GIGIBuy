@@ -32,10 +32,10 @@ function NavigationBar({ onSearch, value }: { onSearch: (query: string) => void;
 
   return (
     <nav className="w-full z-100 pt-0 h-20 bg-[#455d7aee] flex fixed justify-evenly items-center text-[15px] sm:text-[20px] text-white">
-      <a href="https://gigibuy.com/">
+      <a onClick={()=> navigate('/')}>
         <h1 title="Refresh homepage" className="text-2xl active:text-[#e5c9c3] text-[20px] font-[iconic] ml-1 sm:text-[25px] flex items-center gap-1">
-       <div className={`w-10 h-10 bg-cover bg-center sm:block ${totalItemsInCart >= 100 ? 'hidden' : ''}
-        bg-[url('https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous/diamond.png')]`}></div>
+       <div className={`w-10 h-9 mt-1 bg-cover bg-center sm:block ${totalItemsInCart >= 100 ? 'hidden' : ''}
+        bg-[url('https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous/diamondFixed.png')]`}></div>
           GIGIbuy
         </h1>
       </a>

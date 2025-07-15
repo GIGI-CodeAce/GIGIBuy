@@ -9,6 +9,7 @@ import UserProfile from './userProfile';
 import DefaultLayout from './layout'
 import './index.css';
 import './layout.js'
+import ItemPageFallBack from './ItemPage/itemPageFallBack';
 
 createRoot(document.getElementById('root')!).render(
   <CartProvider>
