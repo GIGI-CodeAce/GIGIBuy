@@ -20,7 +20,7 @@ An online clothing shop showcasing items like jackets, vests, etc. While purchas
 <h2 id="visit-here" align="center">Visit here</h2>
 
 <div align="center">
-  <a href="https://gigibuy.com">gigibuy.com</a>
+  <a href="https://gigibuy.vercel.app/">gigibuy.vercel.app</a>
 </div>
 
 <h2 align="center">🧐 Features</h2>

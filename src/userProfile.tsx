@@ -1,14 +1,32 @@
 import { useState } from "react";
+import { API_BASE } from "./api";
 
 function UserProfile() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('')
   const inputStyle = 'text-center border rounded-lg cursor-pointer active:bg-gray-200' 
 
+  const Register = async () => {
+    try{
+    const response = await fetch(`${API_BASE}/register`, {
+    method: 'POST',
+    body: JSON.stringify({ username, password }),
+    headers: { 'Content-Type': 'application/json' },
+    credentials: 'include',
+    })
+
+    const data = await response.json()
+    console.log("Registered", data);
+    
+    }catch(err){
+      console.error("Error refistering", err)
+    }
+  }
+
   return (
     <>
       <main className="flex flex-col items-center mt-10 mb-20">
-        {/* Profile Picture */}
+
         <div className="relative">
           <div className="flex flex-col gap-2 text-center">
             <h1 className="text-center text-2xl font-bold">Register</h1>
@@ -27,7 +45,7 @@ function UserProfile() {
 
             <button
              className={`${inputStyle}`}
-             onClick={(()=> console.log(username,password))}
+             onClick={Register}
              >Register</button>
           </div>
         </div>
