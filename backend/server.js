@@ -20,6 +20,24 @@ mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('✅ Connected to MongoDB'))
   .catch(err => console.error('❌ MongoDB connection error:', err))
 
+  app.get('/profile', (req, res) => {
+  const {token} = req.cookies
+
+  if (!token) {
+    return res.status(401).json({ error: 'No token provided' })
+  }
+
+  jwt.verify(token, JWT_SECRET, {}, (err, info) => {
+    if (err) {
+      console.error('❌ JWT verify error:', err)
+      return res.status(403).json({ error: 'Token verification failed' })
+    }
+
+    res.json(info);
+  })
+})
+
+
 app.post('/register', (req, res) => {RegisterUser(req,res)});
 
 app.listen(PORT, () => {

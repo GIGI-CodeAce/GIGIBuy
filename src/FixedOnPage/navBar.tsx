@@ -1,19 +1,35 @@
-import { useState, useEffect } from "react";
+import { useContext,useState, useEffect } from "react";
 import { useCart } from "../shoppingCart/cartContext";
 import { useNavigate,useLocation } from "react-router-dom";
+import { UserContext } from "../userContext";
+import { API_BASE } from "../api";
 
 function NavigationBar({ onSearch, value }: { onSearch: (query: string) => void; value: string }) {
   const { cart } = useCart()
   const navigate = useNavigate()
   const location = useLocation()
+  const { setUserInfo, userInfo } = useContext(UserContext);
   const profileCartStyling = "flex items-center gap-1 mr-1 hover:text-[#FFB6A6] hover:cursor-pointer transition-colors"
   const [searchText, setSearchText] = useState(value)
+
+    useEffect(() => {
+    fetch(`${API_BASE}/profile`, {
+      method: 'GET',
+      credentials: 'include',
+    }).then(res => {
+      res.json().then(userInfo => {
+        setUserInfo(userInfo);
+      });
+    });
+  }, []);
 
   useEffect(() => {
     const storedQuery = localStorage.getItem("searchQuery") || "";
     setSearchText(storedQuery)
     onSearch(storedQuery)
   }, []);
+
+  const username = userInfo?.username
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const query = event.target.value;
@@ -85,7 +101,7 @@ function NavigationBar({ onSearch, value }: { onSearch: (query: string) => void;
 
       <div title="User profile" className={profileCartStyling} onClick={() => navigate("/profile")}>
         <span className="material-symbols-outlined">person</span>
-        <span className="align-super font-bold">Profile</span>
+        <span className="align-super font-bold">{`${username ? username : 'Profile'}`}</span>
       </div>
     </nav>
   );

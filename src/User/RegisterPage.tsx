@@ -1,10 +1,13 @@
 import { useState } from "react";
-import { API_BASE } from "./api";
+import { API_BASE } from "../api";
+import { useNavigate } from "react-router";
 
-function UserProfile() {
+
+function RegisterPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('')
-  const inputStyle = 'text-center border rounded-lg cursor-pointer active:bg-gray-200' 
+  const navigate = useNavigate()
+  const inputStyle = 'text-center w-[200px] border rounded-lg cursor-pointer active:bg-gray-200' 
 
   const Register = async () => {
     try{
@@ -47,6 +50,10 @@ function UserProfile() {
              className={`${inputStyle}`}
              onClick={Register}
              >Register</button>
+
+             <span className="mt-2 text-sm opacity-50">Allready have an account? 
+                <span className="cursor-pointer underline text-[#455d7a] hover:text-[#374a62]"
+                 onClick={(()=> navigate('/login'))} > Login</span></span>
           </div>
         </div>
       </main>
@@ -54,4 +61,4 @@ function UserProfile() {
   );
 }
 
-export default UserProfile;
+export default RegisterPage
