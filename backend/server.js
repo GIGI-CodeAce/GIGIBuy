@@ -2,6 +2,8 @@ import express from 'express';
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import cors from 'cors'
+import jwt from 'jsonwebtoken';
+import cookieParser from 'cookie-parser';
 import {RegisterUser} from './accountRegisterAssets.js'; 
 
 const app = express();
@@ -13,7 +15,12 @@ app.use(cors({
 }));
 
 app.use(express.json());
-console.log(process.env.MONGO_URI);
+app.use(cookieParser())
+
+const JWT_SECRET = process.env.JWT_SECRET || 'default_jwt_secret';
+
+console.log();
+
 
 
 mongoose.connect(process.env.MONGO_URI)

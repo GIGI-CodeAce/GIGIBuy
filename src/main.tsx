@@ -11,7 +11,9 @@ import LoginPage from './User/LoginPage';
 import UserProfile from './User/userProfile';
 import './index.css';
 import './layout.js'
-import ItemPageFallBack from './ItemPage/itemPageFallBack';
+import ProtectedRoute from './protectedRouter';
+import { UserContextProvider } from './userContext'
+// import ItemPageFallBack from './ItemPage/itemPageFallBack';
 
 createRoot(document.getElementById('root')!).render(
   <CartProvider>
@@ -22,6 +24,7 @@ createRoot(document.getElementById('root')!).render(
 export default function Routing() {
   return (
 <HashRouter>
+  <UserContextProvider>
   <Routes>
     <Route path="/" element={<DefaultLayout />}>
       <Route index element={<Items />} />
@@ -30,13 +33,17 @@ export default function Routing() {
 
       <Route path="cart" element={<CartPage />} />
       <Route path="checkout" element={<Checkout />} />
-      <Route path="profile" element={<UserProfile />} />
+      <Route path="profile" element={
+          <ProtectedRoute>
+            <UserProfile />
+          </ProtectedRoute>} />
       <Route path="register" element={<RegisterPage />} />
       <Route path="login" element={<LoginPage />} />
 
       <Route path="*" element={<Navigate to="/" />} />
     </Route>
   </Routes>
+  </UserContextProvider>
 </HashRouter>
 
   );

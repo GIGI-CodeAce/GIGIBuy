@@ -21,6 +21,8 @@ function LoginPage() {
     }catch(err){
       console.error("Error refistering", err)
     }
+    setPassword('')
+    setUsername('')
   }
 
   return (

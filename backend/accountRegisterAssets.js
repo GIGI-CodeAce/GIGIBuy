@@ -1,8 +1,9 @@
-// import bcrypt from 'bcryptjs';
-// import mongoose from 'mongoose';
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcryptjs';
 import User from './user.js';
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 const JWT_SECRET = process.env.JWT_SECRET || 'default_jwt_secret';
 

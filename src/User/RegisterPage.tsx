@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { API_BASE } from "../api";
 import { useNavigate } from "react-router";
+import { UserContext } from "../userContext";
 
 
 function RegisterPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('')
   const navigate = useNavigate()
+  const {userInfo ,setUserInfo} = useContext(UserContext)
   const inputStyle = 'text-center w-[200px] border rounded-lg cursor-pointer active:bg-gray-200' 
 
   const Register = async () => {
@@ -19,11 +21,20 @@ function RegisterPage() {
     })
 
     const data = await response.json()
-    console.log("Registered", data);
+
+    if (response.ok){
+      setUserInfo(data)
+      console.log("Registered", data);
+      // navigate('/profile')
+    }else{
+      console.error('Registration failed:', data.error)
+    }
     
     }catch(err){
       console.error("Error refistering", err)
     }
+    setPassword('')
+    setUsername('')
   }
 
   return (
