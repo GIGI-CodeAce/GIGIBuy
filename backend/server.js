@@ -4,7 +4,7 @@ import dotenv from 'dotenv'
 import cors from 'cors'
 import jwt from 'jsonwebtoken';
 import cookieParser from 'cookie-parser';
-import {RegisterUser} from './accountRegisterAssets.js'; 
+import {RegisterUser} from './accountRegisterAssets'; 
 
 const app = express();
 const PORT = 4000;

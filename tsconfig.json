@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "forceConsistentCasingInFileNames": false,
     "target": "ESNext",
     "module": "ESNext",
     "jsx": "react-jsx",
@@ -10,7 +11,7 @@
     "paths": {
       "*": ["*"]
     },
-    "forceConsistentCasingInFileNames": true,
+    // "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
 
     "outDir": "./dist",

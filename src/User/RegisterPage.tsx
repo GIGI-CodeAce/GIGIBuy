@@ -1,74 +1,143 @@
-import { useState, useContext } from "react";
-import { API_BASE } from "../api";
-import { useNavigate } from "react-router";
-import { UserContext } from "../userContext";
-
+import { useState, useEffect, type FormEvent } from "react"
+import { API_BASE } from "../api"
 
 function RegisterPage() {
-  const [username, setUsername] = useState('');
+  const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const navigate = useNavigate()
-  const {userInfo ,setUserInfo} = useContext(UserContext)
-  const inputStyle = 'text-center w-[200px] border rounded-lg cursor-pointer active:bg-gray-200' 
+  const [repeatPassword, setRepeatPassword] = useState('')
+  const [warningMessage, setWarningMessage] = useState('')
+  const [successMessage, setSuccessMessage] = useState('')
+  const [visible, setVisible] = useState(true)
+  const inputStyle = 'p-2 border rounded-lg bg-gray-100'
 
-  const Register = async () => {
-    try{
-    const response = await fetch(`${API_BASE}/register`, {
+  function ResetRegister() {
+    setUsername('')
+    setPassword('')
+    setRepeatPassword('')
+  }
+
+  useEffect(() => {
+    setWarningMessage('')
+    setSuccessMessage('')
+  }, [username, password])
+
+ async function Register(e: FormEvent) {
+  e.preventDefault();
+
+  setWarningMessage('')
+  setSuccessMessage('')
+
+
+  if (!username || !password) {
+    setWarningMessage('Please enter your register information');
+    return
+  }
+
+  if (password !== repeatPassword) {
+    setWarningMessage('Passwords do not match.');
+    return
+  }
+
+  const response = await fetch(`${API_BASE}/register`, {
     method: 'POST',
     body: JSON.stringify({ username, password }),
     headers: { 'Content-Type': 'application/json' },
     credentials: 'include',
-    })
+  })
 
-    const data = await response.json()
-
-    if (response.ok){
-      setUserInfo(data)
-      console.log("Registered", data);
-      // navigate('/profile')
-    }else{
-      console.error('Registration failed:', data.error)
-    }
-    
-    }catch(err){
-      console.error("Error refistering", err)
-    }
-    setPassword('')
-    setUsername('')
+  if (response.status !== 200) {
+    const errorData = await response.json()
+    if (errorData?.error === 'Username already exists') {
+      setWarningMessage('Username already taken')
+    } else {
+        if(username.length > 15 || username.length <= 3){
+    setWarningMessage('Username should be over 4 and less than 15 characters long')
+  }else{
+    setWarningMessage('Registration failed. Please try again.')
   }
+    }
+  } else {
+    setSuccessMessage('Account created. Go to login to sign in.')
+    setTimeout(() => {
+      ResetRegister()
+    }, 2222)
+  }
+}
 
   return (
-    <>
-      <main className="flex flex-col items-center mt-10 mb-20">
+<main className="max-w-screen-lg mx-auto p-2">
+  <div className="flex items-center bg-[#7eaec9] justify-between gap-10 p-4 mt-5 rounded-xl">
+    {/* Left side (Register title) */}
+    <div className="w-2/5 text-center flex flex-col items-center justify-center">
+            <img className="w-[100px]"
+      src="https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous//diamondFixed.png"/>
+      <h1 className="font-bold text-3xl">Register</h1>
+      <h1 className="font-bold text-lg">Use GIGIbuy account</h1>
+    </div>
 
-        <div className="relative">
-          <div className="flex flex-col gap-2 text-center">
-            <h1 className="text-center text-2xl font-bold">Register</h1>
-            <input 
+    {/* Right side (Form, centered) */}
+    <div className="w-3/5 flex-1 flex items-center justify-center">
+      <form
+        className="flex flex-col gap-4 w-full max-w-sm"
+        onSubmit={Register}
+      >
+        {/* Username */}
+        <label className="flex flex-col">
+          <h1 className="hover:underline pl-1 mb-1">Username</h1>
+          <input
+            type="text"
+            placeholder="Choose username (min 4)"
+            className={`${inputStyle}`}
             value={username}
-            onChange={((e)=> setUsername(e.target.value))}
-            className={`${inputStyle}`} 
-            placeholder="Username"
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </label>
 
+        {/* Password */}
+        <div className="relative">
+          <span
+            onClick={() => setVisible((old) => !old)}
+            className="material-symbols-outlined absolute top-[34px] right-1 p-1 select-none cursor-pointer"
+          >
+            {visible ? 'visibility' : 'visibility_off'}
+          </span>
+          <label className="flex flex-col">
+            <h1 className="hover:underline pl-1 mb-1">Password</h1>
+            <input
+              type={visible ? 'password' : 'text'}
+              placeholder="Choose password"
+              className={`${inputStyle}`}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
-            <input value={password}
-            onChange={((e)=> setPassword(e.target.value))}
-            className={`${inputStyle}`} 
-            placeholder="password"
-            />
-
-            <button
-             className={`${inputStyle}`}
-             onClick={Register}
-             >Register</button>
-
-             <span className="mt-2 text-sm opacity-50">Allready have an account? 
-                <span className="cursor-pointer underline text-[#455d7a] hover:text-[#374a62]"
-                 onClick={(()=> navigate('/login'))} > Login</span></span>
-          </div>
+          </label>
         </div>
-      </main>
-    </>
+
+        {/* Repeat password */}
+        <input
+          type="password"
+          placeholder="Repeat password"
+          className={`${inputStyle}`}
+          value={repeatPassword}
+          onChange={(e) => setRepeatPassword(e.target.value)}
+        />
+
+        {/* Submit */}
+        <button className="p-2 bg-black transition-all active:text-green-300 cursor-pointer hover:rounded-xl text-white rounded-lg hover:bg-gray-800">
+          Register
+        </button>
+      </form>
+    </div>
+  </div>
+
+  {/* Messages */}
+  <div className="text-center m-2 h-5">
+    {warningMessage && <p className="text-red-500">{warningMessage}</p>}
+    {successMessage && <p className="text-green-600">{successMessage}</p>}
+  </div>
+</main>
+
+
   );
 }
 
