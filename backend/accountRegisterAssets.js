@@ -7,41 +7,43 @@ dotenv.config()
 
 const JWT_SECRET = process.env.JWT_SECRET || 'default_jwt_secret';
 
-// export async function LoginPost(req,res){
-//     const { username, password } = req.body;
-//   try {
-//     const userDoc = await User.findOne({ username });
-//     if (!userDoc) {
-//       return res.status(400).json({ error: 'User not found' });
-//     }
+export async function LoginUser(req,res){
+    const { username, password } = req.body;
+  try {
+    const userDoc = await User.findOne({ username });
+    if (!userDoc) {
+      return res.status(400).json({ error: 'User not found' });
+    }
 
-//     const passOk = bcrypt.compareSync(password, userDoc.password);
-//     if (!passOk) {
-//       return res.status(400).json({ error: 'Wrong credentials' });
-//     }
+    const passOk = bcrypt.compareSync(password, userDoc.password);
+    if (!passOk) {
+      return res.status(400).json({ error: 'Wrong credentials' });
+    }
 
-//       const token = jwt.sign(
-//         { id: userDoc._id, username: userDoc.username },
-//         JWT_SECRET,
-//         {}
-//       );
+      const token = jwt.sign(
+        { id: userDoc._id, username: userDoc.username },
+        JWT_SECRET,
+        {}
+      );
 
-//       res.cookie('token', token, {
-//         httpOnly: true,
-//         sameSite: 'none',
-//         secure: true,
-//       }).json({id:userDoc._id,
-//                 username,
-//       });
+      res.cookie('token', token, {
+        httpOnly: true,
+        sameSite: 'none',
+        secure: true,
+      }).json({id:userDoc._id,
+                username,
+      });
 
-//   } catch (err) {
-//     console.error('❌ Login error:', err);
-//     res.status(500).json({ error: 'Login failed' });
-//   }
-// }
+  } catch (err) {
+    console.error('❌ Login error:', err);
+    res.status(500).json({ error: 'Login failed' });
+  }
+}
 
 export async function RegisterUser(req,res) {
+    console.log("📥 Incoming register request:", req.body);
     const {username,password} = req.body
+    
 
     if(!username || !password){
         return res.status(400).json({error: 'User and or passowrd required'})

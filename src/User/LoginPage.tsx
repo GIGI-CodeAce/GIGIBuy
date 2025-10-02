@@ -1,34 +1,44 @@
 import { useState,useEffect } from "react";
+import { useContext } from "react";
+import { UserContext } from "../userContext";
 import { API_BASE } from "../api";
 
 function LoginPage() {
-  const [username, setUsername] = useState('');
+  const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-    const [visible, setVisible] = useState(true)
-    const [warningDisplay, setWarningDisplay] = useState(false)
+  const [visible, setVisible] = useState(true)
+  const {setUserInfo} = useContext(UserContext)
+  const [warningDisplay, setWarningDisplay] = useState(false)
   const inputStyle = 'p-2 border rounded-lg bg-gray-100'
 
     useEffect(()=>{
     setWarningDisplay(false)
   }, [username,password])
 
-  const Register = async () => {
-    try{
-    const response = await fetch(`${API_BASE}/register`, {
-    method: 'POST',
-    body: JSON.stringify({ username, password }),
-    headers: { 'Content-Type': 'application/json' },
-    credentials: 'include',
-    })
+async function Login(e:any) {
+    e.preventDefault();
 
-    const data = await response.json()
-    console.log("Registered", data);
-    
-    }catch(err){
-      console.error("Error refistering", err)
+    const response = await fetch(`${API_BASE}/login`, {
+      method: 'POST',
+      body: JSON.stringify({ username, password }),
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+    });
+
+        if (!response.ok) {
+          if (username === '' && password === '') {
+            setWarningDisplay(true);
+    return;
     }
-    setPassword('')
+          setWarningDisplay(true)
+    } else {
+      response.json().then(userInfo => {
+        setUserInfo(userInfo)
+      })
     setUsername('')
+    setPassword('')
+    }
+
   }
 
   return (
@@ -47,7 +57,7 @@ function LoginPage() {
     <div className="w-3/5 flex-1 flex items-center justify-center">
       <form
         className="flex flex-col gap-4 w-full max-w-sm"
-        onSubmit={Register}
+        onSubmit={Login}
       >
         {/* Username */}
         <label className="flex flex-col">
@@ -81,9 +91,9 @@ function LoginPage() {
           </label>
         </div>
 
-        <button className="p-2 bg-black transition-all active:text-green-300 cursor-pointer hover:rounded-xl text-white rounded-lg hover:bg-gray-800">
-          Register
-        </button>
+        <button 
+        className="p-2 bg-black transition-all active:text-green-300 cursor-pointer hover:rounded-xl text-white rounded-lg hover:bg-gray-800">
+          Register  </button>
       </form>
     </div>
   </div>

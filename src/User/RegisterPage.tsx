@@ -1,4 +1,5 @@
-import { useState, useEffect, type FormEvent } from "react"
+import { useState, useEffect, type FormEvent, } from "react"
+import { useNavigate } from "react-router"
 import { API_BASE } from "../api"
 
 function RegisterPage() {
@@ -8,6 +9,7 @@ function RegisterPage() {
   const [warningMessage, setWarningMessage] = useState('')
   const [successMessage, setSuccessMessage] = useState('')
   const [visible, setVisible] = useState(true)
+  const navigate = useNavigate()
   const inputStyle = 'p-2 border rounded-lg bg-gray-100'
 
   function ResetRegister() {
@@ -136,6 +138,8 @@ function RegisterPage() {
     {successMessage && <p className="text-green-600">{successMessage}</p>}
   </div>
   <h1 className="text-center font-[iconic] text-[#7eaec9] font-bold">Fashion Forward, Always You</h1>
+  <h1 className="text-center mt-5">Allready have an account? 
+  <span className="text-[#7eaec9]" onClick={(()=> navigate('/login'))}> Log in</span></h1>
 </main>
 
 

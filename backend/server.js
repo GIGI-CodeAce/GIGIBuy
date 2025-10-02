@@ -1,10 +1,10 @@
 import express from 'express';
-import mongoose from 'mongoose'
+import mongoose from "mongoose";
 import dotenv from 'dotenv'
 import cors from 'cors'
 import jwt from 'jsonwebtoken';
 import cookieParser from 'cookie-parser';
-import {RegisterUser} from './accountRegisterAssets'; 
+import {LoginUser, RegisterUser} from './accountRegisterAssets.js'; 
 
 const app = express();
 const PORT = 4000;
@@ -18,8 +18,6 @@ app.use(express.json());
 app.use(cookieParser())
 
 const JWT_SECRET = process.env.JWT_SECRET || 'default_jwt_secret';
-
-console.log();
 
 
 
@@ -46,6 +44,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 
 app.post('/register', (req, res) => {RegisterUser(req,res)});
+app.post('/login', (req, res) => {LoginUser(req,res)});
 
 app.listen(PORT, () => {
   console.log(`✅ Listening on port ${PORT}`);
