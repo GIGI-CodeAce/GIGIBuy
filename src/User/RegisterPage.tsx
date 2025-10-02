@@ -65,8 +65,8 @@ function RegisterPage() {
 }
 
   return (
-<main className="max-w-screen-lg mx-auto p-2">
-  <div className="flex items-center bg-[#7eaec9] justify-between gap-10 p-4 mt-5 rounded-xl">
+<main className="max-w-screen-lg justify-center items-center align- mx-auto mt-10 sm:p-2">
+  <div className="flex  items-center bg-[#7eaec9] justify-between gap-10 p-4 mt-5 rounded-xl">
     {/* Left side (Register title) */}
     <div className="w-2/5 text-center flex flex-col items-center justify-center">
             <img className="w-[100px]"
@@ -135,6 +135,7 @@ function RegisterPage() {
     {warningMessage && <p className="text-red-500">{warningMessage}</p>}
     {successMessage && <p className="text-green-600">{successMessage}</p>}
   </div>
+  <h1 className="text-center font-[iconic] text-[#7eaec9] font-bold">Fashion Forward, Always You</h1>
 </main>
 
 

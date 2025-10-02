@@ -5,7 +5,7 @@ import Items from './Homepage/itemsHome';
 import { CartProvider } from './shoppingCart/cartContext';
 import CartPage from './shoppingCart/cartPage';
 import Checkout from './shoppingCart/checkout';
-import DefaultLayout from './layout'
+import {DefaultLayout, RegisatrationLayout} from './layout'
 import RegisterPage from './User/RegisterPage';
 import LoginPage from './User/LoginPage';
 import UserProfile from './User/userProfile';
@@ -13,7 +13,6 @@ import './index.css';
 import './layout.js'
 import ProtectedRoute from './protectedRouter';
 import { UserContextProvider } from './userContext'
-// import ItemPageFallBack from './ItemPage/itemPageFallBack';
 
 createRoot(document.getElementById('root')!).render(
   <CartProvider>
@@ -37,10 +36,12 @@ export default function Routing() {
           <ProtectedRoute>
             <UserProfile />
           </ProtectedRoute>} />
-      <Route path="register" element={<RegisterPage />} />
-      <Route path="login" element={<LoginPage />} />
 
       <Route path="*" element={<Navigate to="/" />} />
+    </Route>
+    <Route path='/' element={<RegisatrationLayout/>}>
+      <Route path="register" element={<RegisterPage />} />
+      <Route path="login" element={<LoginPage />} />
     </Route>
   </Routes>
   </UserContextProvider>

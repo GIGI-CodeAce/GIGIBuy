@@ -4,7 +4,7 @@ import Footer from "./FixedOnPage/footer";
 import SpecialOffer from "./FixedOnPage/specialOffer";
 import { useState } from "react";
 
-function DefaultLayout(){
+export function DefaultLayout(){
   const [searchText, setSearchText] = useState<string>(
     localStorage.getItem("searchQuery") || ""
   );
@@ -25,4 +25,23 @@ function DefaultLayout(){
   );
 }
 
-export default DefaultLayout;
+
+export function RegisatrationLayout(){
+  const [searchText, setSearchText] = useState<string>(
+    localStorage.getItem("searchQuery") || ""
+  );
+
+  return (
+    <>
+      <NavigationBar
+        value={searchText}
+        onSearch={(query) => {
+          setSearchText(query);
+          localStorage.setItem("searchQuery", query);
+        }}
+      />
+      <SpecialOffer/>
+      <Outlet context={{ searchQuery: searchText }} />
+    </>
+  );
+}
