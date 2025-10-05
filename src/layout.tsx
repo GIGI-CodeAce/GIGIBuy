@@ -26,7 +26,7 @@ export function DefaultLayout(){
 }
 
 
-export function RegisatrationLayout(){
+export function RegistrationLayout(){
   const [searchText, setSearchText] = useState<string>(
     localStorage.getItem("searchQuery") || ""
   );

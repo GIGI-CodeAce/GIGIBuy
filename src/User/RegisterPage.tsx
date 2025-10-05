@@ -20,7 +20,7 @@ function RegisterPage() {
 
   useEffect(() => {
     setWarningMessage('')
-    setSuccessMessage('')
+    // setSuccessMessage('')
   }, [username, password])
 
  async function Register(e: FormEvent) {
@@ -62,7 +62,7 @@ function RegisterPage() {
     setSuccessMessage('Account created. Go to login to sign in.')
     setTimeout(() => {
       ResetRegister()
-    }, 2222)
+    }, 3000)
   }
 }
 

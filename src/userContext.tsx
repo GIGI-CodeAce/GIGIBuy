@@ -3,6 +3,8 @@ import { API_BASE } from "./api";
 
 interface User {
   username: string;
+  error?: string;
+  createdAt: string;
 }
 
 interface UserContextType {

@@ -11,6 +11,7 @@ function NavigationBar({ onSearch, value }: { onSearch: (query: string) => void;
   const { setUserInfo, userInfo } = useContext(UserContext);
   const profileCartStyling = "flex items-center gap-1 mr-1 hover:text-[#FFB6A6] hover:cursor-pointer transition-colors"
   const [searchText, setSearchText] = useState(value)
+  
 
     useEffect(() => {
     fetch(`${API_BASE}/profile`, {

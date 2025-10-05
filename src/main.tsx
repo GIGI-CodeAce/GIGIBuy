@@ -1,14 +1,15 @@
 import { createRoot } from 'react-dom/client';
-import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import ItemPage from './ItemPage/itemPage';
 import Items from './Homepage/itemsHome';
 import { CartProvider } from './shoppingCart/cartContext';
 import CartPage from './shoppingCart/cartPage';
 import Checkout from './shoppingCart/checkout';
-import {DefaultLayout, RegisatrationLayout} from './layout'
+import {DefaultLayout, RegistrationLayout} from './layout'
 import RegisterPage from './User/RegisterPage';
 import LoginPage from './User/LoginPage';
 import UserProfile from './User/userProfile';
+import Logout from "./User/Logout";
 import './index.css';
 import './layout.js'
 import ProtectedRoute from './protectedRouter';
@@ -22,7 +23,7 @@ createRoot(document.getElementById('root')!).render(
 
 export default function Routing() {
   return (
-<HashRouter>
+<BrowserRouter>
   <UserContextProvider>
   <Routes>
     <Route path="/" element={<DefaultLayout />}>
@@ -33,19 +34,24 @@ export default function Routing() {
       <Route path="cart" element={<CartPage />} />
       <Route path="checkout" element={<Checkout />} />
       <Route path="profile" element={
-          <ProtectedRoute>
+        <ProtectedRoute>
             <UserProfile />
-          </ProtectedRoute>} />
+      </ProtectedRoute>} />
+
+      <Route path='logout' element={
+        <ProtectedRoute>
+          <Logout/>
+        </ProtectedRoute>}/>
 
       <Route path="*" element={<Navigate to="/" />} />
     </Route>
-    <Route path='/' element={<RegisatrationLayout/>}>
+    <Route element={<RegistrationLayout/>}>
       <Route path="register" element={<RegisterPage />} />
       <Route path="login" element={<LoginPage />} />
     </Route>
   </Routes>
   </UserContextProvider>
-</HashRouter>
+</BrowserRouter>
 
   );
 }

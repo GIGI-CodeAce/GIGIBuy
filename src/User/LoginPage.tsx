@@ -1,4 +1,5 @@
 import { useState,useEffect } from "react";
+import { Navigate } from "react-router";
 import { useContext } from "react";
 import { UserContext } from "../userContext";
 import { API_BASE } from "../api";
@@ -7,6 +8,7 @@ function LoginPage() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [visible, setVisible] = useState(true)
+  const [redirect, setRedirect] = useState(false)
   const {setUserInfo} = useContext(UserContext)
   const [warningDisplay, setWarningDisplay] = useState(false)
   const inputStyle = 'p-2 border rounded-lg bg-gray-100'
@@ -34,11 +36,16 @@ async function Login(e:any) {
     } else {
       response.json().then(userInfo => {
         setUserInfo(userInfo)
+        setRedirect(true)
       })
     setUsername('')
     setPassword('')
     }
 
+  }
+
+  if(redirect){
+    return <Navigate to={"/profile"}/>
   }
 
   return (
@@ -113,30 +120,3 @@ async function Login(e:any) {
 }
 
 export default LoginPage
-
-
-      {/* <main className="flex flex-col items-center mt-10 mb-20">
-
-        <div className="relative">
-          <div className="flex flex-col gap-2 text-center">
-            <h1 className="text-center text-2xl font-bold">Login</h1>
-            <input 
-            value={username}
-            onChange={((e)=> setUsername(e.target.value))}
-            className={`${inputStyle}`} 
-            placeholder="Username"
-
-            />
-            <input value={password}
-            onChange={((e)=> setPassword(e.target.value))}
-            className={`${inputStyle}`} 
-            placeholder="password"
-            />
-
-            <button
-             className={`${inputStyle}`}
-             onClick={Register}
-             >Login</button>
-          </div>
-        </div>
-      </main> */}
