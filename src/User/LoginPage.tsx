@@ -51,24 +51,24 @@ async function Login(e:any) {
   return (
     <>
 
-    <main className="max-w-screen-lg mx-auto p-2">
+    <main className="max-w-screen-lg mx-auto sm:px-2 px-0 mt-17">
   <div className="flex items-center bg-[#7eaec9] justify-between gap-10 p-4 mt-5 rounded-xl">
 
-    <div className="w-2/5 text-center flex flex-col items-center justify-center">
+    <div className="w-35/100 text-center flex flex-col items-center justify-center">
             <img className="w-[100px]"
       src="https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous//diamondFixed.png"/>
       <h1 className="font-bold text-3xl">Login</h1>
       <h1 className="font-bold text-lg">Use GIGIbuy account</h1>
     </div>
 
-    <div className="w-3/5 flex-1 flex items-center justify-center">
+    <div className="w-65/100 flex-1 flex items-center justify-center">
       <form
-        className="flex flex-col gap-4 w-full max-w-sm"
+        className="flex flex-col w-full max-w-sm"
         onSubmit={Login}
       >
         {/* Username */}
         <label className="flex flex-col">
-          <h1 className="hover:underline pl-1 mb-1">Username</h1>
+          <h1 className="hover:underline pl-1 my-2">Username</h1>
           <input
             type="text"
             placeholder="Choose username (min 4)"
@@ -82,12 +82,12 @@ async function Login(e:any) {
         <div className="relative">
           <span
             onClick={() => setVisible((old) => !old)}
-            className="material-symbols-outlined absolute top-[34px] right-1 p-1 select-none cursor-pointer"
+            className="material-symbols-outlined absolute top-[44px] right-1 p-1 select-none cursor-pointer"
           >
             {visible ? 'visibility' : 'visibility_off'}
           </span>
           <label className="flex flex-col">
-            <h1 className="hover:underline pl-1 mb-1">Password</h1>
+            <h1 className="hover:underline pl-1 my-2">Password</h1>
             <input
               type={visible ? 'password' : 'text'}
               placeholder="Choose password"
@@ -99,21 +99,24 @@ async function Login(e:any) {
         </div>
 
         <button 
-        className="p-2 bg-black transition-all active:text-green-300 cursor-pointer hover:rounded-xl text-white rounded-lg hover:bg-gray-800">
+        className="p-2 bg-black transition-all mt-4 mb-2 active:text-green-300 cursor-pointer hover:rounded-xl text-white rounded-lg hover:bg-gray-800">
           Register  </button>
-      </form>
-    </div>
-  </div>
 
-          {warningDisplay && (
-      <div className="text-center text-red-600 m-2">
-        {username === '' && password === '' ? (
+  <div className="h-4 mb-1">
+    {warningDisplay && (
+      <div className="text-center text-red-600">
+        {username === '' || password === '' ? (
           <h1>Please enter your login information</h1>
         ) : (
           <h1>Invalid username and/or password</h1>
         )}
-      </div>
-)}
+      </div>)}
+    </div>
+      </form>
+
+    </div>
+  </div>
+  <h1 className="text-center font-[iconic] text-[#7eaec9] font-bold">Welcome back</h1>
 </main>
     </>
   );

@@ -19,6 +19,7 @@ function ItemPage() {
   const [allItems, setAllItems] = useState<ClothingItem[]>([])
   const [similarItems, setSimilarItems] = useState<ClothingItem[]>([])
   const { id, name } = useParams()
+  const [favorite, setFavorite] = useState(false)
 
   function CartAdded() {
     setCardAdd('Item added!')
@@ -90,11 +91,18 @@ useEffect(() => {
 
             {/* Image */}
             <div
-              className="max-w-[470px] max-h-[500px] min-h-[420px] sm:mt-8 mt-2 border-2 bg-center bg-contain bg-no-repeat transition-all border-[#4b6686] flex items-center rounded-2xl p-20 justify-center mx-auto sm:mx-0 sm:ml-2"
+              className="relative max-w-[470px] max-h-[500px] min-h-[420px] sm:mt-8 mt-2 border-2 bg-center bg-contain bg-no-repeat transition-all border-[#4b6686] flex items-center rounded-2xl p-20 justify-center mx-auto sm:mx-0 sm:ml-2"
               onMouseEnter={() => canHover && setImage(true)}
               onMouseLeave={() => canHover && setImage(false)}
               style={{ backgroundImage: `url(${image ? clothing.coverImage : clothing.image})` }}
             >
+              <span
+              onClick={(()=> setFavorite(old => !old))} 
+              className={`material-symbols-outlined
+              select-none !text-3xl cursor-pointer absolute right-5 top-5
+              ${favorite ? 'text-red-500' :''}`}>
+                favorite
+              </span>
               <img
                 className="w-96 max-h-[450px] object-contain opacity-0"
                 aria-hidden="true"

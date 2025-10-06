@@ -44,17 +44,37 @@ function UserProfile() {
 
 
   return (
-    <main className="text-center h-[100vh]">
+    <main className="text-center h-[100vh] font-[iconic] font-bold">
       <div
         className={`w-[200px] h-[200px] rounded-[50%] font-[iconic] flex justify-center items-center border select-none mx-auto mt-4`}
-        style={{ backgroundColor: profileColor.hexString() }} // ✅ fix dynamic color
+        style={{ backgroundColor: profileColor.hexString() }}
       >
         <h1 className="text-[124px] h-[195px]">{NameInitial}</h1>
       </div>
-      <h1 className="text-xl">@{username}</h1>
-      <button onClick={logout}>Logout</button>
+      <h1 className="text-xl mb-5">@{username}</h1>
 
-      <p>Account created: {userInfo?.createdAt ? new Date(userInfo.createdAt).toLocaleDateString() : 'N/A'}</p>
+      <div
+      onClick={(()=> navigate('/cart'))} 
+      className="w-[200px] border cursor-pointer rounded-xl mx-auto flex  m-2 p-1 text-start">
+        <span>Shopping cart</span>
+        <span className="material-symbols-outlined select-none ml-auto">shopping_cart</span>
+      </div>
+
+      <div
+      onClick={(()=> navigate('/favorites'))} 
+      className="w-[200px] border cursor-pointer rounded-xl mx-auto flex  m-2 p-1 text-start">
+        <span>Favorite items</span>
+        <span className="material-symbols-outlined select-none ml-auto">favorite</span>
+      </div>
+
+      <div className="mt-20">
+         <button 
+      className="text-[#ffd5cc] w-[150px] cursor-pointer mx-auto border-black border bg-[#a0c4d7] hover:bg-[#90bad0] active:bg-[#7eaec9] rounded-2xl"
+      onClick={logout}>Logout</button>
+
+      <p className="text-gray-600 opacity-50 mt-5">
+      Account created: {userInfo?.createdAt ? new Date(userInfo.createdAt).toLocaleDateString() : 'N/A'}</p>
+      </div>
     </main>
   );
 }

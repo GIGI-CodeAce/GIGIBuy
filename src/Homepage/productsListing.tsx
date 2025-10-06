@@ -12,12 +12,12 @@ interface ProductProps {
 }
 
 function ProductListing({ id, name, image, coverImage, description, price, bool = false }: ProductProps) {
-  const [showCoverImg, setShowCoverImg] = useState(false);
-  const navigate = useNavigate();
+  const [showCoverImg, setShowCoverImg] = useState(false)
+  const navigate = useNavigate()
 
   const handleClick = () => {
-    const formattedName = name.replace(/\s+/g, "-").toLowerCase();
-    navigate(`/${id}/${formattedName}`);
+    const formattedName = name.replace(/\s+/g, "-").toLowerCase()
+    navigate(`/${id}/${formattedName}`)
   };
 
   return (
@@ -37,7 +37,7 @@ function ProductListing({ id, name, image, coverImage, description, price, bool 
         style={{ backgroundImage: `url(${showCoverImg ? coverImage : image})` }}
       >
         <div className={`justify-end p-4 pt-0 ${showCoverImg ? "flex" : "hidden"}`}>
-          <span className="material-symbols-outlined">favorite</span>
+          <span className="material-symbols-outlined select-none">favorite</span>
         </div>
       </div>
 
@@ -54,4 +54,4 @@ function ProductListing({ id, name, image, coverImage, description, price, bool 
   );
 }
 
-export default ProductListing;
+export default ProductListing

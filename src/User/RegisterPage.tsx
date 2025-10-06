@@ -10,7 +10,7 @@ function RegisterPage() {
   const [successMessage, setSuccessMessage] = useState('')
   const [visible, setVisible] = useState(true)
   const navigate = useNavigate()
-  const inputStyle = 'p-2 border rounded-lg bg-gray-100'
+  const inputStyle = 'p-2 border rounded-lg bg-gray-100 my-2'
 
   function ResetRegister() {
     setUsername('')
@@ -69,23 +69,23 @@ function RegisterPage() {
   return (
 <main className="max-w-screen-lg justify-center items-center align- mx-auto mt-10 sm:p-2">
   <div className="flex  items-center bg-[#7eaec9] justify-between gap-10 p-4 mt-5 rounded-xl">
-    {/* Left side (Register title) */}
-    <div className="w-2/5 text-center flex flex-col items-center justify-center">
+    {/* Left side*/}
+    <div className="w-35/100 text-center flex flex-col items-center justify-center">
             <img className="w-[100px]"
       src="https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous//diamondFixed.png"/>
       <h1 className="font-bold text-3xl">Register</h1>
       <h1 className="font-bold text-lg">Use GIGIbuy account</h1>
     </div>
 
-    {/* Right side (Form, centered) */}
-    <div className="w-3/5 flex-1 flex items-center justify-center">
+    {/* Right side*/}
+    <div className="w-65/100 flex-1 flex items-center justify-center">
       <form
-        className="flex flex-col gap-4 w-full max-w-sm"
+        className="flex flex-col w-full max-w-sm"
         onSubmit={Register}
       >
         {/* Username */}
         <label className="flex flex-col">
-          <h1 className="hover:underline pl-1 mb-1">Username</h1>
+          <h1 className="hover:underline pl-1">Username</h1>
           <input
             type="text"
             placeholder="Choose username (min 4)"
@@ -99,12 +99,12 @@ function RegisterPage() {
         <div className="relative">
           <span
             onClick={() => setVisible((old) => !old)}
-            className="material-symbols-outlined absolute top-[34px] right-1 p-1 select-none cursor-pointer"
+            className="material-symbols-outlined absolute top-[37px] right-1 p-1 select-none cursor-pointer"
           >
             {visible ? 'visibility' : 'visibility_off'}
           </span>
           <label className="flex flex-col">
-            <h1 className="hover:underline pl-1 mb-1">Password</h1>
+            <h1 className="hover:underline pl-1">Password</h1>
             <input
               type={visible ? 'password' : 'text'}
               placeholder="Choose password"
@@ -125,21 +125,21 @@ function RegisterPage() {
         />
 
         {/* Submit */}
-        <button className="p-2 bg-black transition-all active:text-green-300 cursor-pointer hover:rounded-xl text-white rounded-lg hover:bg-gray-800">
+        <button className="p-2 mt-2 bg-black transition-all active:text-green-300 cursor-pointer hover:rounded-xl text-white rounded-lg hover:bg-gray-800">
           Register
         </button>
+                <div className="text-center m-2 h-3">
+          {warningMessage && <p className="text-red-500">{warningMessage}</p>}
+          {successMessage && <p className="text-green-600">{successMessage}</p>}
+      </div>
       </form>
     </div>
   </div>
 
   {/* Messages */}
-  <div className="text-center m-2 h-5">
-    {warningMessage && <p className="text-red-500">{warningMessage}</p>}
-    {successMessage && <p className="text-green-600">{successMessage}</p>}
-  </div>
   <h1 className="text-center font-[iconic] text-[#7eaec9] font-bold">Fashion Forward, Always You</h1>
   <h1 className="text-center mt-5">Allready have an account? 
-  <span className="text-[#7eaec9]" onClick={(()=> navigate('/login'))}> Log in</span></h1>
+  <span className="text-[#7eaec9] cursor-pointer hover:underline" onClick={(()=> navigate('/login'))}> Log in</span></h1>
 </main>
 
 
