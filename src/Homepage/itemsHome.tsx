@@ -86,7 +86,7 @@ function Items() {
         selectedCategory={selectedCategory}
         onCategoryChange={handleCategoryChange}
       />
-            <div className="container mx-auto mb-10 min-h-[300px]">
+            <div className="container mx-auto mb-10 min-h-[300px] transition-all">
         <h1 className="text-2xl text-[#4b6686] xl:pl-8 p-4 font-bold underline">
           Clothing Items
         </h1>

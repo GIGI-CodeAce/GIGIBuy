@@ -14,7 +14,7 @@ function ProtectedRoute({ children }: { children: JSX.Element }) {
     if (location.pathname === "/logout") {
       return <Navigate to="/" replace />;
     }
-    return <Navigate to="/register" replace />;
+    return <Navigate to="/login" replace />;
   }
 
   return children;

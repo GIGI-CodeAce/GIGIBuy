@@ -1,5 +1,5 @@
 import { useState,useEffect } from "react";
-import { Navigate } from "react-router";
+import { Navigate, useNavigate } from "react-router";
 import { useContext } from "react";
 import { UserContext } from "../userContext";
 import { API_BASE } from "../api";
@@ -9,6 +9,7 @@ function LoginPage() {
   const [password, setPassword] = useState('')
   const [visible, setVisible] = useState(true)
   const [redirect, setRedirect] = useState(false)
+  const navigate = useNavigate()
   const {setUserInfo} = useContext(UserContext)
   const [warningDisplay, setWarningDisplay] = useState(false)
   const inputStyle = 'p-2 border rounded-lg bg-gray-100'
@@ -51,10 +52,10 @@ async function Login(e:any) {
   return (
     <>
 
-    <main className="max-w-screen-lg mx-auto sm:px-2 px-0 mt-17">
-  <div className="flex items-center bg-[#7eaec9] justify-between gap-10 p-4 mt-5 rounded-xl">
+    <main className="max-w-screen-lg mx-auto sm:px-2 transition-all px-0 mt-10">
+  <div className="flex relative sm:static items-center bg-[#7eaec9] justify-between gap-10 p-4 pb-5 mt-5 rounded-t-xl">
 
-    <div className="w-35/100 text-center flex flex-col items-center justify-center">
+    <div className="w-35/100 text-center flex flex-col items-center justify-center font-[iconic]">
             <img className="w-[100px]"
       src="https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous//diamondFixed.png"/>
       <h1 className="font-bold text-3xl">Login</h1>
@@ -99,10 +100,12 @@ async function Login(e:any) {
         </div>
 
         <button 
-        className="p-2 bg-black transition-all mt-4 mb-2 active:text-green-300 cursor-pointer hover:rounded-xl text-white rounded-lg hover:bg-gray-800">
+        className="p-2 transition-all mt-4 mb-5 sm:mb-0 active:text-green-300 bg-[#374a62]
+         cursor-pointer hover:rounded-xl text-white rounded-lg hover:bg-gray-800">
           Register  </button>
 
-  <div className="h-4 mb-1">
+  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-center m-2 w-[280px] h-3
+                  sm:static sm:text-left sm:mt-2 sm:left-auto sm:translate-x-12 mb-1">
     {warningDisplay && (
       <div className="text-center text-red-600">
         {username === '' || password === '' ? (
@@ -116,7 +119,11 @@ async function Login(e:any) {
 
     </div>
   </div>
-  <h1 className="text-center font-[iconic] text-[#7eaec9] font-bold">Welcome back</h1>
+  <div className="bg-[#7eadc999] rounded-b-xl pb-1">
+  <h1 className="text-center font-[iconic] text-[#455d7aee] font-bold">Welcome back.</h1>
+  <h1 className="text-center mt-5">Dont have an account yet? 
+  <span className=" text-[#455d7aee] cursor-pointer hover:underline" onClick={(()=> navigate('/register'))}> Register</span></h1>
+  </div>
 </main>
     </>
   );

@@ -67,10 +67,10 @@ function RegisterPage() {
 }
 
   return (
-<main className="max-w-screen-lg justify-center items-center align- mx-auto mt-10 sm:p-2">
-  <div className="flex  items-center bg-[#7eaec9] justify-between gap-10 p-4 mt-5 rounded-xl">
-    {/* Left side*/}
-    <div className="w-35/100 text-center flex flex-col items-center justify-center">
+<main className="max-w-screen-lg transition-all justify-center items-center mx-auto sm:px-2 mt-10">
+  <div className="flex relative sm:static items-center bg-[#7eaec9] justify-between gap-10 p-4 mt-5 pb-10 sm:pb-5 rounded-t-xl">
+    {/* Left side*/} 
+    <div className="w-35/100 text-center flex flex-col items-center justify-center font-[iconic]">
             <img className="w-[100px]"
       src="https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous//diamondFixed.png"/>
       <h1 className="font-bold text-3xl">Register</h1>
@@ -78,68 +78,76 @@ function RegisterPage() {
     </div>
 
     {/* Right side*/}
-    <div className="w-65/100 flex-1 flex items-center justify-center">
-      <form
-        className="flex flex-col w-full max-w-sm"
-        onSubmit={Register}
+<div className="w-65/100 flex-1 flex items-center justify-center">
+  <form
+    className="flex flex-col w-full max-w-sm sm:relative static"
+    onSubmit={Register}
+  >
+    {/* Username */}
+    <label className="flex flex-col">
+      <h1 className="hover:underline pl-1">Username</h1>
+      <input
+        type="text"
+        placeholder="Choose username (min 4)"
+        className={`${inputStyle}`}
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+      />
+    </label>
+
+    {/* Password */}
+    <div className="relative">
+      <span
+        onClick={() => setVisible((old) => !old)}
+        className="material-symbols-outlined absolute top-[37px] right-1 p-1 select-none cursor-pointer"
       >
-        {/* Username */}
-        <label className="flex flex-col">
-          <h1 className="hover:underline pl-1">Username</h1>
-          <input
-            type="text"
-            placeholder="Choose username (min 4)"
-            className={`${inputStyle}`}
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </label>
-
-        {/* Password */}
-        <div className="relative">
-          <span
-            onClick={() => setVisible((old) => !old)}
-            className="material-symbols-outlined absolute top-[37px] right-1 p-1 select-none cursor-pointer"
-          >
-            {visible ? 'visibility' : 'visibility_off'}
-          </span>
-          <label className="flex flex-col">
-            <h1 className="hover:underline pl-1">Password</h1>
-            <input
-              type={visible ? 'password' : 'text'}
-              placeholder="Choose password"
-              className={`${inputStyle}`}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </label>
-        </div>
-
-        {/* Repeat password */}
+        {visible ? 'visibility' : 'visibility_off'}
+      </span>
+      <label className="flex flex-col">
+        <h1 className="hover:underline pl-1">Password</h1>
         <input
-          type="password"
-          placeholder="Repeat password"
+          type={visible ? 'password' : 'text'}
+          placeholder="Choose password"
           className={`${inputStyle}`}
-          value={repeatPassword}
-          onChange={(e) => setRepeatPassword(e.target.value)}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
-
-        {/* Submit */}
-        <button className="p-2 mt-2 bg-black transition-all active:text-green-300 cursor-pointer hover:rounded-xl text-white rounded-lg hover:bg-gray-800">
-          Register
-        </button>
-                <div className="text-center m-2 h-3">
-          {warningMessage && <p className="text-red-500">{warningMessage}</p>}
-          {successMessage && <p className="text-green-600">{successMessage}</p>}
-      </div>
-      </form>
+      </label>
     </div>
+
+    {/* Repeat password */}
+    <input
+      type="password"
+      placeholder="Repeat password"
+      className={`${inputStyle}`}
+      value={repeatPassword}
+      onChange={(e) => setRepeatPassword(e.target.value)}
+    />
+
+    {/* Submit */}
+    <button className="p-2 mt-2 transition-all active:text-green-300 
+    cursor-pointer hover:rounded-xl text-white rounded-lg hover:bg-gray-800 bg-[#374a62]">
+      Register
+    </button>
+
+    {/* Message */}
+  <div className="absolute bottom-3 left-1/2 -translate-x-1/2 text-center m-2 w-[280px] h-3
+                  sm:static sm:text-left sm:mt-2 sm:left-auto sm:translate-x-12">
+    {warningMessage && <p className="text-red-500 text-center">{warningMessage}</p>}
+    {successMessage && <p className="text-green-600 text-center">{successMessage}</p>}
+  </div>
+  </form>
+</div>
+
   </div>
 
   {/* Messages */}
-  <h1 className="text-center font-[iconic] text-[#7eaec9] font-bold">Fashion Forward, Always You</h1>
+  <div className="bg-[#7eadc999] rounded-b-xl pb-1">
+  <h1 className="text-center font-[iconic] text-[#455d7aee] font-bold">Fashion Forward, Always You</h1>
   <h1 className="text-center mt-5">Allready have an account? 
-  <span className="text-[#7eaec9] cursor-pointer hover:underline" onClick={(()=> navigate('/login'))}> Log in</span></h1>
+  <span className="text-[#455d7aee] cursor-pointer hover:underline" onClick={(()=> navigate('/login'))}> Log in</span></h1>
+  </div>
+
 </main>
 
 
