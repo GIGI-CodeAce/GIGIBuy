@@ -68,12 +68,13 @@ function RegisterPage() {
 
   return (
 <main className="max-w-screen-lg transition-all justify-center items-center mx-auto sm:px-2 mt-10">
-  <div className="flex relative sm:static items-center bg-[#7eaec9] justify-between gap-10 p-4 mt-5 pb-10 sm:pb-5 rounded-t-xl">
+  <div className="bg-[#7eadc9af] rounded-t-xl pb-1 h-5"></div>
+  <div className="flex relative sm:static items-center bg-[#7eaec9] shadow-[#7eaec9] justify-between gap-10 px-4 py-2 pb-10 sm:pb-5">
     {/* Left side*/} 
     <div className="w-35/100 text-center flex flex-col items-center justify-center font-[iconic]">
             <img className="w-[100px]"
       src="https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous//diamondFixed.png"/>
-      <h1 className="font-bold text-3xl">Register</h1>
+      <h1 className="font-bold text-3xl underline">Register</h1>
       <h1 className="font-bold text-lg">Use GIGIbuy account</h1>
     </div>
 
@@ -85,7 +86,7 @@ function RegisterPage() {
   >
     {/* Username */}
     <label className="flex flex-col">
-      <h1 className="hover:underline pl-1">Username</h1>
+      <h1 className="hover:underline pl-1 text-white">Username</h1>
       <input
         type="text"
         placeholder="Choose username (min 4)"
@@ -104,7 +105,7 @@ function RegisterPage() {
         {visible ? 'visibility' : 'visibility_off'}
       </span>
       <label className="flex flex-col">
-        <h1 className="hover:underline pl-1">Password</h1>
+        <h1 className="hover:underline pl-1 text-white">Password</h1>
         <input
           type={visible ? 'password' : 'text'}
           placeholder="Choose password"
@@ -125,15 +126,17 @@ function RegisterPage() {
     />
 
     {/* Submit */}
-    <button className="p-2 mt-2 transition-all active:text-green-300 
-    cursor-pointer hover:rounded-xl text-white rounded-lg hover:bg-gray-800 bg-[#374a62]">
+    <button className="p-2 mt-2 transition-all active:text-[#7eaec9]
+    cursor-pointer hover:rounded-xl text-white rounded-lg hover:bg-[#455d7a] bg-[#374a62]">
       Register
     </button>
 
     {/* Message */}
   <div className="absolute bottom-3 left-1/2 -translate-x-1/2 text-center m-2 w-[280px] h-3
-                  sm:static sm:text-left sm:mt-2 sm:left-auto sm:translate-x-12">
-    {warningMessage && <p className="text-red-500 text-center">{warningMessage}</p>}
+                  sm:static sm:text-left sm:mt-2 sm:left-auto sm:translate-x-11">
+    {warningMessage && 
+      <p className="text-red-500 text-center
+       text-shadow-xs text-shadow-gray-700">{warningMessage}</p>}
     {successMessage && <p className="text-green-600 text-center">{successMessage}</p>}
   </div>
   </form>
@@ -142,7 +145,7 @@ function RegisterPage() {
   </div>
 
   {/* Messages */}
-  <div className="bg-[#7eadc999] rounded-b-xl pb-1">
+  <div className="bg-[#7eadc9af] rounded-b-xl pb-1">
   <h1 className="text-center font-[iconic] text-[#455d7aee] font-bold">Fashion Forward, Always You</h1>
   <h1 className="text-center mt-5">Allready have an account? 
   <span className="text-[#455d7aee] cursor-pointer hover:underline" onClick={(()=> navigate('/login'))}> Log in</span></h1>

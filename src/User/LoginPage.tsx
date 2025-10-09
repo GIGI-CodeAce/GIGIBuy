@@ -53,12 +53,13 @@ async function Login(e:any) {
     <>
 
     <main className="max-w-screen-lg mx-auto sm:px-2 transition-all px-0 mt-10">
-  <div className="flex relative sm:static items-center bg-[#7eaec9] justify-between gap-10 p-4 pb-5 mt-5 rounded-t-xl">
+      <div className="bg-[#7eadc9af] rounded-t-xl pb-1 h-5 mt-5"></div>
+  <div className="flex relative sm:static items-center bg-[#7eaec9] justify-between gap-10 px-4 py-2 pb-5">
 
     <div className="w-35/100 text-center flex flex-col items-center justify-center font-[iconic]">
             <img className="w-[100px]"
       src="https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous//diamondFixed.png"/>
-      <h1 className="font-bold text-3xl">Login</h1>
+      <h1 className="font-bold text-3xl underline">Login</h1>
       <h1 className="font-bold text-lg">Use GIGIbuy account</h1>
     </div>
 
@@ -69,7 +70,7 @@ async function Login(e:any) {
       >
         {/* Username */}
         <label className="flex flex-col">
-          <h1 className="hover:underline pl-1 my-2">Username</h1>
+          <h1 className="hover:underline pl-1 my-2 text-white">Username</h1>
           <input
             type="text"
             placeholder="Choose username (min 4)"
@@ -88,7 +89,7 @@ async function Login(e:any) {
             {visible ? 'visibility' : 'visibility_off'}
           </span>
           <label className="flex flex-col">
-            <h1 className="hover:underline pl-1 my-2">Password</h1>
+            <h1 className="hover:underline pl-1 my-2 text-white">Password</h1>
             <input
               type={visible ? 'password' : 'text'}
               placeholder="Choose password"
@@ -100,14 +101,14 @@ async function Login(e:any) {
         </div>
 
         <button 
-        className="p-2 transition-all mt-4 mb-5 sm:mb-0 active:text-green-300 bg-[#374a62]
-         cursor-pointer hover:rounded-xl text-white rounded-lg hover:bg-gray-800">
-          Register  </button>
+        className="p-2 transition-all mt-4 mb-5 sm:mb-0 active:text-[#7eaec9] bg-[#374a62]
+         cursor-pointer hover:rounded-xl text-white rounded-lg hover:bg-[#455d7a]">
+          Login</button>
 
   <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-center m-2 w-[280px] h-3
                   sm:static sm:text-left sm:mt-2 sm:left-auto sm:translate-x-12 mb-1">
     {warningDisplay && (
-      <div className="text-center text-red-600">
+      <div className="text-center text-red-500 text-shadow-xs text-shadow-gray-700">
         {username === '' || password === '' ? (
           <h1>Please enter your login information</h1>
         ) : (
@@ -119,7 +120,7 @@ async function Login(e:any) {
 
     </div>
   </div>
-  <div className="bg-[#7eadc999] rounded-b-xl pb-1">
+  <div className="bg-[#7eadc9af] rounded-b-xl pb-1">
   <h1 className="text-center font-[iconic] text-[#455d7aee] font-bold">Welcome back.</h1>
   <h1 className="text-center mt-5">Dont have an account yet? 
   <span className=" text-[#455d7aee] cursor-pointer hover:underline" onClick={(()=> navigate('/register'))}> Register</span></h1>

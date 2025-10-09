@@ -36,14 +36,6 @@ export default function Routing() {
             <Route path="checkout" element={<Checkout />} />
 
             <Route
-              path="profile"
-              element={
-                <ProtectedRoute>
-                  <UserProfile />
-                </ProtectedRoute>
-              }/>
-
-            <Route
               path="logout"
               element={
                 <ProtectedRoute>
@@ -64,6 +56,12 @@ export default function Routing() {
                 <PublicRoute>
                   <LoginPage />
                 </PublicRoute>  }/>
+
+            <Route path="profile"element={
+                <ProtectedRoute>
+                  <UserProfile />
+                </ProtectedRoute>
+              }/>
           </Route>
         </Routes>
       </UserContextProvider>

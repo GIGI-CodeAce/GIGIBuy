@@ -5,8 +5,8 @@ import { UserContext } from "../userContext";
 import { API_BASE } from "../api";
 
 function Logout() {
-  const { setUserInfo } = useContext(UserContext);
-  const navigate = useNavigate();
+  const { setUserInfo } = useContext(UserContext)
+  const navigate = useNavigate()
 
   useEffect(() => {
     fetch(`${API_BASE}/logout`, {
@@ -14,12 +14,12 @@ function Logout() {
       method: "POST",
     })
       .finally(() => {
-        setUserInfo(null); // clear user data
-        navigate("/"); // ✅ go to homepage
+        setUserInfo(null)
+        navigate("/")
       });
-  }, [setUserInfo, navigate]);
+  }, [setUserInfo, navigate])
 
-  return <div className="text-center mt-10">Logging out...</div>;
+  return <div className="text-center mt-10">Logging out...</div>
 }
 
-export default Logout;
+export default Logout

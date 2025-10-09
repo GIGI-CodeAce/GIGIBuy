@@ -21,11 +21,9 @@ app.use(cookieParser())
 const JWT_SECRET = process.env.JWT_SECRET || 'default_jwt_secret';
 
 
-
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('✅ Connected to MongoDB'))
   .catch(err => console.error('❌ MongoDB connection error:', err))
-
 
 app.get('/profile', async (req, res) => {
   const { token } = req.cookies

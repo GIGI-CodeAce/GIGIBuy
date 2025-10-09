@@ -44,8 +44,10 @@ function UserProfile() {
 
 
   return (
-    <main className="text-center h-[100vh] font-[iconic] font-bold">
-      <div
+    <main className="text-center h-[80vh] font-[iconic] font-bold mt-5">
+
+      <div className="bg-[#7eadc967] rounded-2xl mx-auto max-w-screen-md shadow-lg shadow-[#7eadc967] p-4">
+         <div
         className={`w-[200px] h-[200px] rounded-[50%] font-[iconic] flex justify-center items-center border select-none mx-auto mt-4`}
         style={{ backgroundColor: profileColor.hexString() }}
       >
@@ -74,6 +76,7 @@ function UserProfile() {
 
       <p className="text-gray-600 opacity-50 mt-5">
       Account created: {userInfo?.createdAt ? new Date(userInfo.createdAt).toLocaleDateString() : 'N/A'}</p>
+      </div>
       </div>
     </main>
   );
