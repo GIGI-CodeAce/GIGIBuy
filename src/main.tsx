@@ -3,6 +3,7 @@ import { DefaultLayout, RegistrationLayout } from './layout';
 import { CartProvider } from './shoppingCart/cartContext';
 import { UserContextProvider } from './userContext';
 import FavoritesPage from './Favorites/Favorites';
+import { FavoritesProvider } from './Favorites/FavoritesContext';
 import ProtectedRoute from './protectedRouter';
 import RegisterPage from './User/RegisterPage';
 import CartPage from './shoppingCart/cartPage';
@@ -17,15 +18,19 @@ import Logout from "./User/Logout";
 import './index.css';
 
 createRoot(document.getElementById('root')!).render(
-  <CartProvider>
-    <Routing />
-  </CartProvider>
+  <UserContextProvider>
+    <CartProvider>
+      <FavoritesProvider>
+        <BrowserRouter>
+          <Routing />
+        </BrowserRouter>
+      </FavoritesProvider>
+    </CartProvider>
+  </UserContextProvider>
 );
 
 export default function Routing() {
   return (
-    <BrowserRouter>
-      <UserContextProvider>
         <Routes>
           <Route path="/" element={<DefaultLayout />}>
             <Route index element={<Items />} />
@@ -64,7 +69,5 @@ export default function Routing() {
               }/>
           </Route>
         </Routes>
-      </UserContextProvider>
-    </BrowserRouter>
   );
 }

@@ -7,6 +7,7 @@ import supabase from "../supabase-client";
 import Recommendations from "./recommendations";
 import ImagesSelect from "./imagesSelect";
 import ItemPageFallBack from "./itemPageFallBack";
+import { useFavorites } from "../Favorites/FavoritesContext";
 
 function ItemPage() {
   const { cart, addToCart } = useCart()
@@ -18,8 +19,9 @@ function ItemPage() {
   const [cartAdd, setCardAdd] = useState('Add to cart')
   const [allItems, setAllItems] = useState<ClothingItem[]>([])
   const [similarItems, setSimilarItems] = useState<ClothingItem[]>([])
+   const { addToFavorites, removeFromFavorites, isFavorite } = useFavorites();
   const { id, name } = useParams()
-  const [favorite, setFavorite] = useState(false)
+  const favorite = clothing ? isFavorite(clothing.id) : false;
 
   function CartAdded() {
     setCardAdd('Item added!')
@@ -40,29 +42,29 @@ function ItemPage() {
 
 useEffect(() => {
   if (clothing && allItems.length > 0) {
-      const lastWord = clothing.description.trim().split(" ").pop()?.toLowerCase();
-      const materials = clothing.FabricMaterials?.split(',').map((m: string) => m.trim().toLowerCase()) || [];
+      const lastWord = clothing.description.trim().split(" ").pop()?.toLowerCase()
+      const materials = clothing.FabricMaterials?.split(',').map((m: string) => m.trim().toLowerCase()) || []
 
 
       const filteredByDescription = allItems.filter(item => {
-        if (item.id === clothing.id) return false;
+        if (item.id === clothing.id) return false
 
         const itemLastWord = item.description.trim().split(" ").pop()?.toLowerCase();
-        return itemLastWord === lastWord;
+        return itemLastWord === lastWord
     });
 
       if (filteredByDescription.length < 5) {
         const filteredByMaterials = allItems.filter(item => {
-          if (item.id === clothing.id) return false;
+          if (item.id === clothing.id) return false
 
-          const itemMaterials = item.FabricMaterials?.split(',').map(m => m.trim().toLowerCase()) || [];
-          return itemMaterials.some(m => materials.includes(m));
+          const itemMaterials = item.FabricMaterials?.split(',').map(m => m.trim().toLowerCase()) || []
+          return itemMaterials.some(m => materials.includes(m))
       });
 
-        const combined = [...new Set([...filteredByDescription, ...filteredByMaterials])];
+        const combined = [...new Set([...filteredByDescription, ...filteredByMaterials])]
         setSimilarItems(combined.slice(0, 5));
     } else {
-        setSimilarItems(filteredByDescription.slice(0, 5));
+        setSimilarItems(filteredByDescription.slice(0, 5))
     }
   }
 }, [clothing, allItems]);
@@ -97,12 +99,12 @@ useEffect(() => {
               style={{ backgroundImage: `url(${image ? clothing.coverImage : clothing.image})` }}
             >
               <span
-              onClick={(()=> setFavorite(old => !old))} 
-              className={`material-symbols-outlined
-              select-none !text-3xl cursor-pointer absolute right-5 top-5
-              ${favorite ? 'text-red-500' :''}`}>
-                favorite
-              </span>
+                onClick={() =>
+                  favorite
+                    ? removeFromFavorites(clothing.id)
+                    : addToFavorites(clothing)  }
+                className={`material-symbols-outlined select-none !text-3xl cursor-pointer absolute right-5 top-5 ${favorite ? 'text-red-500' : ''}`}>
+                favorite  </span>
               <img
                 className="w-96 max-h-[450px] object-contain opacity-0"
                 aria-hidden="true"
