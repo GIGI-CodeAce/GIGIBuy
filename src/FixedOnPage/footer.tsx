@@ -12,7 +12,7 @@ function Footer(){
                 </div>
                 <div  className="w-80 h-80 pt-8 text-[13px]/[50px] sm:text-[15px] ">
                 <ul className="">
-                    <li className="underline">Contact us</li>
+                    <li className="text-[#FFB6A6] underline">Contact us</li>
                     <li>customers.gigibuy@fake.com</li>
                     <li>customers.support@fake.com</li>
                     <li>gigibuy.com</li>
@@ -20,7 +20,7 @@ function Footer(){
                 </div>
                 <div  className="w-80 h-80 pt-8 text-[15px]/[50px]">
                 <ul>
-        <li className="underline" >Socials</li>
+        <li className="text-[#FFB6A6] underline" >Socials</li>
         <a href='https://www.linkedin.com/in/dobre-robert-03653b331/' target='_blank'>
         <li className="hover:underline text-blue-400 ">LinkedIn</li>
         </a>

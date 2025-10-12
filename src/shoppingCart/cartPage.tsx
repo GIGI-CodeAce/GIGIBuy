@@ -1,9 +1,12 @@
 import { useCart } from "../shoppingCart/cartContext"; 
 import { Link } from "react-router-dom"; 
 import { useNavigate } from "react-router-dom";
+import React from "react";
 
 function CartPage() {
   const { cart, removeFromCart, updateQuantity } = useCart();
+  console.log(cart);
+  
   const addSubstractStyle = "px-2 py-1 bg-[#e2e6e9] hover:bg-[#ebedef] active:bg-[#e2e6e9] cursor-pointer rounded"
   const navigate = useNavigate();
 
@@ -30,7 +33,7 @@ function CartPage() {
 
   return (
     <>
-      <div className="container mx-auto mb-4 p-4 min-h-[352px]">
+      <div className="container max-w-screen-xl mx-auto mb-4 p-4 min-h-[352px]">
         <h1 className="text-2xl text-[#4b6686] pb-2 font-bold underline">Your Cart</h1>
 
         {cart.length === 0 ? (
@@ -101,4 +104,4 @@ function CartPage() {
   );
 }
 
-export default CartPage
+export default React.memo(CartPage)

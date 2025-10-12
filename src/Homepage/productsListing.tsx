@@ -14,6 +14,7 @@ interface ProductProps {
 function ProductListing({ id, name, image, coverImage, description, price, bool = false }: ProductProps) {
   const [showCoverImg, setShowCoverImg] = useState(false)
   const navigate = useNavigate()
+  const [favorite, setFavorite] = useState(false)
 
   const handleClick = () => {
     const formattedName = name.replace(/\s+/g, "-").toLowerCase()
@@ -36,13 +37,15 @@ function ProductListing({ id, name, image, coverImage, description, price, bool 
         className="bg-cover rounded-t-xl h-[200px] duration-300"
         style={{ backgroundImage: `url(${showCoverImg ? coverImage : image})` }}
       >
-        <div className={`justify-end p-4 pt-0 ${showCoverImg ? "flex" : "hidden"}`}>
+        <div 
+        onClick={(e)=>  {e.stopPropagation(); setFavorite((old)=> !old)}}
+        className={`justify-end p-4 pt-0 ${favorite ? 'text-red-500' : ''} ${showCoverImg ? "flex" : "hidden"}`}>
           <span className="material-symbols-outlined select-none">favorite</span>
         </div>
       </div>
 
       {/* Product Name */}
-      <h1 className={`font-bold text-lg ${showCoverImg ? "text-[#FFB6A6]" : "text-gray-800"}`}>
+      <h1 className={`font-bold text-lg ${showCoverImg ? "text-[#FFB6A6] text-shadow-2xs text-shadow-gray-500" : "text-gray-800"}`}>
         {name}
       </h1>
 

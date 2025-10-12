@@ -1,5 +1,5 @@
 
-<h1 align="center">GIGIbuy v1.3.5</h1>
+<h1 align="center">GIGIbuy v1.3.6</h1>
 <p align="center">
   <img src="https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous//diamondFixed.png" width="40%" height="320" alt="project-image">
 </p>
