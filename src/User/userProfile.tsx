@@ -57,21 +57,21 @@ function UserProfile() {
 
       <div
       onClick={(()=> navigate('/cart'))} 
-      className="w-[200px] border cursor-pointer rounded-xl mx-auto flex  m-2 p-1 text-start">
+      className="w-[200px] transition-all active:scale-96 border cursor-pointer rounded-xl mx-auto flex  m-2 p-1 text-start">
         <span>Shopping cart</span>
         <span className="material-symbols-outlined select-none ml-auto">shopping_cart</span>
       </div>
 
       <div
       onClick={(()=> navigate('/favorites'))} 
-      className="w-[200px] border cursor-pointer rounded-xl mx-auto flex  m-2 p-1 text-start">
+      className="w-[200px] transition-all active:scale-96 border cursor-pointer rounded-xl mx-auto flex  m-2 p-1 text-start">
         <span>Favorite items</span>
         <span className="material-symbols-outlined select-none ml-auto">favorite</span>
       </div>
 
       <div className="mt-20">
          <button 
-      className="text-[#ffd5cc] w-[150px] cursor-pointer mx-auto border-black border bg-[#a0c4d7] hover:bg-[#90bad0] active:bg-[#7eaec9] rounded-2xl"
+      className="text-[#ffd5cc] w-[150px] cursor-pointer transition-all active:scale-96 mx-auto border-black border bg-[#a0c4d7] hover:bg-[#90bad0] active:bg-[#7eaec9] rounded-2xl"
       onClick={logout}>Logout</button>
 
       <p className="text-gray-600 opacity-50 mt-5">

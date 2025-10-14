@@ -13,7 +13,7 @@ function Recommendations({ similarItems }: RecommendationsProps) {
           <h2 className="text-2xl text-[#4b6686] xl:pl-8 p-4 font-bold underline">
             You may also like
           </h2>
-          <div className={`flex overflow-x-auto ${similarItems.length < 4 ? 'sm:justify-center' : ''} scrollbar-hide`}>
+          <div className={`flex overflow-x-auto scrollbar-hide`}>
             <div className="flex gap-4 p-4">
               {similarItems.map((item) => (
                 <div key={item.id}>
@@ -29,3 +29,6 @@ function Recommendations({ similarItems }: RecommendationsProps) {
 }
 
 export default Recommendations
+
+
+// ${similarItems.length < 4 ? 'sm:justify-center' : ''}

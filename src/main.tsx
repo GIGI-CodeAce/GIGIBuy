@@ -15,6 +15,7 @@ import Items from './Homepage/itemsHome';
 import LoginPage from './User/LoginPage';
 import PublicRoute from './PublicRoute'; 
 import Logout from "./User/Logout";
+import ScrollToTop from './ItemPage/scrollToTop';
 import './index.css';
 
 createRoot(document.getElementById('root')!).render(
@@ -22,6 +23,7 @@ createRoot(document.getElementById('root')!).render(
     <CartProvider>
       <FavoritesProvider>
         <BrowserRouter>
+          <ScrollToTop/>
           <Routing />
         </BrowserRouter>
       </FavoritesProvider>

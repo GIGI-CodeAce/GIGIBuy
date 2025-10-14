@@ -39,7 +39,7 @@ const ProductListing = (item : ClothingItem) => {
         favorite ? removeFromFavorites(item.id) : addToFavorites(item);
       }}
       className={`absolute top-0 right-2 w-8 h-8 flex items-center justify-center rounded-full cursor-pointer
-        ${favorite ? 'text-red-500' : 'text-black'} bg-opacity-50 ${showCoverImg ? "flex" : "hidden"}`}
+        ${favorite ? 'text-[#FFB6A6] !font-extrabold text-shadow-md' : 'text-black'} bg-opacity-50 ${showCoverImg ? "flex" : "hidden"}`}
     >
       <span className="material-symbols-outlined select-none">favorite</span>
     </div>

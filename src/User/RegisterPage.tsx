@@ -53,7 +53,7 @@ function RegisterPage() {
       setWarningMessage('Username already taken')
     } else {
         if(username.length > 15 || username.length <= 3){
-    setWarningMessage('Username should be over 4 and less than 15 characters long')
+    setWarningMessage('Username should over 4 characters log')
   }else{
     setWarningMessage('Registration failed. Please try again.')
   }
@@ -89,6 +89,7 @@ function RegisterPage() {
       <h1 className="hover:underline pl-1 text-white">Username</h1>
       <input
         type="text"
+        maxLength={15}
         placeholder="Choose username (min 4)"
         className={`${inputStyle}`}
         value={username}
@@ -132,8 +133,8 @@ function RegisterPage() {
     </button>
 
     {/* Message */}
-  <div className="absolute bottom-3 left-1/2 -translate-x-1/2 text-center m-2 w-[280px] h-3
-                  sm:static sm:text-left sm:mt-2 sm:left-auto sm:translate-x-11">
+  <div className="absolute bottom-3 left-1/2 -translate-x-1/2 text-center my-2 h-3
+                  sm:static sm:text-left sm:mt-2 sm:left-auto ">
     {warningMessage && 
       <p className="text-red-500 text-center
        text-shadow-xs text-shadow-gray-700">{warningMessage}</p>}

@@ -9,7 +9,7 @@ function NavigationBar({ onSearch, value }: { onSearch: (query: string) => void;
   const navigate = useNavigate()
   const location = useLocation()
   const { setUserInfo, userInfo } = useContext(UserContext);
-  const profileCartStyling = "flex items-center gap-1 mr-1 hover:text-[#FFB6A6] hover:cursor-pointer transition-colors"
+  const profileCartStyling = "flex items-center gap-1 mr-[6px] hover:text-[#FFB6A6] hover:cursor-pointer transition-colors"
   const [searchText, setSearchText] = useState(value)
   
 
@@ -49,8 +49,9 @@ function NavigationBar({ onSearch, value }: { onSearch: (query: string) => void;
 
   return (
     <nav className="w-full z-100 pt-0 h-20 bg-[#455d7aee] transition-all flex fixed justify-evenly items-center text-[15px] sm:text-[20px] text-white">
-      <a onClick={()=> navigate('/')}>
-        <h1 title="Refresh homepage" className="text-2xl select-none cursor-pointer active:text-[#e5c9c3] text-[20px] font-[iconic] ml-1 sm:text-[25px] flex items-center gap-1">
+      <a onClick={()=> {navigate('/'), setSearchText(''), onSearch(''), localStorage.setItem("searchQuery", '')}}>
+        <h1 title="Refresh homepage" className="text-2xl select-none cursor-pointer
+        active:text-[#e5c9c3] text-[20px] font-[iconic] ml-1 sm:text-[25px] flex items-center gap-1">
        <div className={`w-10 h-9 mt-1 bg-cover bg-center sm:block ${totalItemsInCart >= 100 ? 'hidden' : ''}
         bg-[url('https://mfkjjxderhqbsfsmtzql.supabase.co/storage/v1/object/public/miscellaneous/diamondFixed.png')]`}></div>
           GIGIbuy
@@ -100,9 +101,9 @@ function NavigationBar({ onSearch, value }: { onSearch: (query: string) => void;
         <span className="align-super font-bold whitespace-nowrap select-none">Cart</span>
       </div>
 
-      <div title="User profile" className={profileCartStyling} onClick={() => navigate("/profile")}>
+      <div title={`${username}\nUser profile`} className={profileCartStyling} onClick={() => navigate("/profile")}>
         <span className="material-symbols-outlined select-none">person</span>
-        <span className="align-super font-bold">{`${username ? username : 'Profile'}`}</span>
+        <span className="align-super font-bold max-w-[70px] sm:max-w-[200px] truncate">{`${username ? username : 'Profile'}`}</span>
       </div>
     </nav>
   );

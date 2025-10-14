@@ -40,11 +40,12 @@ function FavoritesPage() {
                 <button
                   onMouseEnter={() => setIsHovering(true)}
                   onMouseLeave={() => setIsHovering(false)}
-                  onClick={() => removeFromFavorites(item.id)}
-                  className="px-4 bg-[#a0c4d7] hover:bg-[#7594a3] transition-all scale-88 sm:scale-100 p-2 rounded-[500px] text-white cursor-pointer hover:text-[#ffc5b8]"
+                  onClick={(e) => {e.stopPropagation(), removeFromFavorites(item.id)}}
+                  className=" bg-[#a0c4d7] hover:bg-[#7594a3] transition-all active:scale-82
+                   scale-88 sm:scale-100 pt-2 pb-1 px-[14px]  h-13 rounded-[50%] text-white cursor-pointer hover:text-[#ffc5b8]"
                 >
-                  <span className={`material-symbols-outlined hover:${(()=> setIsHovering(true))}  !text-2xl`}>{`${isHovering ? 'heart_broken' : 'favorite'}`}</span></button>
-              </div>
+                  <span className={`material-symbols-outlined hover:${(()=> setIsHovering(true))} !text-2xl`}>{`${isHovering ? 'heart_broken' : 'favorite'}`}
+                    </span></button>  </div>
             ))}
 
             <div className="mt-6 flex justify-between items-center">

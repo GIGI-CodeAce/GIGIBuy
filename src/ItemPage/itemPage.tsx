@@ -103,7 +103,8 @@ useEffect(() => {
                   favorite
                     ? removeFromFavorites(clothing.id)
                     : addToFavorites(clothing)  }
-                className={`material-symbols-outlined select-none !text-3xl cursor-pointer absolute right-5 top-5 ${favorite ? 'text-red-500' : ''}`}>
+                title="Favorite"
+                className={`material-symbols-outlined select-none !text-3xl transition-all active:scale-82 cursor-pointer absolute right-5 top-5 ${favorite ? 'text-[#FFB6A6] !font-extrabold text-shadow-md' : ''}`}>
                 favorite  </span>
               <img
                 className="w-96 max-h-[450px] object-contain opacity-0"
@@ -116,11 +117,12 @@ useEffect(() => {
             <main className="max-w-[500px] min-w-[250px] sm:text-xl text-md text-center pt-[0] mx-auto sm:mx-0 sm:pt-[20vh] mt-2 sm:mt-8 sm:p-10 sm:mr-2">
               <h1 className="font-[iconic] font-bold sm:text-md text-xl lg:w-[222px] mx-auto">{clothing.name}</h1>
               <p title={clothing.description} className="lg:min-w-[222px] text-gray-500">{clothing.description}</p>
-              <p className="text-[#FFB6A6] mx-auto rounded-xl w-16 shadow-xl">${clothing.price}</p>
+              <p className="text-[#FFB6A6] mx-auto rounded-xl w-16 shadow-xl text-shadow-2xs text-shadow-gray-500">${clothing.price}</p>
               <br /><br />
               <button title="Click to add"
                 onClick={handleAddToCart}
-                className="text-[#ffd5cc] w-40 cursor-pointer border-black border bg-[#a0c4d7] hover:bg-[#90bad0] active:bg-[#7eaec9] p-2 rounded-2xl"
+                className="text-[#ffd5cc] transition-all w-40 cursor-pointer border bg-[#a0c4d7]
+                 hover:bg-[#90bad0] active:bg-[#7eaec9] p-2 rounded-2xl hover:rounded-3xl "
               >
                 {cartAdd}
               </button>
