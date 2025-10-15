@@ -16,9 +16,14 @@ function FavoritesPage() {
         <h1 className="text-2xl text-[#4b6686] pb-2 font-bold underline">Your favorites</h1>
 
         {favorites.length === 0 ? (
-          <div className="text-gray-500 flex-col text-center justify-center mt-20">
+          <div className="text-gray-500 flex-col flex items-center text-center gap-1 justify-center mt-20">
           <h1 className="text-4xl">˙◠˙</h1>
           <p className="text-xl">You have no favorites yet..</p>
+          <p className="text-md flex items-center gap-1 opacity-70">
+            Hit the 
+            <span className="material-symbols-outlined text-2xl leading-none align-middle !font-extrabold">
+              favorite </span>on your favorites!</p>
+
         </div>
         ) : (
           <div>
@@ -33,7 +38,7 @@ function FavoritesPage() {
                     />
                   <div>
                       <h2 className="text-[14px] sm:text-lg font-bold hover:underline">{item.name}</h2>
-                    <p className="text-sm text-[#ffac99] shadow w-20">${item.price}</p>
+                    <p className="text-sm text-[#ffac99] shadow w-20 text-shadow-2xs text-shadow-gray-500">${item.price}</p>
                   </div>
                 </div>
 
@@ -50,7 +55,7 @@ function FavoritesPage() {
 
             <div className="mt-6 flex justify-between items-center">
               <h2 className="text-xl font-medium">Total:</h2>
-              <p className="text-xl font-bold">{favoritesAmmount} items</p>
+              <p className="text-xl font-[iconic] !font-extrabold"><span className="text-[#455d7aee]">{favoritesAmmount}</span> items</p>
             </div>
           </div>
         )}

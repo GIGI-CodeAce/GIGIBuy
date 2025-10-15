@@ -37,9 +37,11 @@ function CartPage() {
         <h1 className="text-2xl text-[#4b6686] pb-2 font-bold underline">Your Cart</h1>
 
         {cart.length === 0 ? (
-          <div className="text-gray-500 flex-col text-center justify-center mt-20">
+          <div className="text-gray-500 flex-col flex items-center text-center justify-center mt-20">
           <h1 className="text-4xl">˙◠˙</h1>
           <p className="text-xl">Your cart is empty</p>
+          <p className="text-md flex items-center gap-1 opacity-70">
+            Go ahead! Add some clothes on there</p>
         </div>
         ) : (
           <div>
@@ -57,7 +59,7 @@ function CartPage() {
                     <Link to={`/${item.id}/${item.name}`}>
                       <h2 className="text-[14px] sm:text-lg font-bold hover:underline">{item.name}</h2>
                     </Link>
-                    <p className="text-sm text-[#ffac99] shadow w-20">${item.price}</p>
+                    <p className="text-sm text-[#ffac99] text-shadow-2xs text-shadow-gray-500 shadow w-20">${item.price}</p>
                   </div>
                 </div>
 
