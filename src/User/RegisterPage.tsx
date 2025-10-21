@@ -67,7 +67,9 @@ function RegisterPage() {
 }
 
   return (
-<main className="max-w-screen-lg transition-all justify-center items-center mx-auto sm:px-2 mt-10">
+    <main>
+  <div className="inset-0 z-0 h-screen opacity-14 absolute w-full bg-[url('./assets/rotatediamond.png')] bg-[length:100px_100px] bg-repeat"></div>
+<main className="relative z-10 max-w-screen-lg transition-all justify-center items-center mx-auto sm:px-2 pt-10">
   <div className="bg-[#7eadc9af] rounded-t-xl pb-1 h-5"></div>
   <div className="flex relative sm:static items-center bg-[#7eaec9] shadow-[#7eaec9] justify-between gap-10 px-4 py-2 pb-10 sm:pb-5">
     {/* Left side*/} 
@@ -86,7 +88,7 @@ function RegisterPage() {
   >
     {/* Username */}
     <label className="flex flex-col">
-      <h1 className="hover:underline pl-1 text-white">Username</h1>
+      <h1 className="hover:underline pl-1 mt-2 text-white">Username</h1>
       <input
         type="text"
         maxLength={15}
@@ -134,7 +136,7 @@ function RegisterPage() {
 
     {/* Message */}
   <div className="absolute bottom-3 left-1/2 -translate-x-1/2 text-center my-2 h-3
-                  sm:static sm:text-left sm:mt-2 sm:left-auto ">
+                  sm:static sm:text-left sm:mt-2 sm:left-auto w-full sm:w-auto">
     {warningMessage && 
       <p className="text-red-500 text-center
        text-shadow-xs text-shadow-gray-700">{warningMessage}</p>}
@@ -153,6 +155,7 @@ function RegisterPage() {
   </div>
 
 </main>
+    </main>
 
 
   );

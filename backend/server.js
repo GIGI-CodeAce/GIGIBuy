@@ -7,11 +7,13 @@ import cookieParser from 'cookie-parser';
 import User from './user.js';
 import { LoginUser, RegisterUser } from './accountRegisterAssets.js';
 
-dotenv.config(); // ✅ Must be called before using process.env
+dotenv.config()
 
-const app = express();
-const PORT = process.env.PORT || 4000;
-const JWT_SECRET = process.env.JWT_SECRET || 'default_jwt_secret';
+const app = express()
+const PORT = process.env.PORT || 4000
+const JWT_SECRET = process.env.JWT_SECRET || 'default_jwt_secret'
+
+console.log("MONGO_URI:", process.env.MONGO_URI ? "Loaded ✅" : "❌ Missing!");
 
 const allowedOrigins = [
   "http://localhost:3000",
