@@ -7,7 +7,7 @@ function ProtectedRoute({ children }: { children: JSX.Element }) {
   const location = useLocation();
 
   if (loading) {
-    return <div className="text-center">Checking authentication...</div>;
+    return <div className="text-center animate-pulse my-5">Checking authentication...</div>;
   }
 
   if (!userInfo || userInfo.error === "No token provided") {

@@ -29,7 +29,7 @@ function Items() {
 
   const [selectedCategory, setSelectedCategory] = useState<string>(
     localStorage.getItem("selectedCategory") || "All"
-  );
+  )
 
   // Fetch clothing items from Supabase
   useEffect(() => {
@@ -40,14 +40,14 @@ function Items() {
       } else {
         setClothing(data || [])
       }
-    };
+    }
 
       setTimeout(() => {
             setLoading(false)
       }, 1000)
 
     fetchClothing()
-  }, []);
+  }, [])
 
   useEffect(() => {
     let filtered = clothing;
@@ -57,13 +57,13 @@ function Items() {
         item.categories.some(
           (cat) => cat.toLowerCase() === selectedCategory.toLowerCase()
         )
-      );
+      )
     }
 
     if (searchQuery.trim() !== "") {
       filtered = filtered.filter((item) =>
         item.description.toLowerCase().includes(searchQuery.toLowerCase())
-      );
+      )
     }
 
     setFilteredClothing(filtered)
@@ -72,13 +72,13 @@ function Items() {
   const handleCategoryChange = (category: string) => {
     setSelectedCategory(category);
     localStorage.setItem("selectedCategory", category);
-  };
+  }
 
   useEffect(() => {
     return () => {
       localStorage.removeItem("searchQuery");
     };
-  }, []);
+  }, [])
 
   return (
     <>
@@ -91,7 +91,12 @@ function Items() {
           Clothing Items
         </h1>
 
-        {error && <p className="text-red-500">Error: {error}</p>}
+        {error &&                    
+            <div className="text-gray-500 flex-col text-center justify-center m-30">
+              <h1 className="text-4xl">˙◠˙</h1>
+              <p className="text-xl">ERROR</p>
+              <p className="text-xl text-[#FFB6A6]">{error}</p>
+            </div>}
         {filteredClothing.length === 0 && !error && (
           !loading ? (
             <div className="text-gray-500 flex-col text-center justify-center m-30">

@@ -34,6 +34,7 @@ const ProductListing = (item : ClothingItem) => {
     style={{ backgroundImage: `url(${showCoverImg ? coverImage : image})` }}
   >
     <div
+      title="Favorite"
       onClick={(e) => {
         e.stopPropagation();
         favorite ? removeFromFavorites(item.id) : addToFavorites(item);

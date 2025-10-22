@@ -47,11 +47,14 @@ function UserProfile() {
 
   return (
     <main className="text-center h-[80vh] font-[iconic] font-bold shadow-[#587789] transition-all justify-center items-center mx-auto sm:px-2 mt-10">
-      <div className="bg-[#7eadc967] p-2 mx-auto max-w-screen-md rounded-2xl">
-      <div className="bg-[#7eadc967] rounded-2xl mx-auto max-w-screen-md shadow-lg shadow-[#7eadc967] p-4">
+      {/* Diamond bg pattern */}
+      <div className="bg-[#7eadc967] p-2 relative mx-auto max-w-screen-md rounded-2xl">
+            <div className="text-center absolute max-w-screen-md inset-0 z-0 opacity-13 bg-[url('./assets/rotatediamond.png')] bg-[length:100px_100px]
+           bg-repeat font-[iconic] font-bold shadow-[#587789] transition-all justify-center items-center mx-auto"></div>
+
+      <div className="bg-[#7eadc967] relative z-10 rounded-2xl mx-auto max-w-screen-md shadow-lg shadow-[#7eadc967] p-4">
          <div
         className={`w-[200px] h-[200px] rounded-[50%] bg-[#FFB6A6] font-[iconic] flex justify-center items-center border select-none mx-auto mt-4`}
-        // style={{ backgroundColor: profileColor.hexString() }}
       >
         <h1 className="text-[124px] h-[195px]">{NameInitial}</h1>
       </div>
@@ -63,7 +66,7 @@ function UserProfile() {
           onMouseLeave={() => setHoverCart(false)}
           onTouchStart={() => setHoverCart(true)}
           onTouchEnd={()=> setHoverCart(false)} 
-      className="w-[200px] hover:border-2 transition-all active:scale-96 border cursor-pointer rounded-xl mx-auto flex  m-2 p-1 text-start">
+      className={`w-[200px] hover:border-2 active:scale-96 border cursor-pointer rounded-xl bg-[#7eadc943] ${hoverCart ? 'font-bold bg-[#7eadc967]' :''} mx-auto flex  m-2 p-1 text-start`}>
         <span>Shopping cart</span>
         <span className={`material-symbols-outlined select-none ml-auto ${hoverCart ? 'text-[#FFB6A6]': ''}`}>shopping_cart</span>
       </div>
@@ -74,7 +77,7 @@ function UserProfile() {
           onMouseLeave={() => setHoverFav(false)}
           onTouchStart={() => setHoverFav(true)}
           onTouchEnd={()=> setHoverFav(false)} 
-      className="w-[200px] hover:border-2 transition-all active:scale-96 border cursor-pointer rounded-xl mx-auto flex  m-2 p-1 text-start">
+      className={`w-[200px] hover:border-2 active:scale-96 border font-[iconic] bg-[#7eadc943] ${hoverFav ? 'font-bold bg-[#7eadc967]' :''} cursor-pointer rounded-xl mx-auto flex  m-2 p-1 text-start`}>
         <span>Favorite items</span>
         <span className={`material-symbols-outlined select-none ml-auto ${hoverFav ? 'text-[#FFB6A6]': ''}`}>favorite</span>
       </div>

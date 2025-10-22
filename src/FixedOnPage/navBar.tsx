@@ -48,7 +48,7 @@ function NavigationBar({ onSearch, value }: { onSearch: (query: string) => void;
   const totalItemsInCart = cart.reduce((total, item) => total + item.quantity, 0)
 
   return (
-    <nav className="w-full z-100 pt-0 h-20 bg-[#455d7aee] transition-all flex fixed justify-evenly items-center text-[15px] sm:text-[20px] text-white">
+    <nav className="w-full z-100  select-none pt-0 h-20 bg-[#455d7aee] transition-all flex fixed justify-evenly items-center text-[15px] sm:text-[20px] text-white">
       <a onClick={()=> {navigate('/'), setSearchText(''), onSearch(''), localStorage.setItem("searchQuery", '')}}>
         <h1 title="Refresh homepage" className="text-2xl select-none cursor-pointer
         active:text-[#e5c9c3] text-[20px] font-[iconic] ml-1 sm:text-[25px] flex items-center gap-1">
