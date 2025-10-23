@@ -15,7 +15,7 @@ function Footer(){
                     <li className="text-[#FFB6A6] underline">Contact us</li>
                     <li>customers.gigibuy@fake.com</li>
                     <li>customers.support@fake.com</li>
-                    <li>gigibuy.com</li>
+                    <li>gigibuy.vercel.app</li>
                 </ul>
                 </div>
                 <div  className="w-80 h-80 pt-8 text-[15px]/[50px]">

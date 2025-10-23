@@ -29,7 +29,7 @@ function FavoritesPage() {
           <div>
             {favorites.map((item) => (
               <div onClick={(()=> navigate(`/${item.id}/${item.name}`))} key={item.id}
-               className="flex justify-between items-center border-b py-4 cursor-pointer">
+               className="flex justify-between items-center border-b py-4 cursor-pointer p-2 rounded hover:bg-[#ffb6a636]">
                 <div className="flex items-center">
                     <img
                       src={item.image} 

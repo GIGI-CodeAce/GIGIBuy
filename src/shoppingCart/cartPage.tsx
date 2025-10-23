@@ -46,7 +46,7 @@ function CartPage() {
         ) : (
           <div>
             {cart.map((item) => (
-              <div key={item.id} className="flex justify-between items-center border-b py-4">
+              <div key={item.id} className="flex justify-between items-center border-b py-4 px-0 sm:px-2">
                 <div className="flex items-center">
                   <Link to={`/${item.id}/${item.name}`} className="flex items-center">
                     <img

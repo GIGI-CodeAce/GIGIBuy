@@ -8,14 +8,14 @@
 An online clothing shop showcasing items like jackets, vests, etc. While purchases and deliveries are unavailable, the website is a sleek, responsive showcase of trendy fashion. Reflects its commitment to individuality and style.
 </p>
 
-## 📑 Table of Contents
+<!-- ## 📑 Table of Contents
 
 - [Live Demo](#visit-here)
 - [Features](#-features)
 - [Code Snippets](#snippets-of-code)
 - [Author & License](#author)
 
----
+--- -->
 
 <h2 id="visit-here" align="center">Visit here</h2>
 
