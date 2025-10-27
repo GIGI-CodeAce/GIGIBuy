@@ -5,17 +5,8 @@
 </p>
 
 <p align="center">
-An online clothing shop showcasing items like jackets, vests, etc. While purchases and deliveries are unavailable, the website is a sleek, responsive showcase of trendy fashion. Reflects its commitment to individuality and style.
+An online clothing shop showcasing various clothing items. The website is a sleek, responsive showcase of trendy fashion. Reflects its commitment to individuality and style.
 </p>
-
-<!-- ## 📑 Table of Contents
-
-- [Live Demo](#visit-here)
-- [Features](#-features)
-- [Code Snippets](#snippets-of-code)
-- [Author & License](#author)
-
---- -->
 
 <h2 id="visit-here" align="center">Visit here</h2>
 
@@ -27,12 +18,13 @@ An online clothing shop showcasing items like jackets, vests, etc. While purchas
 
 <h4 id="features">Here're some of the project's best features</h4>
 
-- **Dynamic Search Bar**: Real-time filtering of clothing items based on user input.
-- **Placeholder User Profile**: Interactive profile section with placeholder data.
-- **Fully Functional Shopping Cart**: Add, remove, and update quantities of items, with data persisted in local storage.
-- **Detailed Product Pages**: Comprehensive information about each clothing item, including images, descriptions, and pricing.
-- **40+ Clothing Items**: Fetched dynamically using a custom Supabase API.
-- **React Router**: Seamless navigation between pages with URL routing.
+- **Dynamic Search Bar**: Real-time filtering of clothing items based on user input.  
+- **User Authentication System**: Secure login and registration functionality using MongoDB Auth, allowing users to create accounts & log in. 
+- **Favorites System**: Users can mark clothing items as favorites, which are stored persistently in the favorites category for easy access.  
+- **Fully Functional Shopping Cart**: Add, remove, and update quantities of items, with data persisted in local storage.  
+- **Detailed Product Pages**: Comprehensive information about each clothing item, including images, descriptions, and pricing.  
+- **40+ Clothing Items**: Fetched dynamically using a custom Supabase API.  
+- **React Router**: Seamless navigation between pages with URL routing.  
 - **Responsive Design**: Built with Tailwind CSS for a consistent experience across devices.
 
 <h2 align="center">Languages and tools used</h2>
@@ -61,6 +53,10 @@ An online clothing shop showcasing items like jackets, vests, etc. While purchas
     <a href="https://www.theguardian.com/europe" target="_blank" rel="noreferrer"> 
       <img src="https://raw.githubusercontent.com/GIGIsOtherStuff/mainWebMedia/main/AppImages/Tools/supabase.png" 
             alt="Guardian" width="40" height="40"/> 
+  </a>
+    <a href="https://www.mongodb.com" target="_blank" rel="noreferrer"> 
+      <img src="https://raw.githubusercontent.com/GIGIsOtherStuff/mainWebMedia/main/AppImages/Tools/mongodb.png" 
+            alt="MongoDB" width="40" height="40"/> 
   </a></a>
 </p>
   
