@@ -9,6 +9,7 @@ function LoginPage() {
   const [password, setPassword] = useState('')
   const [visible, setVisible] = useState(true)
   const [redirect, setRedirect] = useState(false)
+  const [notRunningServer, setNotRunningServer] = useState(false)
   const navigate = useNavigate()
   const {setUserInfo} = useContext(UserContext)
   const [warningDisplay, setWarningDisplay] = useState(false)
@@ -21,7 +22,8 @@ function LoginPage() {
 async function Login(e:any) {
     e.preventDefault();
 
-    const response = await fetch(`${API_BASE}/login`, {
+    try{
+          const response = await fetch(`${API_BASE}/login`, {
       method: 'POST',
       body: JSON.stringify({ username, password }),
       headers: { 'Content-Type': 'application/json' },
@@ -43,11 +45,15 @@ async function Login(e:any) {
     setPassword('')
     }
 
+  }catch(error){
+    setNotRunningServer(true)
+    setWarningDisplay(true)
   }
-
-  if(redirect){
-    return <Navigate to={"/profile"}/>
   }
+  
+  useEffect(()=> {
+    <Navigate to={"/profile"}/>
+  }, [redirect])
 
   return (
  <main>
@@ -109,7 +115,10 @@ async function Login(e:any) {
                   sm:static sm:text-left sm:mt-2 sm:left-auto sm:translate-x-12 mb-3">
     {warningDisplay && (
       <div className="text-center text-red-500 text-shadow-xs text-shadow-gray-700">
-        {username === '' || password === '' ? (
+        {notRunningServer ? (
+          <h1>Server not running or unreachable.</h1>
+        ) :
+        username === '' || password === '' ? (
           <h1>Please enter your login information</h1>
         ) : (
           <h1>Invalid username and/or password</h1>

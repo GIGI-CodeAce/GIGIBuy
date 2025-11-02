@@ -9,6 +9,7 @@ function RegisterPage() {
   const [warningMessage, setWarningMessage] = useState('')
   const [successMessage, setSuccessMessage] = useState('')
   const [visible, setVisible] = useState(true)
+  const [ServerRunning, setServerRunning] = useState(false)
   const navigate = useNavigate()
   const inputStyle = 'p-2 border rounded-lg bg-gray-100 my-2'
 
@@ -20,7 +21,6 @@ function RegisterPage() {
 
   useEffect(() => {
     setWarningMessage('')
-    // setSuccessMessage('')
   }, [username, password])
 
  async function Register(e: FormEvent) {
@@ -29,7 +29,7 @@ function RegisterPage() {
   setWarningMessage('')
   setSuccessMessage('')
 
-
+  if(ServerRunning){
   if (!username || !password) {
     setWarningMessage('Please enter your register information');
     return
@@ -43,8 +43,10 @@ function RegisterPage() {
     return
   }
 
+  }
 
-  const response = await fetch(`${API_BASE}/register`, {
+  try{
+     const response = await fetch(`${API_BASE}/register`, {
     method: 'POST',
     body: JSON.stringify({ username, password }),
     headers: { 'Content-Type': 'application/json' },
@@ -68,6 +70,10 @@ function RegisterPage() {
     setTimeout(() => {
       ResetRegister()
     }, 3000)
+  }
+  }catch(error){
+    setWarningMessage('Server not running or unreachable.')
+    setServerRunning(true)
   }
 }
 
