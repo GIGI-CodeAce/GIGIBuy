@@ -23,66 +23,56 @@ function RegisterPage() {
     setWarningMessage('')
   }, [username, password])
 
-async function Register(e: FormEvent) {
+ async function Register(e: FormEvent) {
   e.preventDefault();
 
-  setWarningMessage('');
-  setSuccessMessage('');
+  setWarningMessage('')
+  setSuccessMessage('')
 
-  if (!username || !password || !repeatPassword) {
-    setWarningMessage('Please fill in all required fields.');
-    return;
+  // if(ServerRunning){
+  if (!username || !password) {
+    setWarningMessage('Please enter your register information');
+    return
   }
-
-  if (username.length < 4 || username.length > 15) {
-    setWarningMessage('Username should be between 4 and 15 characters long.');
-    return;
+  if(password.length < 4){
+    setWarningMessage('Password is too short')
+    return
   }
-
-  if (password.length < 4) {
-    setWarningMessage('Password is too short.');
-    return;
-  }
-
   if (password !== repeatPassword) {
     setWarningMessage('Passwords do not match.');
-    return;
+    return
   }
+  // }
 
-  if (!ServerRunning) {
-    setWarningMessage('Server is not running.');
-    return;
+  try{
+     const response = await fetch(`${API_BASE}/register`, {
+    method: 'POST',
+    body: JSON.stringify({ username, password }),
+    headers: { 'Content-Type': 'application/json' },
+    credentials: 'include',
+  })
+
+  if (response.status !== 200) {
+    const errorData = await response.json()
+    console.log('Server response:', errorData);
+    if (errorData?.error === 'Username allready exists') {
+      setWarningMessage('Username already taken')
+    } else {
+        if(username.length > 15 || username.length <= 3){
+    setWarningMessage("Username should over 4 char's long")
+  }else{
+    setWarningMessage('Registration failed. Please try again.')
   }
-
-  try {
-    const response = await fetch(`${API_BASE}/register`, {
-      method: 'POST',
-      body: JSON.stringify({ username, password }),
-      headers: { 'Content-Type': 'application/json' },
-      credentials: 'include',
-    });
-
-    if (response.status !== 200) {
-      const errorData = await response.json();
-      console.log('Server response:', errorData);
-
-      if (errorData?.error === 'Username already exists') {
-        setWarningMessage('Username already taken.');
-      } else {
-        setWarningMessage('Registration failed. Please try again.');
-      }
-      return
     }
-
-    setSuccessMessage('Account created. Go to login to sign in.');
+  } else {
+    setSuccessMessage('Account created. Go to login to sign in.')
     setTimeout(() => {
-      ResetRegister();
-    }, 3000);
-
-  } catch (error) {
-    console.error('Registration error:', error)
+      ResetRegister()
+    }, 3000)
+  }
+  }catch(error){
     setWarningMessage('Server not running or unreachable.')
-    setServerRunning(false)
+    setServerRunning(true)
   }
 }
 
@@ -176,8 +166,6 @@ async function Register(e: FormEvent) {
 
 </main>
     </main>
-
-
   );
 }
 
