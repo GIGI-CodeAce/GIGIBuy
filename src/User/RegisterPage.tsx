@@ -78,7 +78,7 @@ function RegisterPage() {
 
   return (
     <main>
-  <div className="inset-0 z-0 h-screen opacity-11 absolute w-full bg-[url('./assets/rotatediamond.png')] bg-[length:100px_100px] bg-repeat"></div>
+  <div className="inset-0 z-0 h-screen opacity-13 absolute w-full bg-[url('./assets/rotatediamond.png')] bg-[length:100px_100px] bg-repeat"></div>
 <main className="relative z-10 max-w-screen-lg transition-all justify-center items-center mx-auto sm:px-2 pt-10">
   <div className="bg-[#7eadc9af] rounded-t-xl pb-1 h-5"></div>
   <div className="flex relative sm:static items-center bg-[#7eaec9] shadow-[#7eaec9] justify-between gap-10 px-4 py-2 pb-13 sm:pb-5">

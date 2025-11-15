@@ -57,7 +57,7 @@ async function Login(e:any) {
 
   return (
  <main>
-  <div className="inset-0 z-0 h-screen opacity-11 absolute w-full bg-[url('./assets/rotatediamond.png')] bg-[length:100px_100px] bg-repeat"></div>
+  <div className="inset-0 z-0 h-screen opacity-13 absolute w-full bg-[url('./assets/rotatediamond.png')] bg-[length:100px_100px] bg-repeat"></div>
     <main className="relative z-10 max-w-screen-lg mx-auto sm:px-2 transition-all px-0 mt-10">
       <div className="bg-[#7eadc9af] rounded-t-xl pb-1 h-5 mt-5"></div>
   <div className="flex relative sm:static items-center bg-[#7eaec9] justify-between gap-10 px-4 py-2 pb-5">
